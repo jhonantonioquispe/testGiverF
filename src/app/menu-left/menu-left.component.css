@@ -1,0 +1,65 @@
+
+/* 
+https://color.adobe.com/es/Paleta-examen-1-color-theme-9690911/edit/?copy=true&base=2&rule=Custom&selected=4&name=Copia%20de%20Paleta%20examen%201&mode=rgb&rgbvalues=0.0862745,0.153517,0.25098,0.67451,0.741752,0.839216,0.176471,0.422025,0.439216,0.490196,0.362487,0.317647,0.639216,0.243137,0.192157&swatchOrder=0,1,2,3,4
+*/
+.menu-list {
+  height: 100%;
+  background-color: #ACBDD6;
+  box-shadow: 2px 1px 4px #162740;
+}
+
+.item-menu {
+  height: 48px;
+  padding-left: 32px;
+  line-height: 48px;
+  border-bottom: solid 1px #A33E31;
+  color: #A33E31;
+  font-weight: 700;
+  font-size: 20px;
+}
+.item-menu:hover  {  
+  background-color: #162740;
+  color: #fff;
+  border-bottom: solid 1px #fff;
+  border-top: solid 1px #fff;
+}
+.item-menu:hover .icon-cursos  {
+  background-image: url("./../../assets/cursos_white.png");
+}
+.item-menu:hover .icon-examenes  {
+  background-image: url("./../../assets/examenes_white.png");
+}
+.item-menu:hover .icon-practicas  {
+  background-image: url("./../../assets/practicas_white.png");
+}
+.item-menu:hover .icon-autoeval  {
+  background-image: url("./../../assets/autoeval_white.png");
+}
+.text-menu {
+  float: left;
+}
+
+.icon-class {
+  height: 100%;
+  width: 48px; 
+  float: right;  
+  background-size: 36px 36px;
+  background-position: 6px 6px;
+  background-repeat: no-repeat;
+  margin-right: 10px;
+}
+.icon-cursos {
+  background-image: url("./../../assets/cursos_brown.png");
+}
+
+.icon-examenes {
+  background-image: url("./../../assets/examenes_brown.png");
+}
+
+.icon-practicas {
+  background-image: url("./../../assets/practicas_brown.png");
+}
+
+.icon-autoeval {
+  background-image: url("./../../assets/autoeval_brown.png");
+}

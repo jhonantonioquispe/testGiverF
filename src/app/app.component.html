@@ -1,18 +1,17 @@
 <div style="text-align:center">
   <div class='main-menu'>
-    this is the main menu
-    <div class='profile-menu' (click)="showProfile()">Menu</div>
+    <div class='menu' (click)="showMenu()"></div>
+    <div class='logo-class'></div>
+    <div class='profile-menu' (click)="showProfile()"></div>
   </div>
   
 </div>
 <div class='main-container'>
-  <div class='contact-list'>
-    <div *ngFor="let student of students.data">
-      {{ student.firstname +' '+ student.lastname }}
-    </div>
+  <div class='contact-list' *ngIf='visibleMenu'>
+    <app-menu-left></app-menu-left>
   </div>
   <div class='message-list'>
-    
+    <app-test-center></app-test-center>
   </div>
   <div class='profile-options' [ngClass]='{"profile-show": visibleProfile === true}'>
     <app-list-component></app-list-component>

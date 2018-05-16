@@ -10,6 +10,7 @@ import { Student } from './student';
 export class AppComponent {
   title = 'this is the title';
   visibleProfile = false;
+  visibleMenu = true;
   students: Student[];
   constructor(private studentService: StudentService) { }
 
@@ -21,9 +22,15 @@ export class AppComponent {
     this.visibleProfile = !this.visibleProfile;
     console.log('this is the show profile');
   }
+  showMenu() {
+    this.visibleMenu = !this.visibleMenu;
+  }
 
   getStudents(): void {
     this.studentService.getStudents()
-    .subscribe(students => this.students = students);
+    .subscribe((students) => {
+      this.students = students;
+      console.log('hola ', students);
+    });
   }
 }

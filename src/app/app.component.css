@@ -1,33 +1,68 @@
 .main-menu {
-  height: 52px;
+  height: 32px;
+  background-color: #A33E31;
+  border-bottom: solid 1px #162740;
+  color: #fff;  
+}
+
+.main-menu .menu {
+  height: 32px;
+  width: 32px;
+  background-image: url('./../assets/menu_white.png');
+  background-size: 28px 28px;
+  background-position: 2px 2px;
+  background-repeat: no-repeat;
+  left:0;
+  position: absolute;
+}
+.main-menu .menu:hover {
+  background-image: url('./../assets/menu_blue.png');
+}
+.main-menu .logo-class {
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  background-image: url('./../assets/logo_white.png');
+  background-size: 198px 30px;
+  background-position: 0px 2px;
+  background-repeat: no-repeat;
+  height: 100%;
+  width:198px;
 }
 .profile-menu {
-  float: right;
-  height: 52px;
-  width: 52px;
-  background-color: green;
+  right: 0;
+  position: absolute;
+  top:0;
+  height: 32px;
+  width: 32px;
+  background-image: url('./../assets/list_white.png');
+  background-size: 28px 28px;
+  background-position: 2px 2px;
+  background-repeat: no-repeat;
+}
+
+.profile-menu:hover {
+  background-image: url('./../assets/list_blue.png');
 }
 .main-container {
-  background-color: lightblue;
-  height: calc(100% - 52px);
+  background-color: #f0f0f0;
+  height: calc(100% - 33px);
 }
 .contact-list {
   width: 300px;
   height: 100%;
   float: left;
-  background-color: green;
 }
 .message-list {
   width: calc(100% - 300px);
   height: 100%;
-  background-color: yellow;
   float: left;
 }
 .profile-options {
   width: 0px;
   float: right;
   background-color: lightblue;
-  height: calc(100% - 52px);
+  height: calc(100% - 33px);
 }
 .profile-show {
   width: 300px;
@@ -36,10 +71,10 @@
 }
 
 @media only screen and (max-width: 1000px) {
-  .contact-list {
-    width: 0;
+  /* .contact-list {
+    visibility: hidden;
   }
   .message-list {
     width: 100%;
-  }
+  } */
 }

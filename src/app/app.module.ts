@@ -6,11 +6,17 @@ import { AppComponent } from './app.component';
 //importando el nuevo servicio
 import { StudentService } from './student.service';
 import { ListComponent } from './list/list.component';
+import { MenuLeftComponent } from './menu-left/menu-left.component';
+import { TestCenterComponent } from './test-center/test-center.component';
+import { QuestionComponent } from './question/question.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListComponent
+    ListComponent,
+    MenuLeftComponent,
+    TestCenterComponent,
+    QuestionComponent
   ],
   imports: [
     BrowserModule,
