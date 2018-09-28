@@ -49,14 +49,16 @@
   height: calc(100% - 33px);
 }
 .contact-list {
-  width: 300px;
+  width: 289px;
   height: 100%;
   float: left;
 }
 .message-list {
-  width: calc(100% - 300px);
+  width: calc(100% - 289px);
   height: 100%;
   float: left;
+  min-width: 450px;
+  overflow-y: auto;
 }
 .profile-options {
   width: 0px;
@@ -70,11 +72,22 @@
   position: absolute;
 }
 
-@media only screen and (max-width: 1000px) {
-  /* .contact-list {
-    visibility: hidden;
+@media only screen and (max-width: 680px) {
+  .contact-list {
+    width: 100%;
+    float: left;
+    height: auto;
   }
   .message-list {
     width: 100%;
-  } */
+    float: left;
+    height: auto;
+    overflow-y: hidden;
+  }
+  
+  .profile-options {
+    width: 100%;
+    float: left;
+    height: auto;
+  }
 }

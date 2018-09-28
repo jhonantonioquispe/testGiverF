@@ -1,0 +1,13 @@
+<div>
+  <input id='{{"loaderUnique"+id}}' [hidden]="true" type="file" name="imgUploader" ngModel value="Upload" (change)="uploadImage($event)">
+  <div class='small-img-container' (dblclick)="toogleFullImage()">
+    <label *ngIf='editionMode' class='label-loader' for='{{"loaderUnique"+id}}'>{{ fileName || 'cargar imagen'}}</label>
+    <img *ngIf="previewData" src="{{previewData}}" class='img-data'>
+  </div>
+  <!-- <button class='btn-upload' (click)='sendFile()'>Subir Imagen</button> -->
+</div>
+<div (dblclick)="toogleFullImage()" class='full-image' [ngClass]='{"hide-mode": fullMode===false}'>
+  <div class='full-img-container'>
+    <img src="{{previewData}}" class='img-data'>
+  </div>
+</div>

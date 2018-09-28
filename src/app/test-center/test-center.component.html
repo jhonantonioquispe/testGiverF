@@ -1,6 +1,13 @@
 <div>
-  <div  class='title-test'>hhhhhhhhhh</div>
-  <div  class='question-list'>
-    <app-question></app-question>
+  <div class='questions-container height-width100'>
+    <div class='title-test width100'>title
+      
+    </div>
+    <div class='student-name width100'>AlumnoName</div>
+    <div class='question-list width100'>      
+      <div class='question float-left width100' *ngFor="let question of questions">
+        <app-question [question]='question'></app-question>
+      </div>
+    </div>
   </div>
 </div>

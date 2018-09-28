@@ -1,0 +1,33 @@
+
+.questions-container {
+
+}
+.title-test {
+  height: 60px;
+  font-weight: 450;
+  font-size: 32px;
+  line-height: 60px;
+  text-align: center;
+}
+
+.student-name {
+  height: 30px;
+}
+
+.question-list {
+  height: auto;
+}
+
+.question {
+  height: auto; 
+  background-color: gold;
+  min-width: 180px;
+  border: solid #000 0.3px;
+}
+
+@media only screen and (max-width: 900px) {
+  .question {
+    
+  }
+
+}

@@ -5,10 +5,12 @@ import { HttpClientModule }    from '@angular/common/http';
 import { AppComponent } from './app.component';
 //importando el nuevo servicio
 import { StudentService } from './student.service';
+import { AttacherService } from './attacher.service';
 import { ListComponent } from './list/list.component';
 import { MenuLeftComponent } from './menu-left/menu-left.component';
 import { TestCenterComponent } from './test-center/test-center.component';
 import { QuestionComponent } from './question/question.component';
+import { AttacherComponent } from './attacher/attacher.component';
 
 @NgModule({
   declarations: [
@@ -16,13 +18,14 @@ import { QuestionComponent } from './question/question.component';
     ListComponent,
     MenuLeftComponent,
     TestCenterComponent,
-    QuestionComponent
+    QuestionComponent,
+    AttacherComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule
   ],
-  providers: [StudentService],
+  providers: [StudentService, AttacherService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
