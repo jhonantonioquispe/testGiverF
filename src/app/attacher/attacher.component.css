@@ -37,7 +37,10 @@
   font-size: 12px;
   color: #fff;
   background-color: #162740;
-  border: none;
+  border: none; 
+  position: absolute;
+  margin-left: -95px;
+  margin-top: 72px;
 }
 
 .full-image {

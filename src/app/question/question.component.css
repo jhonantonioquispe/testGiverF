@@ -2,3 +2,16 @@
     height: 200px;
     width: 100%;
 }
+.question-text {
+    background-color: #fff;
+    width:100%;
+    height: auto;
+    border: none;
+    padding: 4px 10px;
+    resize: none;
+    /* overflow-y: hidden; */
+    box-sizing: border-box;
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}

@@ -11,6 +11,7 @@ import { MenuLeftComponent } from './menu-left/menu-left.component';
 import { TestCenterComponent } from './test-center/test-center.component';
 import { QuestionComponent } from './question/question.component';
 import { AttacherComponent } from './attacher/attacher.component';
+import { GrowRowDirective } from './question/grow-row-directive';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { AttacherComponent } from './attacher/attacher.component';
     MenuLeftComponent,
     TestCenterComponent,
     QuestionComponent,
-    AttacherComponent
+    AttacherComponent,
+    GrowRowDirective
   ],
   imports: [
     BrowserModule,

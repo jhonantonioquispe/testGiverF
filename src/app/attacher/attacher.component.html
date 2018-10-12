@@ -4,7 +4,7 @@
     <label *ngIf='editionMode' class='label-loader' for='{{"loaderUnique"+id}}'>{{ fileName || 'cargar imagen'}}</label>
     <img *ngIf="previewData" src="{{previewData}}" class='img-data'>
   </div>
-  <!-- <button class='btn-upload' (click)='sendFile()'>Subir Imagen</button> -->
+  <button class='btn-upload' (click)='sendFile()'>Subir Imagen</button>
 </div>
 <div (dblclick)="toogleFullImage()" class='full-image' [ngClass]='{"hide-mode": fullMode===false}'>
   <div class='full-img-container'>

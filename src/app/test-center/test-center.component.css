@@ -22,6 +22,7 @@
   height: auto; 
   background-color: gold;
   min-width: 180px;
+  box-sizing: border-box;
   border: solid #000 0.3px;
 }
 
