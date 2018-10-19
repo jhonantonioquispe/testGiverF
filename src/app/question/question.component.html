@@ -1,23 +1,16 @@
 <div class='question-container'>
     <div>{{loadedFileName}}</div>
-    <app-attacher
-        [srcImage]='option.attachment'
-        *ngFor="let option of question.options" 
-        (sendFileOut)='receivingData($event)' 
-        [editionMode]='true' [id]='option._id'>
-    </app-attacher>
     <div>
-        <textarea  growRowDirective [appHighlight]="'green'" class="question-text" >question text to be filled question text to be filled question text to be filled question text to be filled question text to be filled question text to be filled question text to be filled question text to be filled question 
-            text to be filled question text to be filled
-        </textarea>
-        <label growRowDirective [appHighlight]="'green'"> hola que tal</label>
-
+        <div style="display: inline-block;" *ngFor="let option of question.options" >
+            <app-attacher
+                [srcImage]='option.attachment'                
+                (sendFileOut)='receivingData($event)' 
+                [editionMode]='true' [id]='option._id'>
+            </app-attacher>            
+        </div>
     </div>
-    <div>
-        <textarea [disabled]="false">answer for this question</textarea>
-    </div>
-    <div>
-        <textarea>score filled</textarea>
+    <div>        
+        <app-text-cuestion> thi for ......</app-text-cuestion>
     </div>
 </div>
 <!-- <app-attacher 

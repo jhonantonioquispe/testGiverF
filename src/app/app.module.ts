@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
 import { HttpClientModule }    from '@angular/common/http';
 
 import { AppComponent } from './app.component';
@@ -11,7 +11,8 @@ import { MenuLeftComponent } from './menu-left/menu-left.component';
 import { TestCenterComponent } from './test-center/test-center.component';
 import { QuestionComponent } from './question/question.component';
 import { AttacherComponent } from './attacher/attacher.component';
-import { GrowRowDirective } from './question/grow-row-directive';
+import { GrowRowDirective } from './directives/grow-row-directive';
+import { TextCuestionComponent } from './text-cuestion/text-cuestion.component';
 
 @NgModule({
   declarations: [
@@ -21,12 +22,15 @@ import { GrowRowDirective } from './question/grow-row-directive';
     TestCenterComponent,
     QuestionComponent,
     AttacherComponent,
-    GrowRowDirective
+    GrowRowDirective,
+    TextCuestionComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA ],
+  exports: [TextCuestionComponent],
   providers: [StudentService, AttacherService],
   bootstrap: [AppComponent]
 })
