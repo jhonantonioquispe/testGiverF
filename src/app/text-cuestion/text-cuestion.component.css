@@ -3,3 +3,14 @@
     width: 100%;
     background-color: whitesmoke;
 }
+
+.q-text-edit {
+    width: 100%; 
+    height: 48px; 
+    display: inline-block;
+}
+
+.q-text-label {
+    height: 20px; 
+    width: auto;
+}

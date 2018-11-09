@@ -1,16 +1,18 @@
 <div class='question-container'>
     <div>{{loadedFileName}}</div>
-    <div>
-        <div style="display: inline-block;" *ngFor="let option of question.options" >
-            <app-attacher
-                [srcImage]='option.attachment'                
-                (sendFileOut)='receivingData($event)' 
-                [editionMode]='true' [id]='option._id'>
-            </app-attacher>            
+    <div class="container-imgs">
+        <div *ngFor="let option of question.options" >
+            <div imgSpreadDirective class="option-img">
+                <app-attacher
+                    [srcImage]='option.attachment'                
+                    (sendFileOut)='receivingData($event)' 
+                    [editionMode]='true' [id]='option._id'>
+                </app-attacher>            
+            </div>
         </div>
     </div>
     <div>        
-        <app-text-cuestion> thi for ......</app-text-cuestion>
+        <app-text-cuestion></app-text-cuestion>
     </div>
 </div>
 <!-- <app-attacher 

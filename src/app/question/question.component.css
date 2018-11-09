@@ -1,5 +1,6 @@
 .question-container {
-    height: 200px;
+    /* height: 200px; */
+    height: auto;
     width: 100%;
 }
 .question-text {
@@ -14,4 +15,15 @@
     white-space: normal;
     word-wrap: break-word;
     overflow-wrap: break-word;
+}
+.container-imgs {
+    display : block;
+    margin: 10px 0;
+    height: auto;
+}
+
+.option-img { 
+    float: left;
+    height: auto;
+    margin-top: 10px;
 }

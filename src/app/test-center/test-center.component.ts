@@ -32,6 +32,9 @@ export class TestCenterComponent implements OnInit {
       {_id:4, text:'tal', attachment: 'http://localhost:3000/attachments/imgUploader_1527836764676_hijo05.jpg'},
       {_id:5, text:'tal www', attachment: 'http://localhost:3000/attachments/imgUploader_1527836764676_hijo05.jpg'},
       {_id:6, text:'tal dfd', attachment: 'http://localhost:3000/attachments/imgUploader_1527836764676_hijo05.jpg'},
+      {_id:8, text:'tal dfd', attachment: 'http://localhost:3000/attachments/imgUploader_1527836764676_hijo05.jpg'},
+      {_id:9, text:'tal dfd', attachment: 'http://localhost:3000/attachments/imgUploader_1527836764676_hijo05.jpg'},
+      {_id:10, text:'tal dfd', attachment: 'http://localhost:3000/attachments/imgUploader_1527836764676_hijo05.jpg'},
       {_id:7, text:'talddd', attachment: 'http://localhost:3000/attachments/imgUploader_1527836764676_hijo05.jpg'}
     ]))    
   }
