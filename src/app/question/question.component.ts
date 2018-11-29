@@ -10,6 +10,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class QuestionComponent implements OnInit {
   loadedFileName:string = ''
   @Input() question: Question;
+  @Input() isOnEditMode: boolean = false;
   options: Object[];
   constructor() { }
 
@@ -19,5 +20,4 @@ export class QuestionComponent implements OnInit {
   receivingData($event) {
     this.loadedFileName = $event.filename;
   }
-
 }

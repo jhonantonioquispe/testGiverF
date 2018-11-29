@@ -1,7 +1,7 @@
 .label-loader {
   color: #f0f0f0;
   float: left;
-  position: absolute;
+  /* position: absolute; */
   text-align: center;
   width: 100px;
   font-size: 12px;
@@ -29,6 +29,12 @@
   height: 100%; 
   object-fit: contain;
   vertical-align: middle;
+  margin-top: 0;
+}
+
+.moveTop {
+  height: calc(100% - 18px);
+  
 }
 
 .btn-upload {
@@ -38,7 +44,7 @@
   color: #fff;
   background-color: #162740;
   border: none; 
-  position: absolute;
+  /* position: absolute; */
   margin-left: -95px;
   margin-top: 72px;
 }

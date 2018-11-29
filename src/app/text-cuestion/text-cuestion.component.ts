@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 
 @Component({
   selector: 'app-text-cuestion',
@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class TextCuestionComponent implements OnInit {
 
   constructor() { }
-  public editionMode: boolean=true;
+  @Input() editionMode: boolean=true;
   ngOnInit() {
   }
 

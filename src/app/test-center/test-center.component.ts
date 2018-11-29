@@ -10,10 +10,14 @@ import { TestMakerService } from './../services/test-maker.service';
 export class TestCenterComponent implements OnInit {
   questions: Question[] = [];
   test: Test;
+  isOnEditMode:boolean = true;
   constructor(
     private testService: TestMakerService
   ) { }
-
+  changeEditMode() {
+    this.isOnEditMode = !this.isOnEditMode;
+    console.log(this.isOnEditMode);
+  }
   getTest(): void {
     this.testService
       .getTests()

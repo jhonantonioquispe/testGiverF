@@ -16,7 +16,7 @@ export class AttacherComponent implements OnInit {
   
   @Input() id: string;
   @Input() srcImage: string;
-  @Input() editionMode: Boolean = false;
+  @Input() editionMode: Boolean = true;
   constructor(private attacherService: AttacherService) { }
 
   ngOnInit() {
