@@ -1,13 +1,15 @@
 import { Component } from '@angular/core';
 import { StudentService } from './student.service';
 import { TestMakerService } from './services/test-maker.service';
+
+import { QuestionService } from './services/question.service';
 import { Student } from './student';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [TestMakerService]
+  providers: [TestMakerService, QuestionService]
 })
 export class AppComponent {
   title = 'this is the title';
@@ -22,11 +24,12 @@ export class AppComponent {
   students: Student[];
   constructor(
     private studentService: StudentService,
-    private testService: TestMakerService
+    private testService: TestMakerService,
+    //private questionService: QuestionService
   ) { }
 
   ngOnInit() {
-    this.getStudents();
+    //this.getStudents();
   }
 
   showProfile() {

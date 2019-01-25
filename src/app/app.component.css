@@ -55,6 +55,8 @@
 }
 .message-list {
   width: calc(100% - 289px);
+  box-sizing: border-box;
+  padding: 6px;
   height: 100%;
   float: left;
   min-width: 450px;

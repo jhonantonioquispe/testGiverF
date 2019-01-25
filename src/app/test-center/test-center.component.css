@@ -1,6 +1,7 @@
 
 .questions-container {
-
+  padding: 4px;
+  box-sizing: border-box;
 }
 .title-test {
   height: 60px;
@@ -19,11 +20,12 @@
 }
 
 .question {
-  height: auto; 
-  background-color: gold;
+  height: auto;
+  padding-top: 6px; 
+  /* background-color: gold; */
   min-width: 180px;
   box-sizing: border-box;
-  border: solid #000 0.3px;
+  /* border: solid #000 0.3px; */
 }
 
 @media only screen and (max-width: 900px) {

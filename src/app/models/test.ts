@@ -8,4 +8,10 @@ export class Test {
   }];
   answer: Number;
 
+  constructor() {
+    this.questionText = "";
+    this.answer=-1;
+    (<any>(this.options)) = [];
+  }
+
 }

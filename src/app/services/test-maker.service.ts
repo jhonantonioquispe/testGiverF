@@ -1,53 +1,50 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-
-import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
+import { HttpClient } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
-
-//importing modelo test
-import { Test } from './../models/test';
-
-const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-};
+import { FullServiceMaker } from './../services/fullServiceMaker.service';
+//importing model
+import { Test } from '../models/test';
 
 @Injectable()
-export class TestMakerService {
-
-  private testsUrl = 'http://127.0.0.1:3000/test';
-
-  constructor(private http: HttpClient) { }
-
-  getTests (): Observable<Test[]> {
-    return this.http.get<Test[]>(this.testsUrl)
-      .pipe(
-        tap(tests => {console.log('tests', tests)
-          return tests;
-        }),
-        catchError(this.handleError('getTests', []))
-      );
+export class TestMakerService extends FullServiceMaker<Test> {
+  constructor(http: HttpClient) {
+    super(http, 'test',['question']);    
   }
 
-  saveTests(test): Observable<any> {
-    return this.http.post<Test>(this.testsUrl, test)
+  getTests() {
+    return this.getAll()
+      .pipe(
+        tap(questionsByTest => {console.log('questionsByTest', questionsByTest)
+          return questionsByTest;
+        }),
+        catchError(this.handleError('getQuestions', []))
+      );
+  }
+  saveTests(test) {
+    console.log("trying to save", test);
+    return this.saveOne(test)
       .pipe(
         tap(test => console.log('tests', test)),
         catchError(this.handleError('getTests', []))
       );
   }
 
-  /**
-   * Handle Http operation that failed.
-   * Let the app continue.
-   * @param operation - name of the operation that failed
-   * @param result - optional value to return as the observable result
-   */
-  private handleError<T> (operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-      console.error(error); // log to console instead
-      return of(result as T);
-    };
+  getQuestionsByTestId (testId:string){
+    return this.childs['question'].getAllRelationedByParentId(testId)
+      .pipe(
+        tap(questionsByTest => {console.log('questionsByTest', questionsByTest)
+          return questionsByTest;
+        }),
+        catchError(this.handleError('getQuestions', []))
+      );
+  }
+
+  getQuestionByTest(testId:string, questionId:string) {    
+    return this.childs['question'].getOneRelationedByParentId(testId, questionId)
+      .pipe(
+        tap(question => console.log('question', question)),
+        catchError(this.handleError('getquestions', []))
+      );
   }
 
 }
