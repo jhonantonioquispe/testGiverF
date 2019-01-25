@@ -47,6 +47,12 @@ export class TestCenterComponent implements OnInit {
       .subscribe((tests) => {
         console.log('save test ', tests)
       });
+
+    this.testService
+      .getQuestionsByTestId('afff')
+      .subscribe((qs)=> {
+        console.log('save test ', qs)
+      })
   }
 
   ngOnInit() {

@@ -12,7 +12,7 @@ import { ServiceMaker } from './../services/serviceMaker.service';
 @Injectable()
 export class QuestionService extends ServiceMaker<Question> {
   constructor(http: HttpClient) { 
-    super(http, 'http://127.0.0.1:3000/question');
+    super(http, 'question');
   }
 
   getQuestions () {
