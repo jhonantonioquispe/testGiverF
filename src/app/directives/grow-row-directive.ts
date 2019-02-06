@@ -12,7 +12,7 @@ export class GrowRowDirective {
     @Input('appHighlight') highlightColor: string;
 
     @HostListener('mouseenter') onMouseEnter() {
-        console.log("estamos en el mousenter");
+        //console.log("estamos en el mousenter");
         this.highlight(this.highlightColor || this.defaultColor || 'red');
     }
 

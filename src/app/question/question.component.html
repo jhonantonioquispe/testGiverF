@@ -2,18 +2,18 @@
     <div>{{loadedFileName}}</div>
     <!-- <div>{{isOnEditMode}}</div> -->
     <div class="container-imgs">
-        <div *ngFor="let option of question.options" >
+        <div *ngFor="let option of question.options; let i = index" >
             <div imgSpreadDirective class="option-img">
                 <app-attacher
                     [srcImage]='option.attachment'                
-                    (sendFileOut)='receivingData($event)'
+                    (sendFileOut)='receivingData($event, i)'
                     [editionMode]='isOnEditMode' [id]='option._id'>
                 </app-attacher>            
             </div>
         </div>
     </div>
     <div>        
-        <app-text-cuestion [editionMode]='isOnEditMode'></app-text-cuestion>
+        <app-text-cuestion [questionText]='question.questionText' [editionMode]='isOnEditMode'></app-text-cuestion>
     </div>
 </div>
 <!-- <app-attacher 

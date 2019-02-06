@@ -1,10 +1,7 @@
 <div class="text-q-container">
-    <textarea  *ngIf="editionMode"  growRowDirective [appHighlight]="'green'" class="q-text-edit" >question text to be filled question text to be filled question text to be filled question text to be filled question text to be filled question text to be filled question text to be filled question text to be filled question 
-          text to be filled question text to be filled
+    <textarea  *ngIf="editionMode"  growRowDirective [appHighlight]="'green'" class="q-text-edit" >{{questionText}}
     </textarea>
     <label *ngIf="editionMode==false" class="q-text-label">
-        question text to be filled question text to be filled question text to be filled question text to be filled question text to be filled question text to be filled question text to be filled question text to be filled question 
-        hola qufyutfyutfuytfytufyufutfyfe tal
-        question text to be filled question text to be filled question text to be filled question text to be filled question text to be filled question text to be filled question text to be filled question text to be filled question 
+        {{questionText}}        
     </label>
 </div>

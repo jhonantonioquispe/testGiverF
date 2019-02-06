@@ -45,6 +45,9 @@ export class AttacherComponent implements OnInit {
     formData.append('imgUploader', this.files[0], this.files[0].name);
     this.attacherService.postAttachment(formData)
       .subscribe((data) => {
+        const filename = data.path.split("\\")[1];
+        this.sendFileOut.emit({data: formData, filename:filename});
+        this.srcImage = data.fileName;
         console.log('data received', data);
       });
   }

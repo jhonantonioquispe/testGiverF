@@ -8,7 +8,8 @@ import { Component, OnInit,Input } from '@angular/core';
 export class TextCuestionComponent implements OnInit {
 
   constructor() { }
-  @Input() editionMode: boolean=true;
+  @Input() editionMode: boolean = true;
+  @Input() questionText: string = "";
   ngOnInit() {
   }
 

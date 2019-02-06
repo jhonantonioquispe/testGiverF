@@ -21,11 +21,17 @@ export class AttacherService {
     postAttachment(body: FormData):Observable<any> {
       let headers = new HttpHeaders( );
       headers.append('Content-Type','multipart/form-data');
-      headers.append('Accept', 'application/json');
-      const httpOptions = {headers: headers};
+      //headers.append('Accept', 'application/json');
+      headers.append('Access-Control-Allow-Origin', '*');
+      headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+      headers.append('Access-Control-Allow-Credentials', 'true');
+      const httpOptions = {headers};
       return this.http.post('http://127.0.0.1:3000/attachments', body, httpOptions)
     .pipe(
-      tap((hero: any) => console.log(`added hero w/ id=${hero}`)),
+      tap((hero: any) => {
+        console.log(`added hero w/ id=${hero}`);
+        return hero;
+      }),
       catchError(this.handleError<any>('addHero'))
     );      
   }

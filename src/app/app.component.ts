@@ -3,13 +3,14 @@ import { StudentService } from './student.service';
 import { TestMakerService } from './services/test-maker.service';
 
 import { QuestionService } from './services/question.service';
+import { QuestionaryService } from './services/questionary.service';
 import { Student } from './student';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [TestMakerService, QuestionService]
+  providers: [TestMakerService, QuestionService, QuestionaryService]
 })
 export class AppComponent {
   title = 'this is the title';

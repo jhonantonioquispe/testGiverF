@@ -17,7 +17,9 @@ export class QuestionComponent implements OnInit {
   ngOnInit() {
   }
 
-  receivingData($event) {
+  receivingData($event, index) {
+    console.log("data event", index, $event)
     this.loadedFileName = $event.filename;
+    this.question.options[index].attachment = $event.filename;
   }
 }
