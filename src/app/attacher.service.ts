@@ -16,17 +16,18 @@ export class AttacherService {
   
   constructor(
     private http: HttpClient) { }
-    
+    private baseUrl:string= 'http://127.0.0.1:3000/attachments';
     /** post files for attachments */
     postAttachment(body: FormData):Observable<any> {
       let headers = new HttpHeaders( );
+
       headers.append('Content-Type','multipart/form-data');
       //headers.append('Accept', 'application/json');
       headers.append('Access-Control-Allow-Origin', '*');
       headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
       headers.append('Access-Control-Allow-Credentials', 'true');
       const httpOptions = {headers};
-      return this.http.post('http://127.0.0.1:3000/attachments', body, httpOptions)
+      return this.http.post(this.baseUrl, body, httpOptions)
     .pipe(
       tap((hero: any) => {
         console.log(`added hero w/ id=${hero}`);
@@ -34,6 +35,9 @@ export class AttacherService {
       }),
       catchError(this.handleError<any>('addHero'))
     );      
+  }
+  getFullUrl(imgName) {
+    return `${this.baseUrl}/${imgName}`;
   }
 
   /**

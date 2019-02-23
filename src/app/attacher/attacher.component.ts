@@ -46,14 +46,22 @@ export class AttacherComponent implements OnInit {
     this.attacherService.postAttachment(formData)
       .subscribe((data) => {
         const filename = data.path.split("\\")[1];
-        this.sendFileOut.emit({data: formData, filename:filename});
         this.srcImage = data.fileName;
+        this.sendFileOut.emit({data: formData, filename:filename, fullUrl:this.getFullUrl});
         console.log('data received', data);
       });
   }
 
   sendFileEmmitter(fileData: Object) {
     this.sendFileOut.emit(fileData);
+  }
+
+  getFullUrl(imgName) {
+    if (!this.srcImage) {
+      return this.attacherService.getFullUrl(imgName);
+    } else {
+      return this.attacherService.getFullUrl(this.srcImage);
+    }
   }
 
   toogleFullImage() {
