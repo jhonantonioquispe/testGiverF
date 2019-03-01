@@ -69,3 +69,19 @@
     height: auto;
     margin-top: 10px;
 }
+
+.option-text {
+    /* modify here for option text */
+    float: left;
+    position: relative;    
+    border-radius: 50%;    
+    text-align: center;
+    background-color: #ACBDD6;
+    top: 5px;
+    left: 65px;
+    width: 100%;
+    height: 22px;
+    color: #fff;
+    font-weight: 900;
+    line-height: 12px;    
+}

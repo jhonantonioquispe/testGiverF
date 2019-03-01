@@ -12,7 +12,7 @@ import { AttacherService } from './../attacher.service';
 export class QuestionComponent implements OnInit {
   loadedFileName:string = ''
   urlMain: string= "http://127.0.0.1:3000";
-  private currentFullPath:string = "";
+  private currentFullPath: string = "";
   @Input() question: Question;
   @Input() isOnEditMode: boolean = false;
   options: Object[];
@@ -32,6 +32,10 @@ export class QuestionComponent implements OnInit {
     return this.attacherService.getFullUrl(imgName);
   }
 
+  getCounterOptions(isEditMode: boolean) {
+    return isEditMode? this.question.options.length+1: this.question.options.length;
+  }
+
   addNewOption() {
     let newOption = new Option(null, 'tal', null);
     this.question.options.push(newOption);
@@ -45,5 +49,10 @@ export class QuestionComponent implements OnInit {
       }
     });
     this.question.options= toReplace;
+  }
+
+  changeQuestionReceive($event) {
+    //console.log($event) modified here;
+    this.question.questionText = $event;
   }
 }

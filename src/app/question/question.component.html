@@ -3,27 +3,30 @@
     <!-- <div>{{isOnEditMode}}</div> -->
     <div class="container-imgs">
         <div *ngFor="let option of question.options; let i = index" >
-            <div class="intern-img-container" imgSpreadDirective [items]="question.options.length+1">
-                <button class="btn-rm-option" (click)="removeOption(i)">-</button>        
+            <div class="intern-img-container" imgSpreadDirective [items]="getCounterOptions(isOnEditMode)">
+                <button class="btn-rm-option" (click)="removeOption(i)">x</button>       
                 <div class="option-img">
                     <app-attacher
                         [srcImage]='getFullUrl(option.attachment)'                
                         (sendFileOut)='receivingData($event, i)'
                         [editionMode]='isOnEditMode' [id]='option._id'>
                     </app-attacher>            
+                    <div class="option-text">
+                        <label>select answer</label>
+                        <input type="checkbox" class="btn-rm-option">
+                    </div>
                 </div>
             </div>
         </div>
         <div *ngIf="isOnEditMode" class="intern-img-container">
-            <div imgSpreadDirective [items]="question.options.length+1">
-                    <div class="option-img add-container">
-                        <button class="btn-add-option"(click)="addNewOption()">+</button>
-                    </div>
+            <div class="option-img add-container">
+                <button class="btn-add-option"(click)="addNewOption()">+</button>
             </div>
         </div>
     </div>
+    <!-- modify here -->
     <div>        
-        <app-text-cuestion [questionText]='question.questionText' [editionMode]='isOnEditMode'></app-text-cuestion>
+        <app-text-cuestion (changeQuestion)='changeQuestionReceive($event)' [questionText]='question.questionText' [editionMode]='isOnEditMode'></app-text-cuestion>
     </div>
 </div>
 <!-- <app-attacher 

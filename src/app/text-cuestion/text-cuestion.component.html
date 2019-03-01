@@ -1,5 +1,6 @@
 <div class="text-q-container">
-    <textarea  *ngIf="editionMode"  growRowDirective [appHighlight]="'green'" class="q-text-edit" >{{questionText}}
+    <!-- modified to update the text question -->
+    <textarea *ngIf="editionMode" (change)="changeQuestionTextArea($event)" growRowDirective [appHighlight]="'green'" class="q-text-edit" >{{questionText}}
     </textarea>
     <label *ngIf="editionMode==false" class="q-text-label">
         {{questionText}}        
