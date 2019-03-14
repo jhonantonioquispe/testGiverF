@@ -51,6 +51,8 @@ export class TestCenterComponent implements OnInit {
     this.questionary.totalScore = 55.34;
     this.questionary.author= "jhon quispe";
     this.questionary.type= 1; // this is an enum  posble values 'test', 'practice'
+    console.log(this.questionary)
+    
     this.questionaryService
       .saveQuestionary(this.questionary)
       .subscribe((questionary) => {

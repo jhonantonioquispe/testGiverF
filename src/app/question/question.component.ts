@@ -16,6 +16,7 @@ export class QuestionComponent implements OnInit {
   @Input() question: Question;
   @Input() isOnEditMode: boolean = false;
   options: Object[];
+  selectedOption:number = -1;
   constructor(private attacherService:AttacherService) { }
 
   ngOnInit() {
@@ -41,6 +42,16 @@ export class QuestionComponent implements OnInit {
     this.question.options.push(newOption);
   }
 
+  isOptionSelected(i) {
+    return ((this.selectedOption === i) || (this.question.answer == i));
+  }
+
+  selectOption($event,i) {
+    this.selectedOption = i;
+    this.question.answer = i;
+    console.log($event, " dfsfsdf  " ,i)
+  }
+
   removeOption = (optionIndex) => {
     let toReplace = new Array();
     this.question.options.forEach((op,iop)=> {
@@ -52,7 +63,6 @@ export class QuestionComponent implements OnInit {
   }
 
   changeQuestionReceive($event) {
-    //console.log($event) modified here;
     this.question.questionText = $event;
   }
 }

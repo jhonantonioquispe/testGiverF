@@ -5,15 +5,19 @@
         <div *ngFor="let option of question.options; let i = index" >
             <div class="intern-img-container" imgSpreadDirective [items]="getCounterOptions(isOnEditMode)">
                 <button class="btn-rm-option" (click)="removeOption(i)">x</button>       
-                <div class="option-img">
+                <div class="option-img" >
                     <app-attacher
                         [srcImage]='getFullUrl(option.attachment)'                
                         (sendFileOut)='receivingData($event, i)'
                         [editionMode]='isOnEditMode' [id]='option._id'>
                     </app-attacher>            
-                    <div class="option-text">
-                        <label>select answer</label>
-                        <input type="checkbox" class="btn-rm-option">
+                    <div class="option-text" [ngClass]='{"selected-option": isOptionSelected(i, option._id)}'>
+                        <label for="{{option._id}}" class="label-text-option" >{{option.text}}</label>
+                        <input id="{{option._id}}"                             
+                            (change)="selectOption($event,i,option._id)"
+                            name="{{question._id}}" 
+                            type="radio" 
+                            class="check-option">
                     </div>
                 </div>
             </div>
