@@ -63,7 +63,8 @@
     box-sizing: border-box;    
     min-width: 250px;
     float: left;
-    margin-top: 5px
+    margin-top: 5px;
+    border: dashed green 2px;
 }
 .option-img { 
     float: left;

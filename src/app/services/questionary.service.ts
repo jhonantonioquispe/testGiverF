@@ -32,4 +32,12 @@ export class QuestionaryService extends FullServiceMaker<Questionary> {
         catchError(this.handleError('saveQuestionary', []))
       );
   }
+
+  updateQuestionary(questionary): Observable<any> {
+    return this.updateOne(questionary)
+      .pipe(
+        tap(questionary => console.log('questionary', questionary)),
+        catchError(this.handleError('updating Questionary', []))
+      );
+  }
 }

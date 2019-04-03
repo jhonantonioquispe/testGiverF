@@ -41,7 +41,6 @@ export class TestCenterComponent implements OnInit {
   }
 
   saveTest(): void {
-    
     this.questionary._id = null;
     this.questionary.questions = this.questions.map((q)=>{
       q.options.forEach(o=>o._id =undefined);
@@ -58,12 +57,19 @@ export class TestCenterComponent implements OnInit {
       .subscribe((questionary) => {
         console.log('saved questionary ', questionary)
       });
+  }
 
-    // this.testService
-    //   .getQuestionsByTestId('afff')
-    //   .subscribe((qs)=> {
-    //     console.log('save test ', qs)
-    //   })
+  updateTest(): void {
+    this.questionary.totalScore = 55.34;
+    this.questionary.author= "jhon quispe modified";
+    this.questionary.type= 1; // this is an enum  posble values 'test', 'practice'
+    console.log(this.questionary)
+    
+    this.questionaryService
+      .updateQuestionary(this.questionary)
+      .subscribe((questionary) => {
+        console.log('update questionary ', questionary)
+      });
   }
 
   ngOnInit() {

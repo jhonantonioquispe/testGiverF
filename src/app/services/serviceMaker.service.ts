@@ -19,6 +19,10 @@ export abstract class ServiceMaker<T> {
     return this._http.post<T>(`${this.baseUrl}/${this.parent}`, itemToSave);      
   }
 
+  protected updateOne(itemToSave): Observable<T> {
+    return this._http.patch<T>(`${this.baseUrl}/${this.parent}`, itemToSave);      
+  }
+
   /**
    * Handle Http operation that failed.
    * Let the app continue.

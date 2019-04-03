@@ -1,11 +1,12 @@
 <div>
   <button (click)="saveTest()">Save Test</button>
+  <button (click)="updateTest()">Update Test</button>
+  <button (click)="changeEditMode()">Change edit mode</button>
   <div class='questions-container height-width100'>
     <div class='title-test width100'>title
       
     </div>
     <div class='student-name width100'>AlumnoName</div>
-    <button (click)="changeEditMode()">Change edit mode</button>
     <div class='question-list width100'>      
       <div class='question float-left width100' *ngFor="let question of questions">
         <app-question [question]='question' [isOnEditMode]='isOnEditMode'></app-question>
