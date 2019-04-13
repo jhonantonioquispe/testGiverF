@@ -12,7 +12,10 @@
                         [editionMode]='isOnEditMode' [id]='option._id'>
                     </app-attacher>            
                     <div class="option-text" [ngClass]='{"selected-option": isOptionSelected(i, option._id)}'>
-                        <label for="{{option._id}}" class="label-text-option" >{{option.text}}</label>
+                        <label for="{{option._id}}" class="label-text-option" >
+                            <app-text-cuestion (changeQuestion)='changeOptionTextReceive($event,i)' [questionText]='option.text' [editionMode]='isOnEditMode'></app-text-cuestion>
+                            <app-optionChanger></app-optionChanger>
+                        </label>
                         <input id="{{option._id}}"                             
                             (change)="selectOption($event,i,option._id)"
                             name="{{question._id}}" 

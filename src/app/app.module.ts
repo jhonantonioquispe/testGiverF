@@ -10,6 +10,7 @@ import { ListComponent } from './list/list.component';
 import { MenuLeftComponent } from './menu-left/menu-left.component';
 import { TestCenterComponent } from './test-center/test-center.component';
 import { QuestionComponent } from './question/question.component';
+import { OptionChangerComponent } from './optionChanger/optionChanger.component';
 import { AttacherComponent } from './attacher/attacher.component';
 import { GrowRowDirective } from './directives/grow-row-directive';
 import { ImgSpreadDirective } from './directives/img-spread-directive';
@@ -22,6 +23,7 @@ import { TextCuestionComponent } from './text-cuestion/text-cuestion.component';
     MenuLeftComponent,
     TestCenterComponent,
     QuestionComponent,
+    OptionChangerComponent,
     AttacherComponent,
     GrowRowDirective,
     ImgSpreadDirective,

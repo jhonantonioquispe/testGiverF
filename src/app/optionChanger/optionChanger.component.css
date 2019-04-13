@@ -1,0 +1,22 @@
+.option-container {
+    color:blue;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    text-align: center;
+    /* background-color: linen; */
+}
+.option-container .text-change-container{
+    margin-top: calc(50% - 150px);
+    /* margin-left: calc(50% - 300px);  */
+    background-color: blueviolet;
+    min-width: 300px;
+    min-height: 300px;
+    position: absolute;
+    height: auto;
+
+    top: 0;
+    left: 0;
+}

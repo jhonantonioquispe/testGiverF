@@ -15,7 +15,7 @@ export class TestCenterComponent implements OnInit {
   questions: Question[] = [];
   test: Test;
   questionary: Questionary;
-  isOnEditMode:boolean = true;
+  isOnEditMode:boolean = false;
   constructor(
     private testService: TestMakerService,    
     private questionService: QuestionService,

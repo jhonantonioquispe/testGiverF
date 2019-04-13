@@ -1,7 +1,7 @@
-import { Question } from './../models/question';
-import { Option } from './../models/option';
+import { Question } from '../models/question';
+import { Option } from '../models/option';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { AttacherService } from './../attacher.service';
+import { AttacherService } from '../attacher.service';
 
 @Component({
   selector: 'app-question',
@@ -64,5 +64,10 @@ export class QuestionComponent implements OnInit {
 
   changeQuestionReceive($event) {
     this.question.questionText = $event;
+  }
+
+  changeOptionTextReceive($event, optionIndex) {
+    console.log("estamos en el change text option ", $event)
+    this.question.options[optionIndex].text = $event;
   }
 }

@@ -34,7 +34,6 @@ export class ImgSpreadDirective {
                     elemsParent.children[el].children[0].style.height = ImgSpreadDirective.maxHeight+"px";
                 }
             }
-            ImgSpreadDirective.maxHeight = 0;
         });
         
     }
