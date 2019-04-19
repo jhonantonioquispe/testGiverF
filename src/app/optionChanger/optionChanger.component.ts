@@ -8,10 +8,16 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class OptionChangerComponent implements OnInit {
  
-  @Input() isOnEditMode: boolean = false;
+  @Input() isVisible: boolean = false;
+  @Input() textInput: string = "";
+  @Output() closeEmitter = new EventEmitter<Object>()
   options: Object[];
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onClose() {
+    this.closeEmitter.emit({newText:"this.is the value ",closeFlag: false})
   }
 }

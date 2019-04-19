@@ -15,6 +15,9 @@ export class QuestionComponent implements OnInit {
   private currentFullPath: string = "";
   @Input() question: Question;
   @Input() isOnEditMode: boolean = false;
+  public isChangingOption = false;
+  public currentOptionIndex= -1;
+  public currentOptionText:String = "";
   options: Object[];
   selectedOption:number = -1;
   constructor(private attacherService:AttacherService) { }
@@ -27,6 +30,17 @@ export class QuestionComponent implements OnInit {
     this.loadedFileName = $event.filename;
     this.question.options[index].attachment = $event.filename;
     this.currentFullPath = $event.fullUrl;
+  }
+
+  changeOptionText(optionText, i) {
+    this.isChangingOption = true;
+    this.currentOptionIndex = i;
+    this.currentOptionText = optionText;
+  }
+
+  onCloseOptionChangerReceiver($event) {
+    this.isChangingOption = $event.closeFlag;
+    console.log("dd" , $event);
   }
 
   getFullUrl(imgName) {

@@ -1,24 +1,7 @@
-<label class='option-container'>
-    <a class="text-change-container">texto para el chasdfsdf  asdfasdf   anger
-        texto para el chasdfsdf  asdfasdf   anger
-        texto para el chasdfsdf  asdfasdf   anger
-        texto para el chasdfsdf  asdfasdf   anger
-        <div >sdfsdf asdfsdf </div>
-        <div >sdfsdf asdfsdf </div>
-        <div >sdfsdf asdfsdf </div>
-        <div >sdfsdf asdfsdf </div>
-        <div >sdfsdf asdfsdf </div>
-        <div >sdfsdf asdfsdf </div>
-        <div >sdfsdf asdfsdf </div>
-        <div >sdfsdf asdfsdf </div>
-        <div >sdfsdf asdfsdf </div>
-        <div >sdfsdf asdfsdf </div>
-        <div >sdfsdf asdfsdf </div>
-        <div >sdfsdf asdfsdf </div>
-        <div >sdfsdf asdfsdf </div>
-        texto para el chasdfsdf  asdfasdf   anger
-        texto para el chasdfsdf  asdfasdf   anger
-        texto para el chasdfsdf  asdfasdf   anger
+<div *ngIf='isVisible' class='option-container'>
+    <a class="text-change-container">{{textInput}}
+        
+        <input type='button' (click)="onClose()" value='CloseDialog'>
     </a>
-</label>
+</div>
     
