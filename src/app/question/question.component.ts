@@ -63,7 +63,7 @@ export class QuestionComponent implements OnInit {
   selectOption($event,i) {
     this.selectedOption = i;
     this.question.answer = i;
-    console.log($event, " dfsfsdf  " ,i)
+    //console.log($event, " dfsfsdf  " ,i)
   }
 
   removeOption = (optionIndex) => {
@@ -80,8 +80,10 @@ export class QuestionComponent implements OnInit {
     this.question.questionText = $event;
   }
 
-  changeOptionTextReceive($event, optionIndex) {
-    console.log("estamos en el change text option ", $event)
-    this.question.options[optionIndex].text = $event;
+  onChangeOptionText($event, text, optionIndex) {
+    console.log("estamos en el change text option ", $event.srcElement.innerHTML)
+    //console.log("text ", text)
+    //console.log("i ", i)
+    this.question.options[optionIndex].text = $event.srcElement.innerHTML.toString();
   }
 }

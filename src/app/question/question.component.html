@@ -13,9 +13,15 @@
                         [editionMode]='isOnEditMode' [id]='option._id'>
                     </app-attacher>            
                     <div class="option-text" [ngClass]='{"selected-option": isOptionSelected(i, option._id)}'>
-                        <label for="{{option._id}}" class="label-text-option" (click)="changeOptionText(option.text, i)">
-                            <app-text-cuestion (changeQuestion)='changeOptionTextReceive($event,i)' [questionText]='option.text' [editionMode]='isOnEditMode'></app-text-cuestion>
-                            
+                        
+                        <label for="{{option._id}}" class="label-text-option" >
+                            <!-- <app-text-cuestion (changeQuestion)='changeOptionTextReceive($event,i)' [questionText]='option.text' [editionMode]='isOnEditMode'></app-text-cuestion> -->
+                            <div style="height: auto; width: auto; background-color: crimson"
+                                role="textbox"
+                                (keydown)="onChangeOptionText($event, option.text, i)"
+                                contenteditable="true"
+                                >{{option.text}}</div>
+
                         </label>
                         <input id="{{option._id}}"                             
                             (change)="selectOption($event,i,option._id)"
