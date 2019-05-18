@@ -26,6 +26,7 @@ export class TestCenterComponent implements OnInit {
     this.isOnEditMode = !this.isOnEditMode;
     console.log(this.isOnEditMode);
   }
+
   getTest(): void {
     this.questionaryService
       .getQuestionaries()
@@ -58,6 +59,10 @@ export class TestCenterComponent implements OnInit {
         console.log('saved questionary ', questionary);
         window.location.reload()
       });
+  }
+
+  removeQuestion(qIndex) {
+    this.questions = this.questions.filter((q,qi) => qi != qIndex);
   }
 
   updateTest(): void {
