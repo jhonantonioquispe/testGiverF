@@ -80,8 +80,16 @@ export class QuestionComponent implements OnInit {
   }
 
   onChangeOptionText($event, optionIndex) {
-    console.log("text option ",$event.srcElement.outerText)
-    this.question.options[optionIndex].text = $event.srcElement.outerText;
+    console.log("text option ",$event.target.offsetHeight);
+    if (this.question.options[optionIndex].text != $event.srcElement.outerText) {
+      this.question.options[optionIndex].text = null;
+      this.question.options[optionIndex].text = $event.srcElement.outerText;
+      $event.srcElement.innerText = this.question.options[optionIndex].text;
+    }
   }
-  
+
+  focusOptionText($event, i) {
+    console.log("text option focus",$event.srcElement.offsetHeight);
+  }
+
 }
