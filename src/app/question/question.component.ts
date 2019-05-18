@@ -35,7 +35,7 @@ export class QuestionComponent implements OnInit {
   changeOptionText(optionText, i) {
     this.isChangingOption = true;
     this.currentOptionIndex = i;
-    this.currentOptionText = optionText;
+    this.currentOptionText = optionText;    
   }
 
   onCloseOptionChangerReceiver($event) {
@@ -63,7 +63,6 @@ export class QuestionComponent implements OnInit {
   selectOption($event,i) {
     this.selectedOption = i;
     this.question.answer = i;
-    //console.log($event, " dfsfsdf  " ,i)
   }
 
   removeOption = (optionIndex) => {
@@ -80,10 +79,9 @@ export class QuestionComponent implements OnInit {
     this.question.questionText = $event;
   }
 
-  onChangeOptionText($event, text, optionIndex) {
-    console.log("estamos en el change text option ", $event.srcElement.innerHTML)
-    //console.log("text ", text)
-    //console.log("i ", i)
-    this.question.options[optionIndex].text = $event.srcElement.innerHTML.toString();
+  onChangeOptionText($event, optionIndex) {
+    console.log("text option ",$event.srcElement.outerText)
+    this.question.options[optionIndex].text = $event.srcElement.outerText;
   }
+  
 }

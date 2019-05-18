@@ -15,12 +15,12 @@
                     <div class="option-text" [ngClass]='{"selected-option": isOptionSelected(i, option._id)}'>
                         
                         <label for="{{option._id}}" class="label-text-option" >
-                            <!-- <app-text-cuestion (changeQuestion)='changeOptionTextReceive($event,i)' [questionText]='option.text' [editionMode]='isOnEditMode'></app-text-cuestion> -->
-                            <div style="height: auto; width: auto; background-color: crimson"
-                                role="textbox"
-                                (keydown)="onChangeOptionText($event, option.text, i)"
-                                contenteditable="true"
-                                >{{option.text}}</div>
+                            <!-- <app-text-cuestion (changeQuestion)='changeOptionTextReceive($event,i)' [questionText]='option.text' [editionMode]='isOnEditMode'></app-text-cuestion> -->                            
+                            <div [ngClass]="{'no-edit':!isOnEditMode}" 
+                                class="div-editable"
+                                (focusout)="onChangeOptionText($event, i)"
+                                aria-multiline="true"
+                                contenteditable="plaintext-only">{{ option.text }}</div>
 
                         </label>
                         <input id="{{option._id}}"                             
