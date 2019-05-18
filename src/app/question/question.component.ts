@@ -80,7 +80,7 @@ export class QuestionComponent implements OnInit {
   }
 
   onChangeOptionText($event, optionIndex) {
-    console.log("text option ",$event.target.offsetHeight);
+    //console.log("text option ",$event.target.offsetHeight);
     if (this.question.options[optionIndex].text != $event.srcElement.outerText) {
       this.question.options[optionIndex].text = null;
       this.question.options[optionIndex].text = $event.srcElement.outerText;

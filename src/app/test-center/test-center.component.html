@@ -7,6 +7,7 @@
       
     </div>
     <div class='student-name width100'>AlumnoName</div>
+    <button (click)="addQuestion()" style="margin-bottom: 10px;">add Question</button>
     <div class='question-list width100'>      
       <div class='question float-left width100' *ngFor="let question of questions, let i = index">
         <button (click)="removeQuestion(i)">remove Question</button>

@@ -1,8 +1,14 @@
-<div class="text-q-container">
+<div class="text-q-container" [ngClass]="{'edit-border':editionMode}">
     <!-- modified to update the text question -->
-    <textarea *ngIf="editionMode" (change)="changeQuestionTextArea($event)" growRowDirective [appHighlight]="'green'" class="q-text-edit" >{{questionText}}
+    <!-- <textarea *ngIf="editionMode" (change)="changeQuestionTextArea($event)" growRowDirective [appHighlight]="'green'" class="q-text-edit" >{{questionText}}
     </textarea>
     <label *ngIf="editionMode==false" class="q-text-label">
         {{questionText}}        
-    </label>
+    </label> -->
+
+    <div [ngClass]="{'no-edit':!editionMode}" 
+        class="q-text-edit"
+        (focusout)="changeQuestionTextArea($event)"
+        aria-multiline="true"
+        contenteditable="plaintext-only">{{questionText}}</div>
 </div>

@@ -15,8 +15,14 @@ export class TextCuestionComponent implements OnInit {
   public questionTextIntern:string = "";
   changeQuestionTextArea($event) {
     // this was modified good
-    console.log("changing ", $event.srcElement.value);
-    this.changeQuestion.emit($event.srcElement.value);
+    if (this.questionText != $event.srcElement.outerText) {
+      this.questionText = null;
+      this.questionText = $event.srcElement.outerText;
+      //console.log("changing ", $event.srcElement.outerText);
+      this.changeQuestion.emit(this.questionText);
+      $event.srcElement.innerText = this.questionText;
+    }
+    
   }
   ngOnInit() {
     console.log("estamos en el q text on init")

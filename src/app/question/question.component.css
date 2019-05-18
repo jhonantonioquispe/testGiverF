@@ -62,7 +62,11 @@
     min-width: 250px;
     float: left;
     margin-top: 5px;
-    border: dashed green 2px;
+    
+}
+
+.edit-border {
+    border: dashed #000 1px;
 }
 .option-img { 
     float: left;

@@ -56,7 +56,7 @@ export class TestCenterComponent implements OnInit {
     this.questionaryService
       .saveQuestionary(this.questionary)
       .subscribe((questionary) => {
-        console.log('saved questionary ', questionary);
+        //console.log('saved questionary ', questionary);
         window.location.reload()
       });
   }
@@ -65,16 +65,21 @@ export class TestCenterComponent implements OnInit {
     this.questions = this.questions.filter((q,qi) => qi != qIndex);
   }
 
+  addQuestion() {
+    this.questions.push(
+      new Question(null, '', '', []));
+  }
+
   updateTest(): void {
     this.questionary.totalScore = 55.34;
     this.questionary.author= "jhon quispe modified";
     this.questionary.type= 1; // this is an enum  posble values 'test', 'practice'
-    console.log(this.questionary)
+    //console.log(this.questionary)
     
     this.questionaryService
       .updateQuestionary(this.questionary)
       .subscribe((questionary) => {
-        console.log('update questionary ', questionary);
+        //console.log('update questionary ', questionary);
         window.location.reload()
       });
   }

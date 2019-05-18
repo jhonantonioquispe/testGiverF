@@ -6,8 +6,9 @@
 
 .q-text-edit {
     width: 100%; 
-    height: 48px; 
+    min-height: 48px; 
     display: inline-block;
+    outline: 0;
 }
 
 .q-text-label {
@@ -15,4 +16,12 @@
     height: auto; 
     width: 100%;
     background-color: aquamarine;
+}
+
+.edit-border {
+    border: dashed #000 1px;
+}
+
+.no-edit {
+    pointer-events: none;
 }
