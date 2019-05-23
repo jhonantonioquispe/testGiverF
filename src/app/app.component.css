@@ -45,7 +45,7 @@
   background-image: url('./../assets/list_blue.png');
 }
 .main-container {
-  background-color: #f0f0f0;
+  /* background-color: #f0f0f0; */
   height: calc(100% - 33px);
 }
 .contact-list {

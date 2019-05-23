@@ -1,7 +1,9 @@
 .text-q-container {
     height: auto; 
     width: 100%;
-    background-color: whitesmoke;
+    font-size: 18px;
+    font-style: italic;
+    /* background-color: whitesmoke; */
 }
 
 .q-text-edit {
@@ -15,11 +17,13 @@
     display: inline-block;
     height: auto; 
     width: 100%;
-    background-color: aquamarine;
+    /* background-color: aquamarine; */
 }
 
 .edit-border {
-    border: dashed #000 1px;
+    /* border: dashed #000 1px; */
+    color: #A33E31;
+    font-weight: 600;
 }
 
 .no-edit {

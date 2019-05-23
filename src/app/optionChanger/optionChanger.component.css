@@ -9,7 +9,7 @@
     z-index: 100;
 }
 .option-container .text-change-container{    
-    background-color: #f0f0f0;
+    /* background-color: #f0f0f0; */
     min-width: 300px;
     width: fit-content;
     height: fit-content;
