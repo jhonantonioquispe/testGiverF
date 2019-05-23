@@ -40,7 +40,11 @@
     </div>
     <!-- modify here -->
     <div class='text-question-cont'>
-        <app-text-cuestion (changeQuestion)='changeQuestionReceive($event)' [questionText]='question.questionText' [editionMode]='isOnEditMode'></app-text-cuestion>
+        <app-text-cuestion
+            (changeQuestion)='changeQuestionReceive($event)'
+            [questionText]='question.questionText'
+            [fontSize]="18"
+            [editionMode]='isOnEditMode'></app-text-cuestion>
     </div>
 </div>
 <!-- <app-attacher 

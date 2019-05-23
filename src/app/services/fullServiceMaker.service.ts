@@ -3,7 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { ServiceMaker } from './serviceMaker.service';
 import { ServiceRelationer } from './serviceRelationer.service';
-import { Models } from './../models/models';
+import { Models } from '../models/models';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })

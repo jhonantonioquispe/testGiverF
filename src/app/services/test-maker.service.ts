@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
-import { FullServiceMaker } from './../services/fullServiceMaker.service';
+import { FullServiceMaker } from './fullServiceMaker.service';
 //importing model
 import { Test } from '../models/test';
 

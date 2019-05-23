@@ -13,6 +13,7 @@ import { QuestionComponent } from './question/question.component';
 import { OptionChangerComponent } from './optionChanger/optionChanger.component';
 import { AttacherComponent } from './attacher/attacher.component';
 import { GrowRowDirective } from './directives/grow-row-directive';
+import { FontChangeDirective } from './directives/font-change-directive';
 import { ImgSpreadDirective } from './directives/img-spread-directive';
 import { TextCuestionComponent } from './text-cuestion/text-cuestion.component';
 
@@ -26,6 +27,7 @@ import { TextCuestionComponent } from './text-cuestion/text-cuestion.component';
     OptionChangerComponent,
     AttacherComponent,
     GrowRowDirective,
+    FontChangeDirective,
     ImgSpreadDirective,
     TextCuestionComponent
   ],

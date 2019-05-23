@@ -2,10 +2,15 @@
   <button (click)="saveTest()">Save Test</button>
   <button (click)="updateTest()">Update Test</button>
   <button (click)="changeEditMode()">Change edit mode</button>
-  <div class='questions-container height-width100'>
-    <div class='title-test width100'>title
-      
-    </div>
+  <div class='questions-container height-width100'>    
+      <div class='title-test width100' [ngClass]="{'edit-border':isOnEditMode}">
+        <app-text-cuestion
+          (changeQuestion)='changeTitleReceive($event)'
+          [questionText]='questionary.title'          
+          [fontSize]="22"
+          [editionMode]='isOnEditMode'></app-text-cuestion>
+      </div>
+
     <div class='student-name width100'>AlumnoName</div>
     <button (click)="addQuestion()" style="margin-bottom: 10px;">add Question</button>
     <div class='question-list width100'>      

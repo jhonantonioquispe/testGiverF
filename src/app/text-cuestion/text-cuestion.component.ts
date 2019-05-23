@@ -11,6 +11,10 @@ export class TextCuestionComponent implements OnInit {
   constructor() { }
   @Input() editionMode: boolean = true;
   @Input() questionText: string = "";
+
+  @Input() fontSize: number = 14;
+  @Input() fontColor: string = "#000";
+
   @Output() changeQuestion = new EventEmitter<Object>()
   public questionTextIntern:string = "";
   changeQuestionTextArea($event) {
@@ -18,14 +22,12 @@ export class TextCuestionComponent implements OnInit {
     if (this.questionText != $event.srcElement.outerText) {
       this.questionText = null;
       this.questionText = $event.srcElement.outerText;
-      //console.log("changing ", $event.srcElement.outerText);
       this.changeQuestion.emit(this.questionText);
       $event.srcElement.innerText = this.questionText;
     }
     
   }
   ngOnInit() {
-    console.log("estamos en el q text on init")
     this.questionTextIntern = this.questionText;
   }
 

@@ -19,7 +19,7 @@
     }
   ]
 }*/
-import { Question } from './../models/Question';
+import { Question } from './question';
 
 enum questionaryType {
   Practice,     // 0
@@ -29,6 +29,7 @@ enum questionaryType {
 export class Questionary{
   _id: String;
   totalScore: number;
+  title:string;
   author: string;
   type: questionaryType; // this is an enum  posble values 'test', 'practice'
   questions: Array<Question>;

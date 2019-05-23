@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Question } from './../models/question';
-import { Test } from './../models/test';
-import { Questionary } from './../models/questionary';
-import { TestMakerService } from './../services/test-maker.service';
-import { QuestionaryService } from './../services/questionary.service';
-import { QuestionService } from './../services/question.service';
+import { Question } from '../models/question';
+import { Test } from '../models/test';
+import { Questionary } from '../models/questionary';
+import { TestMakerService } from '../services/test-maker.service';
+import { QuestionaryService } from '../services/questionary.service';
+import { QuestionService } from '../services/question.service';
 
 @Component({
   selector: 'app-test-center',
@@ -14,7 +14,7 @@ import { QuestionService } from './../services/question.service';
 export class TestCenterComponent implements OnInit {
   questions: Question[] = [];
   test: Test;
-  questionary: Questionary;
+  questionary: Questionary = new Questionary();
   isOnEditMode:boolean = false;
   constructor(
     private testService: TestMakerService,    
@@ -68,6 +68,11 @@ export class TestCenterComponent implements OnInit {
   addQuestion() {
     this.questions.push(
       new Question(null, '', '', []));
+  }
+
+  changeTitleReceive($event) {
+    console.log("title",$event)
+    this.questionary.title = $event;
   }
 
   updateTest(): void {

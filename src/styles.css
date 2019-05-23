@@ -29,3 +29,7 @@ html, body {
 .pos-absolute {
   position: absolute;
 }
+
+.edit-border {
+  border: dashed rgba(163,62,49,0.6) 1px;
+}

@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { catchError, map, tap } from 'rxjs/operators';
 
 //importing modelo test
-import { FullServiceMaker } from './../services/fullServiceMaker.service';
+import { FullServiceMaker } from './fullServiceMaker.service';
 import { Questionary } from '../models/questionary';
 
 

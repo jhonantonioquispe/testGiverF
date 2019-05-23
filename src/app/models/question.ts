@@ -6,7 +6,7 @@ let counter = 0;
       }],
       answer: { type: String }
 */
-import { Option } from './../models/option';
+import { Option } from './option';
 export class Question {
   _id: String;
   questionText :String;

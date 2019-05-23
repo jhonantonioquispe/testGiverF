@@ -6,7 +6,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 
 //importing modelo test
 import { Question } from '../models/question';
-import { ServiceMaker } from './../services/serviceMaker.service';
+import { ServiceMaker } from './serviceMaker.service';
 
 
 @Injectable()
