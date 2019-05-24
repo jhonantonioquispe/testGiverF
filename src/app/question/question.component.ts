@@ -52,7 +52,8 @@ export class QuestionComponent implements OnInit {
   }
 
   addNewOption() {
-    let newOption = new Option(null, 'tal', null);
+    const idRandom = Math.floor(Math.random() * 100000);
+    let newOption = new Option(idRandom, 'tal', null);
     this.question.options.push(newOption);
   }
 

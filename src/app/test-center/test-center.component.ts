@@ -31,7 +31,7 @@ export class TestCenterComponent implements OnInit {
     this.questionaryService
       .getQuestionaries()
       .subscribe((questionaries:any) => {
-        console.log('los test son ',questionaries)
+        //console.log('los test son ',questionaries)
         if(questionaries.data.length>0)
           this.questionary = questionaries.data[0];        
         else
@@ -71,15 +71,19 @@ export class TestCenterComponent implements OnInit {
   }
 
   changeTitleReceive($event) {
-    console.log("title",$event)
     this.questionary.title = $event;
   }
 
   updateTest(): void {
     this.questionary.totalScore = 55.34;
     this.questionary.author= "jhon quispe modified";
-    this.questionary.type= 1; // this is an enum  posble values 'test', 'practice'
-    //console.log(this.questionary)
+    this.questionary.type= 1;
+    this.questions.forEach(q => {
+      if(!q._id) q._id = undefined;
+
+      q.options.forEach(o => { if(!o._id || parseInt(o._id.toString())) o._id = undefined; });
+    });
+    this.questionary.questions = this.questions;
     
     this.questionaryService
       .updateQuestionary(this.questionary)
@@ -91,7 +95,7 @@ export class TestCenterComponent implements OnInit {
 
   ngOnInit() {
     this.getTest();
-    console.log('reading pregggg');
+    //console.log('reading pregggg');
     // this.questions.push(new Question(null, 'pregA', '_id0', 
     //   [{_id:null, text:'hola', attachment: 'http://localhost:3000/attachments/imgUploader_1527836764676_hijo05.jpg'}, 
     //   {_id:null, text:'que', attachment: ''}]))

@@ -18,7 +18,8 @@ export class QuestionaryService extends FullServiceMaker<Questionary> {
   getQuestionaries () {
     return this.getAll()
       .pipe(
-        tap(questionaries => {console.log('questionary', questionaries)
+        tap(questionaries => {
+          //console.log('questionary', questionaries)
           return questionaries;
         }),
         catchError(this.handleError('getQuestionaries', []))
