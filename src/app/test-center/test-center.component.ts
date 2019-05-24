@@ -37,7 +37,7 @@ export class TestCenterComponent implements OnInit {
         else
           this.questionary = new Questionary();
 
-        this.questions = this.questionary.questions.length >0 ? this.questionary.questions: this.questions;  
+        this.questions = this.questionary.questions && this.questionary.questions.length > 0 ? this.questionary.questions: this.questions;  
       });
   }
 
