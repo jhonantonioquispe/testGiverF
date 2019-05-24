@@ -1,7 +1,9 @@
 <div>
-  <button (click)="saveTest()">Save Test</button>
-  <button (click)="updateTest()">Update Test</button>
-  <button (click)="changeEditMode()">Change edit mode</button>
+  <div class="action-crud-container">
+    <button class="action-test-btn" (click)="saveTest()">Add</button>
+    <button class="action-test-btn" (click)="updateTest()">Update</button>
+    <button class="action-test-btn" (click)="changeEditMode()">Edit</button>
+  </div>
   <div class='questions-container height-width100'>    
       <div class='title-test width100' [ngClass]="{'edit-border':isOnEditMode}">
         <app-text-cuestion
@@ -12,12 +14,15 @@
       </div>
 
     <div class='student-name width100'>AlumnoName</div>
-    <button (click)="addQuestion()" style="margin-bottom: 10px;">add Question</button>
+    
     <div class='question-list width100'>      
       <div class='question float-left width100' *ngFor="let question of questions, let i = index">
         <button (click)="removeQuestion(i)">remove Question</button>
         <app-question [question]='question' [isOnEditMode]='isOnEditMode'></app-question>
       </div>
     </div>
+  </div>
+  <div class="action-bottom-container">  
+    <button class="action-test-btn" (click)="addQuestion()" style="margin-bottom: 10px;">+Question</button>
   </div>
 </div>

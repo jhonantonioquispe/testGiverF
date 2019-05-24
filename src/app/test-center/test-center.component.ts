@@ -15,9 +15,9 @@ export class TestCenterComponent implements OnInit {
   questions: Question[] = [];
   test: Test;
   questionary: Questionary = new Questionary();
-  isOnEditMode:boolean = false;
+  isOnEditMode: boolean = false;
   constructor(
-    private testService: TestMakerService,    
+    private testService: TestMakerService,
     private questionService: QuestionService,
     private questionaryService: QuestionaryService
   ) { }
@@ -30,29 +30,29 @@ export class TestCenterComponent implements OnInit {
   getTest(): void {
     this.questionaryService
       .getQuestionaries()
-      .subscribe((questionaries:any) => {
+      .subscribe((questionaries: any) => {
         //console.log('los test son ',questionaries)
-        if(questionaries.data.length>0)
-          this.questionary = questionaries.data[0];        
+        if (questionaries.data.length > 0)
+          this.questionary = questionaries.data[0];
         else
           this.questionary = new Questionary();
 
-        this.questions = this.questionary.questions && this.questionary.questions.length > 0 ? this.questionary.questions: this.questions;  
+        this.questions = this.questionary.questions && this.questionary.questions.length > 0 ? this.questionary.questions : this.questions;
       });
   }
 
   saveTest(): void {
     this.questionary._id = null;
-    this.questionary.questions = this.questions.map((q)=>{
-      q.options.forEach(o=>o._id =undefined);
+    this.questionary.questions = this.questions.map((q) => {
+      q.options.forEach(o => o._id = undefined);
       q._id = undefined;
       return q;
     });
     this.questionary.totalScore = 55.34;
-    this.questionary.author= "jhon quispe";
-    this.questionary.type= 1; // this is an enum  posble values 'test', 'practice'
+    this.questionary.author = "jhon quispe";
+    this.questionary.type = 1; // this is an enum  posble values 'test', 'practice'
     console.log(this.questionary)
-    
+
     this.questionaryService
       .saveQuestionary(this.questionary)
       .subscribe((questionary) => {
@@ -62,7 +62,7 @@ export class TestCenterComponent implements OnInit {
   }
 
   removeQuestion(qIndex) {
-    this.questions = this.questions.filter((q,qi) => qi != qIndex);
+    this.questions = this.questions.filter((q, qi) => qi != qIndex);
   }
 
   addQuestion() {
@@ -76,15 +76,17 @@ export class TestCenterComponent implements OnInit {
 
   updateTest(): void {
     this.questionary.totalScore = 55.34;
-    this.questionary.author= "jhon quispe modified";
-    this.questionary.type= 1;
+    this.questionary.author = "jhon quispe modified";
+    this.questionary.type = 1;
     this.questions.forEach(q => {
-      if(!q._id) q._id = undefined;
+      if (!q._id) q._id = undefined;
 
-      q.options.forEach(o => { if(!o._id || parseInt(o._id.toString())) o._id = undefined; });
+      q.options.forEach(o => {
+        if (!o._id || parseInt(o._id.toString())) o._id = undefined;
+      });
     });
     this.questionary.questions = this.questions;
-    
+
     this.questionaryService
       .updateQuestionary(this.questionary)
       .subscribe((questionary) => {

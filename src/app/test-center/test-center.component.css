@@ -3,13 +3,60 @@
   padding: 4px;
   box-sizing: border-box;
 }
+
+.action-crud-container {
+  position: fixed;
+  z-index: 100;
+}
+
+.action-crud-container .action-test-btn {
+  height: 32px;
+  width: auto;
+  border-radius: 10px; 
+  border: none;
+  background-color: rgba(163,62,49,1);
+  color:#fff;
+}
+
+.action-crud-container .action-test-btn:hover {
+  background-color: #f0f0f0;
+  /* font-weight: bold; */
+  color: rgba(163,62,49,1);
+  border: solid 1px rgba(163,62,49,1);
+  cursor: pointer;
+}
+
+.action-bottom-container {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  margin-right: 16px;
+}
+
+.action-bottom-container .action-test-btn {
+  height: 32px;
+  width: auto;
+  border-radius: 10px; 
+  border: none;
+  background-color: rgba(163,62,49,1);
+  color:#fff;
+}
+
+.action-bottom-container .action-test-btn:hover {
+  background-color: #f0f0f0;
+  /* font-weight: bold; */
+  color: rgba(163,62,49,1);
+  border: solid 1px rgba(163,62,49,1);
+  cursor: pointer;
+}
+
 .title-test {
   height: 60px;
   font-weight: 450;
   font-size: 32px;
   /* line-height: 60px; */
   text-align: center;
-  font-size: 22px !important;
+  font-size: 22px;
 }
 
 .student-name {
