@@ -33,6 +33,25 @@
   margin-right: 16px;
 }
 
+.rm-container-btn {
+  height: 0px;
+}
+
+.rm-btn {
+  background-color: rgba(163,62,49,1);
+  color: #fff;
+  border-radius: 50%;
+  font-weight: 800;
+  border: none;
+}
+
+.rm-btn:hover {
+  background-color: #f0f0f0;
+  color: rgba(163,62,49,1);
+  border: solid 1px rgba(163,62,49,1);
+  cursor: pointer;
+}
+
 .action-bottom-container .action-test-btn {
   height: 32px;
   width: auto;

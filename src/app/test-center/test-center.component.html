@@ -17,7 +17,9 @@
     
     <div class='question-list width100'>      
       <div class='question float-left width100' *ngFor="let question of questions, let i = index">
-        <button (click)="removeQuestion(i)">remove Question</button>
+        <div class="rm-container-btn">
+          <button class="rm-btn" (click)="removeQuestion(i)">X</button>
+        </div>
         <app-question [question]='question' [isOnEditMode]='isOnEditMode'></app-question>
       </div>
     </div>
