@@ -5,6 +5,7 @@ import { TestMakerService } from './services/test-maker.service';
 import { QuestionService } from './services/question.service';
 import { QuestionaryService } from './services/questionary.service';
 import { Student } from './student';
+import { Questionary } from './models/questionary';
 
 @Component({
   selector: 'app-root',
@@ -23,14 +24,17 @@ export class AppComponent {
     showRight: false,
   }
   students: Student[];
+
+  questionaries: Questionary[] = [];
   constructor(
     private studentService: StudentService,
-    private testService: TestMakerService,
-    //private questionService: QuestionService
-  ) { }
+    private questionaryService: QuestionaryService
+  ) { 
+    this.getTests();
+  }
 
   ngOnInit() {
-    //this.getStudents();
+    
   }
 
   showProfile() {
@@ -45,7 +49,17 @@ export class AppComponent {
       .getStudents()
       .subscribe((students) => {
         this.students = students;
-        console.log('hola ', students);
+   
+      });
+  }
+
+  getTests(): void {
+    this.questionaryService
+      .getQuestionaries()
+      .subscribe((questionaries: any) => {
+        if (questionaries.data.length > 0){
+          this.questionaries = questionaries.data;        
+        }
       });
   }
 }

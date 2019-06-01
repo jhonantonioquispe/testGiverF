@@ -27,7 +27,7 @@ export class TestCenterComponent implements OnInit {
     console.log(this.isOnEditMode);
   }
 
-  getTest(): void {
+  getTests(): void {
     this.questionaryService
       .getQuestionaries()
       .subscribe((questionaries: any) => {
@@ -56,7 +56,6 @@ export class TestCenterComponent implements OnInit {
     this.questionaryService
       .saveQuestionary(this.questionary)
       .subscribe((questionary) => {
-        //console.log('saved questionary ', questionary);
         window.location.reload()
       });
   }
@@ -96,7 +95,7 @@ export class TestCenterComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getTest();
+    this.getTests();
     //console.log('reading pregggg');
     // this.questions.push(new Question(null, 'pregA', '_id0', 
     //   [{_id:null, text:'hola', attachment: 'http://localhost:3000/attachments/imgUploader_1527836764676_hijo05.jpg'}, 

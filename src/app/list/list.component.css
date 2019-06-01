@@ -1,0 +1,34 @@
+.list-cdor {
+    height: 100%;
+    box-sizing: border-box;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.item-list {
+    height: auto;
+    border:solid 1px #f0f0f0;
+    box-sizing: border-box;
+    padding: 10px;
+    min-height: 24px;
+    /* margin-bottom: 3px; */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 32px;
+    cursor: default;
+    -webkit-transition: background-color 0.5s, overflow 1s;
+    transition: background-color 0.5s, overflow 1s;    
+}
+
+.item-list:hover {    
+    border:solid 1px #f0f0f0;
+    background-color: rgba(163,62,49,1);
+    color: #f0f0f0;
+    word-wrap: break-word;
+    cursor: pointer;
+    white-space: initial;
+    overflow: auto;
+    line-height: initial;
+    text-overflow: initial;
+}

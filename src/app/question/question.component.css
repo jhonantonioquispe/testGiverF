@@ -30,7 +30,8 @@
     position: relative;    
     border-radius: 50%;    
     text-align: center;
-    background-color: #ACBDD6;
+    
+    background-color: rgba(163,62,49,1);
     top: 5px;
     left: 65px;
     width: 22px;
@@ -42,8 +43,9 @@
 }
 
 .btn-rm-option:hover {
-    background-color: rgba(163,62,49,1);
-
+    background-color: #ACBDD6;
+    border: solid rgba(163,62,49,0.4) 1px;
+    color: #A33E31;
 }
 .add-container {
     background-color: #e0e0e0;
