@@ -22,10 +22,12 @@ export class AppComponent {
     showLeft: false,
     showCenter: true,
     showRight: false,
-  }
-  students: Student[];
+  };
 
+  students: Student[];
   questionaries: Questionary[] = [];
+  selectedQuestionary: Questionary ;
+
   constructor(
     private studentService: StudentService,
     private questionaryService: QuestionaryService
@@ -61,5 +63,9 @@ export class AppComponent {
           this.questionaries = questionaries.data;        
         }
       });
+  }
+
+  quetionaryReceiver($event) {
+    this.selectedQuestionary = $event;
   }
 }

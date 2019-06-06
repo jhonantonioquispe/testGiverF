@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Question } from '../models/question';
 import { Test } from '../models/test';
 import { Questionary } from '../models/questionary';
@@ -16,6 +16,17 @@ export class TestCenterComponent implements OnInit {
   test: Test;
   questionary: Questionary = new Questionary();
   isOnEditMode: boolean = false;
+  
+  @Input() 
+  set questionaryLoad(questionaryLoad:Questionary) {
+    this.questionary = questionaryLoad;
+    this.questions = this.questionary? this.questionary.questions: [];
+  }
+
+  get questionaryLoad() {
+    return this.questionary;
+  }
+
   constructor(
     private testService: TestMakerService,
     private questionService: QuestionService,
@@ -95,7 +106,9 @@ export class TestCenterComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getTests();
+    console.log(this.questionaryLoad)
+    this.questionary = this.questionaryLoad || new Questionary();
+    //this.getTests();
     //console.log('reading pregggg');
     // this.questions.push(new Question(null, 'pregA', '_id0', 
     //   [{_id:null, text:'hola', attachment: 'http://localhost:3000/attachments/imgUploader_1527836764676_hijo05.jpg'}, 

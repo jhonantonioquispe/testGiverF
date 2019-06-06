@@ -1,63 +1,6 @@
 <div class="list-cdor">
-    <div class='item-list' *ngFor="let q of questionaries, let i = index">
-        {{q.title}}
-    </div>
-    <div class='item-list' *ngFor="let q of questionaries, let i = index">
-        {{q.title}}
-    </div>
-    <div class='item-list' *ngFor="let q of questionaries, let i = index">
-        {{q.title}}
-    </div>
-    <div class='item-list' *ngFor="let q of questionaries, let i = index">
-        {{q.title}}
-    </div>
-    <div class='item-list' *ngFor="let q of questionaries, let i = index">
-        {{q.title}}
-    </div>
-    <div class='item-list' *ngFor="let q of questionaries, let i = index">
-        {{q.title}}
-    </div>
-    <div class='item-list' *ngFor="let q of questionaries, let i = index">
-        {{q.title}}
-    </div>
-    <div class='item-list' *ngFor="let q of questionaries, let i = index">
-        {{q.title}}
-    </div>
-    <div class='item-list' *ngFor="let q of questionaries, let i = index">
-        {{q.title}}
-    </div>
-    <div class='item-list' *ngFor="let q of questionaries, let i = index">
-        {{q.title}}
-    </div>
-    <div class='item-list' *ngFor="let q of questionaries, let i = index">
-        {{q.title}}
-    </div>
-    <div class='item-list' *ngFor="let q of questionaries, let i = index">
-        {{q.title}}
-    </div>
-    <div class='item-list' *ngFor="let q of questionaries, let i = index">
-        {{q.title}}
-    </div>
-    <div class='item-list' *ngFor="let q of questionaries, let i = index">
-        {{q.title}}
-    </div>
-    <div class='item-list' *ngFor="let q of questionaries, let i = index">
-        {{q.title}}
-    </div>
-    <div class='item-list' *ngFor="let q of questionaries, let i = index">
-        {{q.title}}
-    </div>
-    <div class='item-list' *ngFor="let q of questionaries, let i = index">
-        {{q.title}}
-    </div>
-    <div class='item-list' *ngFor="let q of questionaries, let i = index">
-        {{q.title}}
-    </div>
-    <div class='item-list' *ngFor="let q of questionaries, let i = index">
-        {{q.title}}
-    </div>
-    <div class='item-list' *ngFor="let q of questionaries, let i = index">
-        {{q.title}}
-    </div>
-
+    <div class='item-list' *ngFor="let q of questionaries, let i = index"
+        (click)="selectQuestionary(i)"
+        [ngClass]="{'selected-item':i==selectedQi}" 
+    >{{q.title}}</div>
 </div>

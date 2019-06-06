@@ -7,10 +7,13 @@
 
 .item-list {
     height: auto;
-    border:solid 1px #f0f0f0;
+    border:solid 1px rgba(163,62,49,1);
     box-sizing: border-box;
+    margin-bottom: 2px;
+    box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.2);
     padding: 10px;
     min-height: 24px;
+    border-radius: 4px;
     /* margin-bottom: 3px; */
     white-space: nowrap;
     overflow: hidden;
@@ -19,16 +22,21 @@
     cursor: default;
     -webkit-transition: background-color 0.5s, overflow 1s;
     transition: background-color 0.5s, overflow 1s;    
+
 }
 
 .item-list:hover {    
-    border:solid 1px #f0f0f0;
-    background-color: rgba(163,62,49,1);
-    color: #f0f0f0;
+    border: solid 2px rgba(163,62,49,0.8);
+    box-shadow: 2px 2px 2px 2px rgba(163,62,49,0.5);
     word-wrap: break-word;
     cursor: pointer;
     white-space: initial;
     overflow: auto;
     line-height: initial;
     text-overflow: initial;
+}
+
+.selected-item {
+    background-color: rgba(163,62,49,1);
+    color: #f0f0f0;
 }
