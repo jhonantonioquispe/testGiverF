@@ -16,7 +16,8 @@ export class TestCenterComponent implements OnInit {
   test: Test;
   questionary: Questionary = new Questionary();
   isOnEditMode: boolean = false;
-  
+  isNew:boolean = false;
+
   @Input() 
   set questionaryLoad(questionaryLoad:Questionary) {
     this.questionary = questionaryLoad;
@@ -33,10 +34,21 @@ export class TestCenterComponent implements OnInit {
     private questionaryService: QuestionaryService
   ) { }
 
-  changeEditMode() {
-    this.isOnEditMode = !this.isOnEditMode;
-    console.log(this.isOnEditMode);
+  cancelEditMode() {
+    this.isOnEditMode = false;
   }
+
+  editMode() {
+    this.isOnEditMode = true;
+  }
+
+  saveTestAction() {
+    if(this.isNew) {
+      this.saveTest();
+    } else {
+      this.updateTest();
+    }   
+  } 
 
   getTests(): void {
     this.questionaryService

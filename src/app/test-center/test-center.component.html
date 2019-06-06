@@ -1,8 +1,18 @@
 <div>
   <div class="action-crud-container">
-    <button class="action-test-btn" (click)="saveTest()">Add</button>
-    <button class="action-test-btn" (click)="updateTest()">Update</button>
-    <button class="action-test-btn" (click)="changeEditMode()">Edit</button>
+    <!-- <button class="action-test-btn" (click)="saveTest()">Add</button> -->
+    <button 
+      class="action-test-btn"
+      *ngIf='isOnEditMode'
+      (click)="saveTestAction()">Actualizar</button>
+    <button 
+      class="action-test-btn"
+      *ngIf='isOnEditMode'
+      (click)="cancelEditMode()">Cancelar</button>
+    <button
+      class="action-test-btn"
+      *ngIf='!isOnEditMode'
+      (click)="editMode()">Editar</button>
   </div>
   <div class='questions-container height-width100'>    
       <div class='title-test width100' [ngClass]="{'edit-border':isOnEditMode}">
@@ -18,13 +28,17 @@
     <div class='question-list width100'>      
       <div class='question float-left width100' *ngFor="let question of questions, let i = index">
         <div class="rm-container-btn">
-          <button title="Eliminar Pregunta" class="rm-btn" (click)="removeQuestion(i)">X</button>
+          <button title="Eliminar Pregunta" class="rm-btn" *ngIf='isOnEditMode' (click)="removeQuestion(i)">X</button>
         </div>
         <app-question [question]='question' [isOnEditMode]='isOnEditMode'></app-question>
       </div>
     </div>
   </div>
   <div class="action-bottom-container">  
-    <button class="action-test-btn" (click)="addQuestion()" style="margin-bottom: 10px;">+Question</button>
+    <button 
+      class="action-test-btn"
+      *ngIf='isOnEditMode'
+      (click)="addQuestion()"
+      style="margin-bottom: 10px;">+Question</button>
   </div>
 </div>

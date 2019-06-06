@@ -5,8 +5,13 @@
     <div class="container-imgs">
         <div *ngFor="let option of question.options; let i = index" >
             <div [ngClass]="{'edit-border':isOnEditMode}" class="intern-img-container" imgSpreadDirective [items]="getCounterOptions(isOnEditMode)">
-                <button title="Eliminar Opcion" class="btn-rm-option" (click)="removeOption(i)">X</button>       
-                <div class="option-img" [ngClass]='{"selected-option": isOptionSelected(i, option._id)}' >
+                <button 
+                    title="Eliminar Opcion"
+                    class="btn-rm-option"
+                    *ngIf='isOnEditMode'
+                    (click)="removeOption(i)">X</button>       
+                <div class="option-img"
+                    [ngClass]='{"selected-option": isOptionSelected(i, option._id)}' >
                     <app-attacher
                         [srcImage]='getFullUrl(option.attachment)'                
                         (sendFileOut)='receivingData($event, i)'
