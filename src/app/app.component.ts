@@ -60,12 +60,15 @@ export class AppComponent {
       .getQuestionaries()
       .subscribe((questionaries: any) => {
         if (questionaries.data.length > 0){
-          this.questionaries = questionaries.data;        
+          this.questionaries = questionaries.data;
+          //setting selected with the first
+          this.selectedQuestionary = questionaries.data[0];
         }
       });
   }
 
   quetionaryReceiver($event) {
+    //if($event)
     this.selectedQuestionary = $event;
   }
 }
