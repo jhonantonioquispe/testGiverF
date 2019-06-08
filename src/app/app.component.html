@@ -11,7 +11,9 @@
     <app-menu-left></app-menu-left>
   </div>
   <div class='message-list' [ngClass]='{"width100": menuStates.showLeft===false}'>
-    <app-test-center [questionaryLoad]='selectedQuestionary'></app-test-center>
+    <app-test-center 
+      [isNew]='isNew'
+      [questionaryLoad]='selectedQuestionary'></app-test-center>
   </div>
   <div class='profile-options' [ngClass]='{"profile-show": menuStates.showRight === true}'>
     <app-list-component (changeQuestionary)='quetionaryReceiver($event)' [questionaries]='questionaries'></app-list-component>

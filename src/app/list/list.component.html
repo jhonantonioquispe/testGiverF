@@ -1,4 +1,5 @@
 <div class="list-cdor">
+    <button class="action-test-btn" (click)="addQuestionary()">Add</button>
     <div class='item-list' *ngFor="let q of questionaries, let i = index"
         (click)="selectQuestionary(i)"
         [ngClass]="{'selected-item':i==selectedQi}" 

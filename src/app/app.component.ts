@@ -26,7 +26,8 @@ export class AppComponent {
 
   students: Student[];
   questionaries: Questionary[] = [];
-  selectedQuestionary: Questionary ;
+  selectedQuestionary: Questionary;
+  isNew:boolean = false;
 
   constructor(
     private studentService: StudentService,
@@ -68,7 +69,7 @@ export class AppComponent {
   }
 
   quetionaryReceiver($event) {
-    //if($event)
-    this.selectedQuestionary = $event;
+    this.selectedQuestionary = $event.q;
+    this.isNew = $event.isNew;
   }
 }

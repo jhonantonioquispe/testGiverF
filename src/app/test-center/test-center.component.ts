@@ -16,16 +16,26 @@ export class TestCenterComponent implements OnInit {
   test: Test;
   questionary: Questionary = new Questionary();
   isOnEditMode: boolean = false;
-  isNew:boolean = false;
+  _isNew:boolean = false;
 
   @Input() 
   set questionaryLoad(questionaryLoad:Questionary) {
     this.questionary = questionaryLoad;
+    console.log("verif ...");
     this.questions = this.questionary? this.questionary.questions: [];
   }
 
   get questionaryLoad() {
     return this.questionary;
+  }
+
+  @Input() 
+  set isNew(isNew:boolean) {
+    this._isNew = isNew;    
+  }
+
+  get isNew() {
+    return this._isNew;
   }
 
   constructor(
