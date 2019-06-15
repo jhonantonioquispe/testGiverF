@@ -1,5 +1,12 @@
 <div class="list-cdor">
-    <button class="action-test-btn" (click)="addQuestionary()">Add</button>
+    <div class="action-container">
+        <div class="action-container-items" *ngIf='!hideItemList'>
+            <button class="action-test-btn" (click)="addQuestionary()">Crear Cuestionario</button>
+        </div>
+        <div class="icon-show-hide" title="Ver Mas Acciones" (click)="toogleActionlist()">
+            <div class="icon-triangle" [ngClass]="{'rotate90':hideItemList == false}" ></div>            
+        </div>
+    </div>
     <div class='item-list' *ngFor="let q of questionaries, let i = index"
         (click)="selectQuestionary(i)"
         [ngClass]="{'selected-item':i==selectedQi}" 

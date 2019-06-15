@@ -10,6 +10,7 @@ export class ListComponent implements OnInit {
   //@Input() questionaries: Questionary[] = [];
   _questionaries: Questionary[] = [];
   selectedQi:number = -1;
+  hideItemList:boolean = true;
   @Output() changeQuestionary = new EventEmitter<Object>()
   
   @Input()
@@ -26,6 +27,10 @@ export class ListComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  toogleActionlist() {
+    this.hideItemList =!this.hideItemList;
   }
 
   selectQuestionary(i, isNew = false) {

@@ -33,3 +33,19 @@ html, body {
 .edit-border {
   border: dashed rgba(163,62,49,0.6) 1px;
 }
+
+.action-test-btn {
+  height: 32px;
+  width: auto;
+  border-radius: 10px; 
+  border: none;
+  background-color: rgba(163,62,49,1);
+  color:#fff;
+}
+
+.action-test-btn:hover {
+  background-color: #f0f0f0;
+  color: rgba(163,62,49,1);
+  border: solid 1px rgba(163,62,49,1);
+  cursor: pointer;
+}
