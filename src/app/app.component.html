@@ -13,6 +13,7 @@
   <div class='message-list' [ngClass]='{"width100": menuStates.showLeft===false}'>
     <app-test-center 
       [isNew]='isNew'
+      [cancelCreation]='cancelCreation'
       [questionaryLoad]='selectedQuestionary'></app-test-center>
   </div>
   <div class='profile-options' [ngClass]='{"profile-show": menuStates.showRight === true}'>

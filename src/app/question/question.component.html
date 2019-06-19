@@ -1,7 +1,6 @@
 <div class='question-container' [ngClass]="{'edit-border':isOnEditMode}">
     <div>{{loadedFileName}}</div>
     <app-optionChanger (closeEmitter)='onCloseOptionChangerReceiver($event)' [isVisible]='isChangingOption' [textInput]="currentOptionText"></app-optionChanger>
-    <!-- <div>{{isOnEditMode}}</div> -->
     <div class="container-imgs">
         <div *ngFor="let option of question.options; let i = index" >
             <div [ngClass]="{'edit-border':isOnEditMode}" class="intern-img-container" imgSpreadDirective [items]="getCounterOptions(isOnEditMode)">
@@ -10,17 +9,16 @@
                     class="btn-rm-option"
                     *ngIf='isOnEditMode'
                     (click)="removeOption(i)">X</button>       
-                <div class="option-img"
-                    [ngClass]='{"selected-option": isOptionSelected(i, option._id)}' >
+                <div class="option-img">
                     <app-attacher
                         [srcImage]='getFullUrl(option.attachment)'                
                         (sendFileOut)='receivingData($event, i)'
                         [editionMode]='isOnEditMode' [id]='option._id'>
-                    </app-attacher>            
+                    </app-attacher>
+                    <div class="check-select" [ngClass]='{"selected-option": isOptionSelected(i, option._id)}' ></div>           
                     <div class="option-text" >
                         
                         <label for="{{option._id}}" class="label-text-option" >
-                            <!-- <app-text-cuestion (changeQuestion)='changeOptionTextReceive($event,i)' [questionText]='option.text' [editionMode]='isOnEditMode'></app-text-cuestion> -->                            
                             <div [ngClass]="{'no-edit':!isOnEditMode}" 
                                 class="div-editable"
                                 (focusout)="onChangeOptionText($event, i)"
@@ -52,10 +50,3 @@
             [editionMode]='isOnEditMode'></app-text-cuestion>
     </div>
 </div>
-<!-- <app-attacher 
-    [srcImage]='"http://localhost:3000/attachments/imgUploader_1527836764676_hijo05.jpg"' 
-    [id]='0'></app-attacher>
-<app-attacher 
-    (sendFileOut)='receivingData($event)' 
-    [editionMode]='true' 
-    [id]='1'></app-attacher> -->

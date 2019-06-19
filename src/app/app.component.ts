@@ -28,6 +28,7 @@ export class AppComponent {
   questionaries: Questionary[] = [];
   selectedQuestionary: Questionary;
   isNew:boolean = false;
+  cancelCreation:() => void = () => {};
 
   constructor(
     private studentService: StudentService,
@@ -71,5 +72,6 @@ export class AppComponent {
   quetionaryReceiver($event) {
     this.selectedQuestionary = $event.q;
     this.isNew = $event.isNew;
+    this.cancelCreation = $event.cancelCreation;
   }
 }

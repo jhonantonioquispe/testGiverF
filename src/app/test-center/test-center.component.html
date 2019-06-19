@@ -3,8 +3,12 @@
     <!-- <button class="action-test-btn" (click)="saveTest()">Add</button> -->
     <button 
       class="action-test-btn"
-      *ngIf='isOnEditMode'
+      *ngIf='isOnEditMode||isSelectAnswerRunning'
       (click)="saveTestAction()">Actualizar</button>
+    <button 
+      class="action-test-btn"
+      *ngIf='!isOnEditMode'
+      (click)="isOnSelectAnswer()">Seleccione Respuesta</button>
     <button 
       class="action-test-btn"
       *ngIf='isOnEditMode'
@@ -30,7 +34,10 @@
         <div class="rm-container-btn">
           <button title="Eliminar Pregunta" class="rm-btn" *ngIf='isOnEditMode' (click)="removeQuestion(i)">X</button>
         </div>
-        <app-question [question]='question' [isOnEditMode]='isOnEditMode'></app-question>
+        <app-question
+          [question]='question'
+          [isSelectAnswerRunning]='isSelectAnswerRunning'
+          [isOnEditMode]='isOnEditMode'></app-question>
       </div>
     </div>
   </div>

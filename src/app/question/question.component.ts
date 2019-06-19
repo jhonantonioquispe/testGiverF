@@ -15,6 +15,7 @@ export class QuestionComponent implements OnInit {
   private currentFullPath: string = "";
   @Input() question: Question;
   @Input() isOnEditMode: boolean = false;
+  @Input() isSelectAnswerRunning: boolean = false;
   public isChangingOption = false;
   public currentOptionIndex= -1;
   public currentOptionText:String = "";
@@ -26,7 +27,6 @@ export class QuestionComponent implements OnInit {
   }
 
   receivingData($event, index) {
-    console.log("data event", index, $event)
     this.loadedFileName = $event.filename;
     this.question.options[index].attachment = $event.filename;
     this.currentFullPath = $event.fullUrl;
@@ -40,7 +40,6 @@ export class QuestionComponent implements OnInit {
 
   onCloseOptionChangerReceiver($event) {
     this.isChangingOption = $event.closeFlag;
-    console.log("dd" , $event);
   }
 
   getFullUrl(imgName) {
@@ -58,7 +57,7 @@ export class QuestionComponent implements OnInit {
   }
 
   isOptionSelected(i) {
-    return ((this.selectedOption === i) || (this.question.answer == i));
+    return ((this.selectedOption === i) || (this.question.answer == i)) && this.isSelectAnswerRunning == false && this.isOnEditMode == true;
   }
 
   selectOption($event,i) {
@@ -81,7 +80,6 @@ export class QuestionComponent implements OnInit {
   }
 
   onChangeOptionText($event, optionIndex) {
-    //console.log("text option ",$event.target.offsetHeight);
     if (this.question.options[optionIndex].text != $event.srcElement.outerText) {
       this.question.options[optionIndex].text = null;
       this.question.options[optionIndex].text = $event.srcElement.outerText;

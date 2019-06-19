@@ -16,7 +16,10 @@ export class TestCenterComponent implements OnInit {
   test: Test;
   questionary: Questionary = new Questionary();
   isOnEditMode: boolean = false;
+  isSelectAnswerRunning: boolean = false;
   _isNew:boolean = false;
+
+  @Input() cancelCreation:() => void = () => {};
 
   @Input() 
   set questionaryLoad(questionaryLoad:Questionary) {
@@ -31,7 +34,10 @@ export class TestCenterComponent implements OnInit {
 
   @Input() 
   set isNew(isNew:boolean) {
-    this._isNew = isNew;    
+    this._isNew = isNew;
+    if(this.isNew) {
+      this.isOnEditMode = true;
+    }    
   }
 
   get isNew() {
@@ -46,6 +52,7 @@ export class TestCenterComponent implements OnInit {
 
   cancelEditMode() {
     this.isOnEditMode = false;
+    this.cancelCreation();
   }
 
   editMode() {
@@ -58,20 +65,10 @@ export class TestCenterComponent implements OnInit {
     } else {
       this.updateTest();
     }   
-  } 
+  }
 
-  getTests(): void {
-    this.questionaryService
-      .getQuestionaries()
-      .subscribe((questionaries: any) => {
-        //console.log('los test son ',questionaries)
-        if (questionaries.data.length > 0)
-          this.questionary = questionaries.data[0];
-        else
-          this.questionary = new Questionary();
-
-        this.questions = this.questionary.questions && this.questionary.questions.length > 0 ? this.questionary.questions : this.questions;
-      });
+  isOnSelectAnswer() {
+    this.isSelectAnswerRunning =!this.isSelectAnswerRunning;
   }
 
   saveTest(): void {
@@ -128,8 +125,8 @@ export class TestCenterComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.questionaryLoad)
-    this.questionary = this.questionaryLoad || new Questionary();
+    console.log(this.questionaryLoad);
+    this.questionary = this.questionaryLoad || new Questionary();;
     //this.getTests();
     //console.log('reading pregggg');
     // this.questions.push(new Question(null, 'pregA', '_id0', 
@@ -137,14 +134,6 @@ export class TestCenterComponent implements OnInit {
     //   {_id:null, text:'que', attachment: ''}]))
     // this.questions.push(new Question(null, 'pregB', '_id2', 
     //   [{_id:null, text:'tal', attachment: 'http://localhost:3000/attachments/imgUploader_1527836764676_hijo05.jpg'}]))
-    // this.questions.push(new Question(null, 'pregC', '_id1', [
-    //   {_id:null, text:'tal', attachment: 'http://localhost:3000/attachments/imgUploader_1527836764676_hijo05.jpg'},
-    //   {_id:null, text:'tal www', attachment: 'http://localhost:3000/attachments/imgUploader_1527836764676_hijo05.jpg'},
-    //   {_id:null, text:'tal dfd', attachment: 'http://localhost:3000/attachments/imgUploader_1527836764676_hijo05.jpg'},
-    //   {_id:null, text:'tal dfd', attachment: 'http://localhost:3000/attachments/imgUploader_1527836764676_hijo05.jpg'},
-    //   {_id:null, text:'tal dfd', attachment: 'http://localhost:3000/attachments/imgUploader_1527836764676_hijo05.jpg'},
-    //   {_id:null, text:'tal dfd', attachment: 'http://localhost:3000/attachments/imgUploader_1527836764676_hijo05.jpg'},
-    //   {_id:null, text:'talddd', attachment: 'http://localhost:3000/attachments/imgUploader_1527836764676_hijo05.jpg'}
-    // ]))    
+    //)    
   }
 }
