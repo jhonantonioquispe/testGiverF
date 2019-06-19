@@ -3,12 +3,8 @@
     <!-- <button class="action-test-btn" (click)="saveTest()">Add</button> -->
     <button 
       class="action-test-btn"
-      *ngIf='isOnEditMode||isSelectAnswerRunning'
+      *ngIf='isOnEditMode'
       (click)="saveTestAction()">Actualizar</button>
-    <button 
-      class="action-test-btn"
-      *ngIf='!isOnEditMode'
-      (click)="isOnSelectAnswer()">Seleccione Respuesta</button>
     <button 
       class="action-test-btn"
       *ngIf='isOnEditMode'
@@ -36,7 +32,6 @@
         </div>
         <app-question
           [question]='question'
-          [isSelectAnswerRunning]='isSelectAnswerRunning'
           [isOnEditMode]='isOnEditMode'></app-question>
       </div>
     </div>

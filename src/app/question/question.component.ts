@@ -15,7 +15,7 @@ export class QuestionComponent implements OnInit {
   private currentFullPath: string = "";
   @Input() question: Question;
   @Input() isOnEditMode: boolean = false;
-  @Input() isSelectAnswerRunning: boolean = false;
+  
   public isChangingOption = false;
   public currentOptionIndex= -1;
   public currentOptionText:String = "";
@@ -57,12 +57,14 @@ export class QuestionComponent implements OnInit {
   }
 
   isOptionSelected(i) {
-    return ((this.selectedOption === i) || (this.question.answer == i)) && this.isSelectAnswerRunning == false && this.isOnEditMode == true;
+    return ((this.selectedOption === i) || (this.question.answer == i));
   }
 
   selectOption($event,i) {
-    this.selectedOption = i;
-    this.question.answer = i;
+    if(this.isOnEditMode) {
+      this.selectedOption = i;
+      this.question.answer = i;
+    }
   }
 
   removeOption = (optionIndex) => {

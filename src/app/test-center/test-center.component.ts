@@ -16,7 +16,6 @@ export class TestCenterComponent implements OnInit {
   test: Test;
   questionary: Questionary = new Questionary();
   isOnEditMode: boolean = false;
-  isSelectAnswerRunning: boolean = false;
   _isNew:boolean = false;
 
   @Input() cancelCreation:() => void = () => {};
@@ -24,7 +23,6 @@ export class TestCenterComponent implements OnInit {
   @Input() 
   set questionaryLoad(questionaryLoad:Questionary) {
     this.questionary = questionaryLoad;
-    console.log("verif ...");
     this.questions = this.questionary? this.questionary.questions: [];
   }
 
@@ -52,7 +50,9 @@ export class TestCenterComponent implements OnInit {
 
   cancelEditMode() {
     this.isOnEditMode = false;
-    this.cancelCreation();
+    if(this.isNew) {
+      this.cancelCreation();
+    }
   }
 
   editMode() {
@@ -65,10 +65,6 @@ export class TestCenterComponent implements OnInit {
     } else {
       this.updateTest();
     }   
-  }
-
-  isOnSelectAnswer() {
-    this.isSelectAnswerRunning =!this.isSelectAnswerRunning;
   }
 
   saveTest(): void {
