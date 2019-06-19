@@ -1,0 +1,22 @@
+
+cleaning code (*missing)
+take the test (*missing)
+
+
+Entities
+- Students
+- Grades
+- test -> with score and summary of answers(could have all data or only ids of answers)
+- questionary (is the template of test)
+- questions
+- options
+
+Domain Rules
+- questionary is related to create a test
+- the test is scored 
+- the test has summary
+- the test is taken by an Students
+- the option (* .. 1) question
+- the question (* .. 1) questionary
+- the Student (* .. 1) Grade
+
