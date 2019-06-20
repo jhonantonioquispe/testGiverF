@@ -1,6 +1,6 @@
 import { Component, OnInit,Input, Output,EventEmitter } from '@angular/core';
-import { Questionary } from './../models/questionary';
-import { Question } from './../models/question';
+import { Questionary } from '../../models/questionary';
+import { Question } from '../../models/question';
 @Component({
   selector: 'app-list-component',
   templateUrl: './list.component.html',

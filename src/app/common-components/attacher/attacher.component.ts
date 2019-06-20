@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { AttacherService } from '../attacher.service';
+import { AttacherService } from '../../services/attacher.service';
 import { NgForm } from '@angular/forms';
 
 @Component({

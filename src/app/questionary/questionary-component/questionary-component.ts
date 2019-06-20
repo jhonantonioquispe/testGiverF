@@ -1,17 +1,17 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Question } from '../models/question';
-import { Test } from '../models/test';
-import { Questionary } from '../models/questionary';
-import { TestMakerService } from '../services/test-maker.service';
-import { QuestionaryService } from '../services/questionary.service';
-import { QuestionService } from '../services/question.service';
+import { Question } from '../../models/question';
+import { Test } from '../../models/test';
+import { Questionary } from '../../models/questionary';
+import { TestMakerService } from '../../services/test-maker.service';
+import { QuestionaryService } from '../../services/questionary.service';
+import { QuestionService } from '../../services/question.service';
 
 @Component({
-  selector: 'app-test-center',
-  templateUrl: './test-center.component.html',
-  styleUrls: ['./test-center.component.css']
+  selector: 'app-questionary-component',
+  templateUrl: './questionary-component.html',
+  styleUrls: ['./questionary-component.css']
 })
-export class TestCenterComponent implements OnInit {
+export class QuestionaryComponent implements OnInit {
   questions: Question[] = [];
   test: Test;
   questionary: Questionary = new Questionary();

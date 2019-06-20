@@ -6,7 +6,7 @@ import { of } from 'rxjs/observable/of';
 import { catchError, map, tap } from 'rxjs/operators';
 
 //importing modelo Attachment
-import { Attachment } from './models/attachment';
+import { Attachment } from '../models/attachment';
 
 
 @Injectable()

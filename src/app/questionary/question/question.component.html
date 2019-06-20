@@ -1,6 +1,6 @@
 <div class='question-container' [ngClass]="{'edit-border':isOnEditMode}">
     <div>{{loadedFileName}}</div>
-    <app-optionChanger (closeEmitter)='onCloseOptionChangerReceiver($event)' [isVisible]='isChangingOption' [textInput]="currentOptionText"></app-optionChanger>
+    <app-modal (closeEmitter)='onCloseOptionChangerReceiver($event)' [isVisible]='isChangingOption' [textInput]="currentOptionText"></app-modal>
     <div class="container-imgs">
         <div *ngFor="let option of question.options; let i = index" >
             <div [ngClass]="{'edit-border':isOnEditMode}" class="intern-img-container" imgSpreadDirective [items]="getCounterOptions(isOnEditMode)">
@@ -43,10 +43,10 @@
     </div>
     <!-- modify here -->
     <div class='text-question-cont'>
-        <app-text-cuestion
+        <app-text-editor
             (changeQuestion)='changeQuestionReceive($event)'
             [questionText]='question.questionText'
             [fontSize]="18"
-            [editionMode]='isOnEditMode'></app-text-cuestion>
+            [editionMode]='isOnEditMode'></app-text-editor>
     </div>
 </div>

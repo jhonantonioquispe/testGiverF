@@ -16,11 +16,11 @@
   </div>
   <div class='questions-container height-width100'>    
       <div class='title-test width100' [ngClass]="{'edit-border':isOnEditMode}">
-        <app-text-cuestion
+        <app-text-editor
           (changeQuestion)='changeTitleReceive($event)'
           [questionText]='questionary.title'          
           [fontSize]="22"
-          [editionMode]='isOnEditMode'></app-text-cuestion>
+          [editionMode]='isOnEditMode'></app-text-editor>
       </div>
 
     <div class='student-name width100'>AlumnoName</div>

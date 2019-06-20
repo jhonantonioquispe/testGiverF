@@ -1,7 +1,7 @@
-import { Question } from '../models/question';
-import { Option } from '../models/option';
+import { Question } from '../../models/question';
+import { Option } from '../../models/option';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { AttacherService } from '../attacher.service';
+import { AttacherService } from '../../services/attacher.service';
 
 @Component({
   selector: 'app-question',

@@ -4,39 +4,39 @@ import { HttpClientModule }    from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 //importando el nuevo servicio
-import { StudentService } from './student.service';
-import { AttacherService } from './attacher.service';
-import { ListComponent } from './list/list.component';
-import { MenuLeftComponent } from './menu-left/menu-left.component';
-import { TestCenterComponent } from './test-center/test-center.component';
-import { QuestionComponent } from './question/question.component';
-import { OptionChangerComponent } from './optionChanger/optionChanger.component';
-import { AttacherComponent } from './attacher/attacher.component';
+import { StudentService } from './services/student.service';
+import { AttacherService } from './services/attacher.service';
+import { ListComponent } from './main-page/list/list.component';
+import { MenuLeftComponent } from './main-page/menu-left/menu-left.component';
+import { QuestionaryComponent } from './questionary/questionary-component/questionary-component';
+import { QuestionComponent } from './questionary/question/question.component';
+import { ModalComponent } from './common-components/modal-component/modal-component';
+import { AttacherComponent } from './common-components/attacher/attacher.component';
 import { GrowRowDirective } from './directives/grow-row-directive';
 import { FontChangeDirective } from './directives/font-change-directive';
 import { ImgSpreadDirective } from './directives/img-spread-directive';
-import { TextCuestionComponent } from './text-cuestion/text-cuestion.component';
+import { TextEditorComponent } from './common-components/text-editor-component/text-editor-component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListComponent,
     MenuLeftComponent,
-    TestCenterComponent,
+    QuestionaryComponent,
     QuestionComponent,
-    OptionChangerComponent,
+    ModalComponent,
     AttacherComponent,
     GrowRowDirective,
     FontChangeDirective,
     ImgSpreadDirective,
-    TextCuestionComponent
+    TextEditorComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA ],
-  exports: [TextCuestionComponent],
+  exports: [TextEditorComponent],
   providers: [StudentService, AttacherService],
   bootstrap: [AppComponent]
 })

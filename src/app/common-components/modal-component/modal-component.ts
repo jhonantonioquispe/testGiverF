@@ -1,12 +1,12 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'app-optionChanger',
-  templateUrl: './optionChanger.component.html',
-  styleUrls: ['./optionChanger.component.css'],
+  selector: 'app-modal',
+  templateUrl: './modal-component.html',
+  styleUrls: ['./modal-component.css'],
     
 })
-export class OptionChangerComponent implements OnInit {
+export class ModalComponent implements OnInit {
  
   @Input() isVisible: boolean = false;
   @Input() textInput: string = "";

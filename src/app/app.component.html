@@ -11,10 +11,10 @@
     <app-menu-left></app-menu-left>
   </div>
   <div class='message-list' [ngClass]='{"width100": menuStates.showLeft===false}'>
-    <app-test-center 
+    <app-questionary-component
       [isNew]='isNew'
       [cancelCreation]='cancelCreation'
-      [questionaryLoad]='selectedQuestionary'></app-test-center>
+      [questionaryLoad]='selectedQuestionary'></app-questionary-component>
   </div>
   <div class='profile-options' [ngClass]='{"profile-show": menuStates.showRight === true}'>
     <app-list-component (changeQuestionary)='quetionaryReceiver($event)' [questionaries]='questionaries'></app-list-component>

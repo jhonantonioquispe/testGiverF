@@ -6,7 +6,7 @@ import { of } from 'rxjs/observable/of';
 import { catchError, map, tap } from 'rxjs/operators';
 
 //importing modelo student
-import { Student } from './student';
+import { Student } from '../student';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })

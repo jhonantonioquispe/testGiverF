@@ -2,11 +2,11 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'app-text-cuestion',
-  templateUrl: './text-cuestion.component.html',
-  styleUrls: ['./text-cuestion.component.css']
+  selector: 'app-text-editor',
+  templateUrl: './text-editor-component.html',
+  styleUrls: ['./text-editor-component.css']
 })
-export class TextCuestionComponent implements OnInit {
+export class TextEditorComponent implements OnInit {
 
   constructor() { }
   @Input() editionMode: boolean = true;

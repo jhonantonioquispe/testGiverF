@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { StudentService } from './student.service';
+import { StudentService } from './services/student.service';
 import { TestMakerService } from './services/test-maker.service';
 
 import { QuestionService } from './services/question.service';

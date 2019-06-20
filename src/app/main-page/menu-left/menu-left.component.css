@@ -24,16 +24,16 @@ https://color.adobe.com/es/Paleta-examen-1-color-theme-9690911/edit/?copy=true&b
   border-top: solid 1px #fff;
 }
 .item-menu:hover .icon-cursos  {
-  background-image: url("./../../assets/cursos_white.png");
+  background-image: url("./../../../assets/cursos_white.png");
 }
 .item-menu:hover .icon-examenes  {
-  background-image: url("./../../assets/examenes_white.png");
+  background-image: url("./../../../assets/examenes_white.png");
 }
 .item-menu:hover .icon-practicas  {
-  background-image: url("./../../assets/practicas_white.png");
+  background-image: url("./../../../assets/practicas_white.png");
 }
 .item-menu:hover .icon-autoeval  {
-  background-image: url("./../../assets/autoeval_white.png");
+  background-image: url("./../../../assets/autoeval_white.png");
 }
 .text-menu {
   float: left;
@@ -49,17 +49,17 @@ https://color.adobe.com/es/Paleta-examen-1-color-theme-9690911/edit/?copy=true&b
   margin-right: 10px;
 }
 .icon-cursos {
-  background-image: url("./../../assets/cursos_brown.png");
+  background-image: url("./../../../assets/cursos_brown.png");
 }
 
 .icon-examenes {
-  background-image: url("./../../assets/examenes_brown.png");
+  background-image: url("./../../../assets/examenes_brown.png");
 }
 
 .icon-practicas {
-  background-image: url("./../../assets/practicas_brown.png");
+  background-image: url("./../../../assets/practicas_brown.png");
 }
 
 .icon-autoeval {
-  background-image: url("./../../assets/autoeval_brown.png");
+  background-image: url("./../../../assets/autoeval_brown.png");
 }
