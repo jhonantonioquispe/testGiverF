@@ -127,8 +127,14 @@
 }
 
 .label-text-option {
-    cursor: pointer;
+    cursor: text;
     color: black;
+}
+
+.label-select-option {
+    cursor: pointer;
+    margin: 2px 0 0 4px;
+    padding:4px;
 }
 
 .check-option{

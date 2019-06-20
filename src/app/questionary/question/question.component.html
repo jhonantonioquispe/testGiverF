@@ -4,6 +4,13 @@
     <div class="container-imgs">
         <div *ngFor="let option of question.options; let i = index" >
             <div [ngClass]="{'edit-border':isOnEditMode}" class="intern-img-container" imgSpreadDirective [items]="getCounterOptions(isOnEditMode)">
+                <div>
+                    <label
+                        *ngIf='isOnEditMode'
+                        title="Elegir opcion como respuesta"
+                        class="action-test-btn label-select-option"
+                        for="{{option._id}}">R?</label>
+                </div>
                 <button 
                     title="Eliminar Opcion"
                     class="btn-rm-option"
@@ -18,7 +25,7 @@
                     <div class="check-select" [ngClass]='{"selected-option": isOptionSelected(i, option._id)}' ></div>           
                     <div class="option-text" >
                         
-                        <label for="{{option._id}}" class="label-text-option" >
+                        <label class="label-text-option">
                             <div [ngClass]="{'no-edit':!isOnEditMode}" 
                                 class="div-editable"
                                 (focusout)="onChangeOptionText($event, i)"
@@ -32,6 +39,7 @@
                             type="radio" 
                             class="check-option">
                     </div>
+                    
                 </div>
             </div>
         </div>
