@@ -69,9 +69,9 @@ export class AppComponent {
       });
   }
 
-  quetionaryReceiver($event) {
+  quetionaryReceiver = ($event) => {
     this.selectedQuestionary = $event.q;
     this.isNew = $event.isNew;
-    this.cancelCreation = $event.cancelCreation;
+    this.cancelCreation = $event.cancelCreation;    
   }
 }

@@ -6,10 +6,10 @@
             <div [ngClass]="{'edit-border':isOnEditMode}" class="intern-img-container" imgSpreadDirective [items]="getCounterOptions(isOnEditMode)">
                 <div>
                     <label
+                        (click)='selectOption($event,i,option._id)'
                         *ngIf='isOnEditMode'
                         title="Elegir opcion como respuesta"
-                        class="action-test-btn label-select-option"
-                        for="{{option._id}}">R?</label>
+                        class="action-test-btn label-select-option">R?</label>
                 </div>
                 <button 
                     title="Eliminar Opcion"

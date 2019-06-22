@@ -26,7 +26,7 @@
     <div class='student-name width100'>AlumnoName</div>
     
     <div class='question-list width100'>      
-      <div class='question float-left width100' *ngFor="let question of questions, let i = index">
+      <div class='question float-left width100' *ngFor="let question of questionary.questions, let i = index">
         <div class="rm-container-btn">
           <button title="Eliminar Pregunta" class="rm-btn" *ngIf='isOnEditMode' (click)="removeQuestion(i)">X</button>
         </div>

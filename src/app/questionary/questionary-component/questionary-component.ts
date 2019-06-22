@@ -23,7 +23,7 @@ export class QuestionaryComponent implements OnInit {
   @Input() 
   set questionaryLoad(questionaryLoad:Questionary) {
     this.questionary = questionaryLoad;
-    this.questions = this.questionary? this.questionary.questions: [];
+    //this.questionary.questions  = this.questionary? this.questionary.questions: [];
   }
 
   get questionaryLoad() {
@@ -69,7 +69,7 @@ export class QuestionaryComponent implements OnInit {
 
   saveTest(): void {
     this.questionary._id = null;
-    this.questionary.questions = this.questions.map((q) => {
+    this.questionary.questions = this.questionary.questions.map((q) => {
       q.options.forEach(o => o._id = undefined);
       q._id = undefined;
       return q;
@@ -82,16 +82,17 @@ export class QuestionaryComponent implements OnInit {
     this.questionaryService
       .saveQuestionary(this.questionary)
       .subscribe((questionary) => {
-        window.location.reload()
+        const updatedQuestionary = questionary.data;
+        //window.location.reload()
       });
   }
 
   removeQuestion(qIndex) {
-    this.questions = this.questions.filter((q, qi) => qi != qIndex);
+    this.questionary.questions  = this.questionary.questions .filter((q, qi) => qi != qIndex);
   }
 
   addQuestion() {
-    this.questions.push(
+    this.questionary.questions .push(
       new Question(null, '', '', []));
   }
 
@@ -99,37 +100,30 @@ export class QuestionaryComponent implements OnInit {
     this.questionary.title = $event;
   }
 
-  updateTest(): void {
+  updateTest = ():void => {
     this.questionary.totalScore = 55.34;
     this.questionary.author = "jhon quispe modified";
     this.questionary.type = 1;
-    this.questions.forEach(q => {
+    this.questionary.questions .forEach(q => {
       if (!q._id) q._id = undefined;
 
       q.options.forEach(o => {
         if (!o._id || parseInt(o._id.toString())) o._id = undefined;
       });
     });
-    this.questionary.questions = this.questions;
+    this.questionary.questions = this.questionary.questions ;
 
     this.questionaryService
       .updateQuestionary(this.questionary)
       .subscribe((questionary) => {
-        //console.log('update questionary ', questionary);
-        window.location.reload()
+        //console.log('update questionary ', questionary.data);
+        //window.location.reload()
+        //this.reloadItem(updatedQuestionary);
+        this.isOnEditMode = false;
       });
   }
 
   ngOnInit() {
-    console.log(this.questionaryLoad);
-    this.questionary = this.questionaryLoad || new Questionary();;
-    //this.getTests();
-    //console.log('reading pregggg');
-    // this.questions.push(new Question(null, 'pregA', '_id0', 
-    //   [{_id:null, text:'hola', attachment: 'http://localhost:3000/attachments/imgUploader_1527836764676_hijo05.jpg'}, 
-    //   {_id:null, text:'que', attachment: ''}]))
-    // this.questions.push(new Question(null, 'pregB', '_id2', 
-    //   [{_id:null, text:'tal', attachment: 'http://localhost:3000/attachments/imgUploader_1527836764676_hijo05.jpg'}]))
-    //)    
+    this.questionary = this.questionaryLoad || new Questionary();
   }
 }

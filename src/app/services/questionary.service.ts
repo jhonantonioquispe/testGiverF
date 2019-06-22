@@ -26,6 +26,17 @@ export class QuestionaryService extends FullServiceMaker<Questionary> {
       );
   }
 
+  getOneQuestionary(id:String) {
+    return this.getOneQuestionary(id)
+      .pipe(
+        tap(questionary => {
+          //console.log('questionary', questionaries)
+          return questionary;
+        }),
+        catchError(this.handleError('get one Questionary', null))
+      );
+  }
+
   saveQuestionary(questionary): Observable<any> {
     return this.saveOne(questionary)
       .pipe(

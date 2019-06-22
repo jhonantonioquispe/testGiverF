@@ -35,7 +35,11 @@ export class ListComponent implements OnInit {
 
   selectQuestionary(i, isNew = false) {
     this.selectedQi = i;
-    this.changeQuestionary.emit({q:this._questionaries[i],isNew, cancelCreation: this.cancelCreation});
+    this.changeQuestionary.emit({
+      q:this._questionaries[i],
+      isNew,
+      cancelCreation: this.cancelCreation
+    });
   }
 
   cancelCreation = () => {
