@@ -58,7 +58,7 @@ export class QuestionaryComponent implements OnInit {
 
   editMode() {
     this.isOnEditMode = true;
-    this.questionaryToEdit.copyFrom(this.questionary);
+    Questionary.copyFromTo(this.questionary,this.questionaryToEdit);
   }
 
   saveTestAction() {
@@ -84,8 +84,8 @@ export class QuestionaryComponent implements OnInit {
     this.questionaryService
       .saveQuestionary(this.questionaryToEdit)
       .subscribe((questionary) => {
-        const updatedQuestionary = questionary.data;
-        //window.location.reload()
+        Questionary.copyFromTo(questionary.data, this.questionary);
+        this.isOnEditMode = false;
       });
   }
 
@@ -117,7 +117,7 @@ export class QuestionaryComponent implements OnInit {
       .updateQuestionary(this.questionaryToEdit)
       .subscribe((questionary) => {
         //window.location.reload()
-        this.questionary = questionary.data;
+        Questionary.copyFromTo(questionary.data, this.questionary);
         this.isOnEditMode = false;
       });
   }

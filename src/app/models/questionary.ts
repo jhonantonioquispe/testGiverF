@@ -34,16 +34,15 @@ export class Questionary{
   type: questionaryType; // this is an enum  posble values 'test', 'practice'
   questions: Question[] = [];
   
-  copyFrom: (source:Questionary)=>void = (source:Questionary) => {
-    if (source) {
-      this._id = source._id;
-      this._id = source._id;
-      this.totalScore = source.totalScore;
-      this.title = source.title;
-      this.author = source.author;
-      this.type = source.type;
-      this.questions = [];
-      source.questions.forEach((q:Question) => this.questions.push(Question.getCopy(q)));
+  static copyFromTo: (from:Questionary, to:Questionary)=>void = (from:Questionary, to:Questionary) => {
+    if (from) {
+      to._id = from._id;
+      to.totalScore = from.totalScore;
+      to.title = from.title;
+      to.author = from.author;
+      to.type = from.type;
+      to.questions = [];
+      from.questions.forEach((q:Question) => to.questions.push(Question.getCopy(q)));
     }
   };
 
