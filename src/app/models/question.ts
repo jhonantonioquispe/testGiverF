@@ -12,6 +12,18 @@ export class Question {
   questionText :String;
   options : Option[];
   answer: String;
+  public static getCopy = (source:Question) => {
+    let copiedOptions:Option[] = []
+
+    source.options.forEach((o:Option) => {
+      const copiedOption:Option = <Option>{};      
+      Object.assign(copiedOption, o);
+      copiedOptions.push(copiedOption);
+    });
+
+    let target = new Question(source._id,source.questionText,source.answer, copiedOptions);
+    return target;
+  }
 
   constructor (_id, qtext, answer, options) {
     this.questionText = qtext;

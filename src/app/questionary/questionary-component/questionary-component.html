@@ -14,28 +14,44 @@
       *ngIf='!isOnEditMode'
       (click)="editMode()">Editar</button>
   </div>
-  <div class='questions-container height-width100'>    
-      <div class='title-test width100' [ngClass]="{'edit-border':isOnEditMode}">
-        <app-text-editor
-          (changeQuestion)='changeTitleReceive($event)'
-          [questionText]='questionary.title'          
-          [fontSize]="22"
-          [editionMode]='isOnEditMode'></app-text-editor>
-      </div>
 
-    <div class='student-name width100'>AlumnoName</div>
+  <!-- only show mode -->
+  <div class='questions-container height-width100'  *ngIf='!isOnEditMode'>    
+      <div class='title-test width100' [ngClass]="{'edit-border':false}">
+        <app-text-editor
+          [questionText]='questionary.title'          
+          [fontSize]="22"></app-text-editor>
+      </div>
     
     <div class='question-list width100'>      
       <div class='question float-left width100' *ngFor="let question of questionary.questions, let i = index">
-        <div class="rm-container-btn">
-          <button title="Eliminar Pregunta" class="rm-btn" *ngIf='isOnEditMode' (click)="removeQuestion(i)">X</button>
-        </div>
-        <app-question
-          [question]='question'
-          [isOnEditMode]='isOnEditMode'></app-question>
+        <app-question [question]='question'></app-question>
       </div>
     </div>
   </div>
+
+  <!-- only edit mode -->
+  <div class='questions-container height-width100' *ngIf='isOnEditMode'>    
+    <div class='title-test width100' [ngClass]="{'edit-border':true}">
+      <app-text-editor
+        (changeQuestion)='changeTitleReceive($event)'
+        [questionText]='questionaryToEdit.title'          
+        [fontSize]="22"
+        [editionMode]='true'></app-text-editor>
+    </div>
+  
+    <div class='question-list width100'>      
+      <div class='question float-left width100' *ngFor="let questionEdit of questionaryToEdit.questions, let i = index">
+        <div class="rm-container-btn">
+          <button title="Eliminar Pregunta" class="rm-btn" *ngIf='true' (click)="removeQuestion(i)">X</button>
+        </div>
+        <app-question
+          [question]='questionEdit'
+          [isOnEditMode]='true'></app-question>
+      </div>
+    </div>
+  </div>
+  
   <div class="action-bottom-container">  
     <button 
       class="action-test-btn"

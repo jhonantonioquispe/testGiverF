@@ -15,6 +15,7 @@ export class QuestionaryComponent implements OnInit {
   questions: Question[] = [];
   test: Test;
   questionary: Questionary = new Questionary();
+  questionaryToEdit: Questionary = new Questionary();;
   isOnEditMode: boolean = false;
   _isNew:boolean = false;
 
@@ -57,6 +58,7 @@ export class QuestionaryComponent implements OnInit {
 
   editMode() {
     this.isOnEditMode = true;
+    this.questionaryToEdit.copyFrom(this.questionary);
   }
 
   saveTestAction() {
@@ -68,19 +70,19 @@ export class QuestionaryComponent implements OnInit {
   }
 
   saveTest(): void {
-    this.questionary._id = null;
-    this.questionary.questions = this.questionary.questions.map((q) => {
+    this.questionaryToEdit._id = null;
+    this.questionaryToEdit.questions = this.questionaryToEdit.questions.map((q) => {
       q.options.forEach(o => o._id = undefined);
       q._id = undefined;
       return q;
     });
-    this.questionary.totalScore = 55.34;
-    this.questionary.author = "jhon quispe";
-    this.questionary.type = 1; // this is an enum  posble values 'test', 'practice'
+    this.questionaryToEdit.totalScore = 55.34;
+    this.questionaryToEdit.author = "jhon quispe";
+    this.questionaryToEdit.type = 1; // this is an enum  posble values 'test', 'practice'
     console.log(this.questionary)
 
     this.questionaryService
-      .saveQuestionary(this.questionary)
+      .saveQuestionary(this.questionaryToEdit)
       .subscribe((questionary) => {
         const updatedQuestionary = questionary.data;
         //window.location.reload()
@@ -88,38 +90,35 @@ export class QuestionaryComponent implements OnInit {
   }
 
   removeQuestion(qIndex) {
-    this.questionary.questions  = this.questionary.questions .filter((q, qi) => qi != qIndex);
+    this.questionaryToEdit.questions  = this.questionaryToEdit.questions .filter((q, qi) => qi != qIndex);
   }
 
   addQuestion() {
-    this.questionary.questions .push(
+    this.questionaryToEdit.questions .push(
       new Question(null, '', '', []));
   }
 
   changeTitleReceive($event) {
-    this.questionary.title = $event;
+    this.questionaryToEdit.title = $event;
   }
 
   updateTest = ():void => {
-    this.questionary.totalScore = 55.34;
-    this.questionary.author = "jhon quispe modified";
-    this.questionary.type = 1;
-    this.questionary.questions .forEach(q => {
+    this.questionaryToEdit.totalScore = 55.34;
+    this.questionaryToEdit.author = "jhon quispe modified";
+    this.questionaryToEdit.type = 1;
+    this.questionaryToEdit.questions .forEach(q => {
       if (!q._id) q._id = undefined;
 
       q.options.forEach(o => {
         if (!o._id || parseInt(o._id.toString())) o._id = undefined;
       });
     });
-    this.questionary.questions = this.questionary.questions ;
-
     this.questionaryService
-      .updateQuestionary(this.questionary)
+      .updateQuestionary(this.questionaryToEdit)
       .subscribe((questionary) => {
-        //console.log('update questionary ', questionary.data);
         //window.location.reload()
-        //this.reloadItem(updatedQuestionary);
         this.isOnEditMode = false;
+        this.questionary = questionary.data
       });
   }
 

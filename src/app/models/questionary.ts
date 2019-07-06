@@ -32,5 +32,19 @@ export class Questionary{
   title:string;
   author: string;
   type: questionaryType; // this is an enum  posble values 'test', 'practice'
-  questions: Array<Question>;
+  questions: Question[] = [];
+  
+  copyFrom: (source:Questionary)=>void = (source:Questionary) => {
+    if (source) {
+      this._id = source._id;
+      this._id = source._id;
+      this.totalScore = source.totalScore;
+      this.title = source.title;
+      this.author = source.author;
+      this.type = source.type;
+      this.questions = [];
+      source.questions.forEach((q:Question) => this.questions.push(Question.getCopy(q)));
+    }
+  };
+
 }
