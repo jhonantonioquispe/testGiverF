@@ -117,8 +117,8 @@ export class QuestionaryComponent implements OnInit {
       .updateQuestionary(this.questionaryToEdit)
       .subscribe((questionary) => {
         //window.location.reload()
+        this.questionary = questionary.data;
         this.isOnEditMode = false;
-        this.questionary = questionary.data
       });
   }
 
