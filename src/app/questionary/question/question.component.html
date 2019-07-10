@@ -4,25 +4,19 @@
     <div class="container-imgs">
         <div *ngFor="let option of question.options; let i = index" >
             <div [ngClass]="{'edit-border':isOnEditMode}" class="intern-img-container" imgSpreadDirective [items]="getCounterOptions(isOnEditMode)">
-                <div>
-                    <label
-                        (click)='selectOption($event,i,option._id)'
-                        *ngIf='isOnEditMode'
-                        title="Elegir opcion como respuesta"
-                        class="action-test-btn label-select-option">R?</label>
-                </div>
                 <button 
                     title="Eliminar Opcion"
                     class="btn-rm-option"
                     *ngIf='isOnEditMode'
                     (click)="removeOption(i)">X</button>       
                 <div class="option-img">
+                    <div class="check-select" [ngClass]='{"selected-option": isOptionSelected(i, option._id)}' *ngIf='isOptionSelected(i, option._id)'></div>
+                    <div class="check-select" *ngIf='isOnEditMode' [ngClass]='{"notselected-option": !isOptionSelected(i, option._id)}' (click)='selectOption($event,i,option._id)' ></div>
                     <app-attacher
                         [srcImage]='getFullUrl(option.attachment)'                
                         (sendFileOut)='receivingData($event, i)'
                         [editionMode]='isOnEditMode' [id]='option._id'>
                     </app-attacher>
-                    <div class="check-select" [ngClass]='{"selected-option": isOptionSelected(i, option._id)}' ></div>           
                     <div class="option-text" >
                         
                         <label class="label-text-option">

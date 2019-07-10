@@ -13,10 +13,14 @@
       class="action-test-btn"
       *ngIf='!isOnEditMode'
       (click)="editMode()">Editar</button>
+    <button
+      class="action-test-btn"
+     
+      (click)="doTest()">Dar Test</button>
   </div>
 
   <!-- only show mode -->
-  <div class='questions-container height-width100'  *ngIf='!isOnEditMode'>    
+  <div class='questions-container height-width100'  *ngIf='!isOnEditMode && !doingTest'>    
       <div class='title-test width100' [ngClass]="{'edit-border':false}">
         <app-text-editor
           [questionText]='questionary.title'          
@@ -54,6 +58,25 @@
     </div>
   </div>
   
+  <!-- only doing test mode -->
+  <div class='questions-container height-width100' *ngIf='!isOnEditMode && doingTest'>    
+    <div class='title-test width100' [ngClass]="{'edit-border':false}">
+      <app-text-editor
+        [questionText]='questionaryDoing.title + "dando test"'          
+        [fontSize]="22"
+        [isDoingTest]='true'
+        [editionMode]='false'></app-text-editor>
+    </div>
+  
+    <div class='question-list width100'>      
+      <div class='question float-left width100' *ngFor="let questionDoing of questionaryDoing.questions, let i = index">
+        <app-question
+          [question]='questionDoing'
+          [isOnEditMode]='false'></app-question>
+      </div>
+    </div>
+  </div>
+
   <div class="action-bottom-container">  
     <button 
       class="action-test-btn"
