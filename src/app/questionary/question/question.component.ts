@@ -64,15 +64,17 @@ export class QuestionComponent implements OnInit {
   }
 
   isAnswerSelected(i) {
-    return ((this.selectedOption === i) || (this.question.answer == i) );
+    return ((this.selectedAnswer === i) || (this.question.answerUser == i) );
   }
 
   selectOption($event,i) {
-    if(this.isOnEditMode) {
+    
+    if(this.isOnEditMode == true) {
       this.selectedOption = i;
       this.question.answer = i;
     }
-    if(this.doingTest) {
+
+    if(this.doingTest == true) {
       this.selectedAnswer = i;
       this.question.answerUser = i;
     }
