@@ -19,6 +19,7 @@
       <div class='question float-left width100' *ngFor="let questionDoing of questionaryDoing.questions, let i = index">
         <app-question
           [question]='questionDoing'
+          [doingTest]='doingTest'
           [isOnEditMode]='false'></app-question>
       </div>
     </div>

@@ -8,6 +8,8 @@ import { Questionary } from '../../models/questionary';
 })
 export class DoTestComponent implements OnInit {
   questionaryDoing: Questionary = new Questionary();
+  doingTest: boolean = false;
+
   constructor() { }
 
   ngOnInit() {
@@ -26,6 +28,7 @@ export class DoTestComponent implements OnInit {
   
   startTest() {
     // this.doingTest = true;
+    this.doingTest = !this.doingTest;
   }
 
 }

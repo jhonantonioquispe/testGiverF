@@ -12,6 +12,7 @@ export class Question {
   questionText :String;
   options : Option[];
   answer: String;
+  answerUser: String;
   public static getCopy = (source:Question) => {
     let copiedOptions:Option[] = []
 
@@ -31,5 +32,6 @@ export class Question {
     this.options = options;
     //this._id = counter.toString();
     this.answer = answer;
+    this.answerUser = "";
   }
 }

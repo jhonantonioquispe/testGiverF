@@ -15,12 +15,15 @@ export class QuestionComponent implements OnInit {
   private currentFullPath: string = "";
   @Input() question: Question;
   @Input() isOnEditMode: boolean = false;
+  @Input() doingTest: boolean = false;
+  isVisibleAnswer: boolean = false;
   
   public isChangingOption = false;
   public currentOptionIndex= -1;
   public currentOptionText:String = "";
   options: Object[];
   selectedOption:number = -1;
+  selectedAnswer:number = -1;
   constructor(private attacherService:AttacherService) { }
 
   ngOnInit() {
@@ -57,7 +60,11 @@ export class QuestionComponent implements OnInit {
   }
 
   isOptionSelected(i) {
-    return ((this.selectedOption === i) || (this.question.answer == i));
+    return ((this.selectedOption === i) || (this.question.answer == i) ) && this.verifyIsVisibleAnswer();
+  }
+
+  isAnswerSelected(i) {
+    return ((this.selectedOption === i) || (this.question.answer == i) );
   }
 
   selectOption($event,i) {
@@ -65,6 +72,18 @@ export class QuestionComponent implements OnInit {
       this.selectedOption = i;
       this.question.answer = i;
     }
+    if(this.doingTest) {
+      this.selectedAnswer = i;
+      this.question.answerUser = i;
+    }
+  }  
+
+  verifyIsVisibleAnswer() {
+    if(this.isOnEditMode){
+      return true;
+    } if (!this.doingTest)  {
+      return false;
+    } else return false;
   }
 
   removeOption = (optionIndex) => {

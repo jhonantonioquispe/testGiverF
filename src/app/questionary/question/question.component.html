@@ -11,7 +11,8 @@
                     (click)="removeOption(i)">X</button>       
                 <div class="option-img">
                     <div class="check-select" [ngClass]='{"selected-option": isOptionSelected(i, option._id)}' *ngIf='isOptionSelected(i, option._id)'></div>
-                    <div class="check-select" *ngIf='isOnEditMode' [ngClass]='{"notselected-option": !isOptionSelected(i, option._id)}' (click)='selectOption($event,i,option._id)' ></div>
+                    <div class="check-select" [ngClass]='{"selected-possible-answer": isAnswerSelected(i, option._id)}' *ngIf='isAnswerSelected(i, option._id)'></div>
+                    <div class="check-select" *ngIf='isOnEditMode || doingTest' [ngClass]='{"notselected-option": !isOptionSelected(i, option._id)}' (click)='selectOption($event,i,option._id)' ></div>
                     <app-attacher
                         [srcImage]='getFullUrl(option.attachment)'                
                         (sendFileOut)='receivingData($event, i)'
