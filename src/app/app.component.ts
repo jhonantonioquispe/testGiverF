@@ -28,6 +28,10 @@ export class AppComponent {
   questionaries: Questionary[] = [];
   selectedQuestionary: Questionary;
   isNew:boolean = false;
+
+  doQuestionaryLoad: Questionary;
+  doingTest:boolean = false;
+  
   cancelCreation:() => void = () => {};
 
   constructor(
@@ -72,6 +76,12 @@ export class AppComponent {
   quetionaryReceiver = ($event) => {
     this.selectedQuestionary = $event.q;
     this.isNew = $event.isNew;
-    this.cancelCreation = $event.cancelCreation;    
+    this.cancelCreation = $event.cancelCreation;
+    this.doingTest = false;   
+  }
+
+  doQuestionaryReceiver = ($event) => {
+    this.doQuestionaryLoad = $event.q;
+    this.doingTest = $event.doingTest;    
   }
 }

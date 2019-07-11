@@ -16,6 +16,7 @@ import { GrowRowDirective } from './directives/grow-row-directive';
 import { FontChangeDirective } from './directives/font-change-directive';
 import { ImgSpreadDirective } from './directives/img-spread-directive';
 import { TextEditorComponent } from './common-components/text-editor-component/text-editor-component';
+import { DoTestComponent } from './questionary/do-test/do-test.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { TextEditorComponent } from './common-components/text-editor-component/t
     GrowRowDirective,
     FontChangeDirective,
     ImgSpreadDirective,
-    TextEditorComponent
+    TextEditorComponent,
+    DoTestComponent
   ],
   imports: [
     BrowserModule,

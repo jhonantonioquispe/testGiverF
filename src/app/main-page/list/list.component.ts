@@ -12,6 +12,7 @@ export class ListComponent implements OnInit {
   selectedQi:number = -1;
   hideItemList:boolean = true;
   @Output() changeQuestionary = new EventEmitter<Object>()
+  @Output() doQuestionaryEmit = new EventEmitter<Object>()
   
   @Input()
   set questionaries(q:Questionary[]) {
@@ -39,6 +40,13 @@ export class ListComponent implements OnInit {
       q:this._questionaries[i],
       isNew,
       cancelCreation: this.cancelCreation
+    });
+  }
+
+  doTest() {
+    this.doQuestionaryEmit.emit({
+      q:this._questionaries[this.selectedQi],
+      doingTest: true
     });
   }
 

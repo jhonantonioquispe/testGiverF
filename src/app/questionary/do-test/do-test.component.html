@@ -1,0 +1,27 @@
+<div>
+  <div class="action-crud-container">
+    <button
+      class="action-test-btn"
+      (click)="startTest()">Empezar</button>
+  </div>
+
+ 
+  <!-- only doing test mode -->
+  <div class='questions-container height-width100'>    
+    <div class='title-test width100' [ngClass]="{'edit-border':false}">
+      <app-text-editor
+        [questionText]='questionaryDoing.title + "dando test"'          
+        [fontSize]="22"
+        [editionMode]='false'></app-text-editor>
+    </div>
+  
+    <div class='question-list width100'>      
+      <div class='question float-left width100' *ngFor="let questionDoing of questionaryDoing.questions, let i = index">
+        <app-question
+          [question]='questionDoing'
+          [isOnEditMode]='false'></app-question>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -16,10 +16,8 @@ export class QuestionaryComponent implements OnInit {
   test: Test;
   questionary: Questionary = new Questionary();
   questionaryToEdit: Questionary = new Questionary();
-  questionaryDoing: Questionary = new Questionary();
 
   isOnEditMode: boolean = false;
-  doingTest: boolean = false;
   _isNew:boolean = false;
 
   @Input() cancelCreation:() => void = () => {};
@@ -62,12 +60,6 @@ export class QuestionaryComponent implements OnInit {
   editMode() {
     this.isOnEditMode = true;
     Questionary.copyFromTo(this.questionary, this.questionaryToEdit);
-  }
-
-  doTest() {
-    Questionary.copyFromTo( this.questionary, this.questionaryDoing);
-    this.isOnEditMode = false;
-    this.doingTest = true;
   }
 
   saveTestAction() {

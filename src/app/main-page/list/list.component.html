@@ -2,6 +2,9 @@
     <div class="action-container">
         <div class="action-container-items" *ngIf='!hideItemList'>
             <button class="action-test-btn" (click)="addQuestionary()">Crear Cuestionario</button>
+            <button
+                class="action-test-btn"     
+                (click)="doTest()">Dar Test</button>
         </div>
         <div class="icon-show-hide" title="Ver Mas Acciones" (click)="toogleActionlist()">
             <div class="icon-triangle" [ngClass]="{'rotate90':hideItemList == false}" ></div>            
