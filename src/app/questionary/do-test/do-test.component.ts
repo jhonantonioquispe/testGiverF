@@ -18,7 +18,6 @@ export class DoTestComponent implements OnInit {
   @Input() 
   set questionaryLoad(questionaryLoad:Questionary) {
     Questionary.copyFromTo( questionaryLoad, this.questionaryDoing);
-    //this.questionary.questions  = this.questionary? this.questionary.questions: [];
   }
 
   get questionaryLoad() {
@@ -27,8 +26,11 @@ export class DoTestComponent implements OnInit {
 
   
   startTest() {
-    // this.doingTest = true;
-    this.doingTest = !this.doingTest;
+    this.doingTest = true;    
+  }
+
+  endTest() {
+    this.doingTest = false;
   }
 
 }

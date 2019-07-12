@@ -1,14 +1,19 @@
 <div>
   <div class="action-crud-container">
     <button
+      *ngIf="!doingTest"
       class="action-test-btn"
       (click)="startTest()">Empezar</button>
-  </div>
 
+      <button
+      *ngIf="doingTest"
+      class="action-test-btn"
+      (click)="endTest()">Finalizar</button>
+  </div>
  
   <!-- only doing test mode -->
   <div class='questions-container height-width100'>    
-    <div class='title-test width100' [ngClass]="{'edit-border':false}">
+    <div class='title-test width100'>
       <app-text-editor
         [questionText]='questionaryDoing.title + "dando test"'          
         [fontSize]="22"
