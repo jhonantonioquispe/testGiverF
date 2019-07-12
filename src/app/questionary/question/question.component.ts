@@ -60,11 +60,11 @@ export class QuestionComponent implements OnInit {
   }
 
   isOptionSelected(i) {
-    return ((this.selectedOption === i) || (this.question.answer == i) ) && this.verifyIsVisibleAnswer();
+    return ((this.selectedOption === i) || (this.question.answer == i) ) && this.isOnEditMode;
   }
 
   isAnswerSelected(i) {
-    return ((this.selectedAnswer === i) || (this.question.answerUser == i) );
+    return ((this.selectedAnswer === i) || (this.question.answerUser == i) ) && this.doingTest;
   }
 
   selectOption($event,i) {
@@ -78,16 +78,17 @@ export class QuestionComponent implements OnInit {
       this.selectedAnswer = i;
       this.question.answerUser = i;
     }
-  }  
+  } 
 
-  verifyIsVisibleAnswer() {
-    if(this.isOnEditMode){
-      return true;
-    } if (!this.doingTest)  {
-      return false;
-    } else return false;
+  isVisibleOptionToSelect(i) {
+    if (this.isOnEditMode) {
+      return this.isOptionSelected(i);
+    }
+
+    if (this.doingTest) {
+      return this.isAnswerSelected(i);
+    }
   }
-
   removeOption = (optionIndex) => {
     let toReplace = new Array();
     this.question.options.forEach((op,iop)=> {

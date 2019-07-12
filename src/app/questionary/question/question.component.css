@@ -167,8 +167,8 @@
     font-weight: 900;
     right: 40px;
     top: 50px;
-    height: 38px;
-    width: 16px;
+    height: 46px;
+    width: 20px;
     line-height: 0.75;    
     position: absolute;
     -webkit-transform: rotate3d(-1.1, 4.3, 0.2,180deg);
@@ -176,8 +176,8 @@
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     color: transparent;
     z-index: 1;
-    border-bottom: 4px solid rgba(247, 23, 72, 0.54);
-    border-left: 8px solid rgba(247, 23, 72, 0.54);
+    border-bottom: 4px solid rgba(23, 91, 247, 0.7);
+    border-left: 8px solid rgba(23, 91, 247, 0.7);
     box-shadow: rgba(80, 79, 79, 0.6) -7px 7px 6px -1px;
     border-radius: 2px; 
     cursor: default; 
