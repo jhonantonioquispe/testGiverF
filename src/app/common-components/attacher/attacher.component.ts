@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { AttacherService } from '../../services/attacher.service';
 import { NgForm } from '@angular/forms';
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-attacher',
@@ -27,6 +28,24 @@ export class AttacherComponent implements OnInit {
   
   uploadImage(event) {
     this.files = event.target.files; 
+    debugger
+    let dataFound = event.target.files;
+    var data = new Uint8Array(dataFound);
+    var arr = new Array();
+    for(var i = 0; i != data.length; ++i) arr[i] = String.fromCharCode(data[i]);
+    var bstr = arr.join("");
+
+    /* Call XLSX */
+    
+    let workbook = XLSX.read(bstr, {type:'binary'});
+      /* DO SOMETHING WITH workbook HERE */
+    var first_sheet_name = workbook.SheetNames[0];
+    /* Get worksheet */
+    var worksheet = workbook.Sheets[first_sheet_name];
+    console.log(XLSX.utils.sheet_to_json(worksheet,{raw:true}));
+
+
+
     let reader = new FileReader();
 
     let formData = new FormData();
@@ -48,7 +67,7 @@ export class AttacherComponent implements OnInit {
         const filename = data.path.split("\\")[1];
         this.srcImage = data.fileName;
         this.sendFileOut.emit({data: formData, filename:filename, fullUrl:this.getFullUrl});
-        console.log('data received', data);
+        //console.log('data received', data);
       });
   }
 

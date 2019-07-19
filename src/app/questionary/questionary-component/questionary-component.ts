@@ -5,6 +5,7 @@ import { Questionary } from '../../models/questionary';
 import { TestMakerService } from '../../services/test-maker.service';
 import { QuestionaryService } from '../../services/questionary.service';
 import { QuestionService } from '../../services/question.service';
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-questionary-component',
@@ -121,6 +122,27 @@ export class QuestionaryComponent implements OnInit {
         Questionary.copyFromTo(questionary.data, this.questionary);
         this.isOnEditMode = false;
       });
+  }
+
+  receivingData($event) {
+    debugger
+    console.log($event);
+  //   var data = new Uint8Array($event.data);
+  //   var arr = new Array();
+  //   for(var i = 0; i != data.length; ++i) arr[i] = String.fromCharCode(data[i]);
+  //   var bstr = arr.join("");
+
+  // /* Call XLSX */
+  
+  //   let workbook = XLSX.read(bstr, {type:'binary'});
+  //   /* DO SOMETHING WITH workbook HERE */
+  // var first_sheet_name = workbook.SheetNames[0];
+  // /* Get worksheet */
+  // var worksheet = workbook.Sheets[first_sheet_name];
+  // console.log(XLSX.utils.sheet_to_json(worksheet,{raw:true}));
+  }
+
+  runExcelFn() {
   }
 
   ngOnInit() {

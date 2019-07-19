@@ -13,6 +13,13 @@
       class="action-test-btn"
       *ngIf='!isOnEditMode'
       (click)="editMode()">Editar</button>
+
+      <app-attacher
+          [srcImage]='""'                
+          (sendFileOut)='receivingData($event)'
+          [editionMode]='true'>
+      </app-attacher>
+
   </div>
 
   <!-- only show mode -->
