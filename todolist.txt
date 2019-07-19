@@ -20,3 +20,8 @@ Domain Rules
 - the question (* .. 1) questionary
 - the Student (* .. 1) Grade
 
+reference for XLSX
+https://gist.github.com/theredstapler/5ce6a43b066dbe0cac3fa5587835be91
+
+verify sanitize
+http://roufid.com/warning-sanitizing-unsafe-url-value-angular/
