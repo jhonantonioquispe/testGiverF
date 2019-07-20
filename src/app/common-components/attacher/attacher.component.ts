@@ -28,23 +28,6 @@ export class AttacherComponent implements OnInit {
   
   uploadImage(event) {
     this.files = event.target.files; 
-    debugger
-    let dataFound = event.target.files;
-    var data = new Uint8Array(dataFound);
-    var arr = new Array();
-    for(var i = 0; i != data.length; ++i) arr[i] = String.fromCharCode(data[i]);
-    var bstr = arr.join("");
-
-    /* Call XLSX */
-    
-    let workbook = XLSX.read(bstr, {type:'binary'});
-      /* DO SOMETHING WITH workbook HERE */
-    var first_sheet_name = workbook.SheetNames[0];
-    /* Get worksheet */
-    var worksheet = workbook.Sheets[first_sheet_name];
-    console.log(XLSX.utils.sheet_to_json(worksheet,{raw:true}));
-
-
 
     let reader = new FileReader();
 
@@ -54,7 +37,7 @@ export class AttacherComponent implements OnInit {
     reader.onload = (readerEvt: any) => {
       this.previewData = reader.result;
       this.fileName = this.files[0].name;
-      this.sendFileOut.emit({data: formData, filename:this.fileName});
+      this.sendFileOut.emit({data: formData, b64:this.previewData , filename:this.fileName});
     }  
     reader.readAsDataURL(this.files[0]);
   }

@@ -125,24 +125,26 @@ export class QuestionaryComponent implements OnInit {
   }
 
   receivingData($event) {
-    debugger
-    console.log($event);
-  //   var data = new Uint8Array($event.data);
-  //   var arr = new Array();
-  //   for(var i = 0; i != data.length; ++i) arr[i] = String.fromCharCode(data[i]);
-  //   var bstr = arr.join("");
+    let dataFound = $event.b64.replace(/.*;base64,/g,"");
+    const byteCharacters = atob(dataFound);
 
-  // /* Call XLSX */
-  
-  //   let workbook = XLSX.read(bstr, {type:'binary'});
-  //   /* DO SOMETHING WITH workbook HERE */
-  // var first_sheet_name = workbook.SheetNames[0];
-  // /* Get worksheet */
-  // var worksheet = workbook.Sheets[first_sheet_name];
-  // console.log(XLSX.utils.sheet_to_json(worksheet,{raw:true}));
-  }
+    const byteNumbers = new Array(byteCharacters.length);
+    for (let i = 0; i < byteCharacters.length; i++) {
+        byteNumbers[i] = byteCharacters.charCodeAt(i);
+    }
+    
+    var data = new Uint8Array(byteNumbers);
+    var arr = new Array();
+    for(var i = 0; i != data.length; ++i) arr[i] = String.fromCharCode(data[i]);
+    var bstr = arr.join("");
 
-  runExcelFn() {
+    /* Call XLSX */    
+    let workbook = XLSX.read(bstr, {type:'binary'});
+      /* DO SOMETHING WITH workbook HERE */
+    var first_sheet_name = workbook.SheetNames[0];
+    /* Get worksheet */
+    var worksheet = workbook.Sheets[first_sheet_name];
+    console.log(XLSX.utils.sheet_to_json(worksheet,{raw:true}));
   }
 
   ngOnInit() {
