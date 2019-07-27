@@ -16,7 +16,9 @@
 
       <app-attacher
           [srcImage]='""'                
+          [id]='"uploader-file"' 
           (sendFileOut)='receivingData($event)'
+          [isloadFileMode]='true'
           [editionMode]='true'>
       </app-attacher>
 
