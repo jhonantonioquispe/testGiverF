@@ -143,8 +143,20 @@ export class QuestionaryComponent implements OnInit {
       /* DO SOMETHING WITH workbook HERE */
     var first_sheet_name = workbook.SheetNames[0];
     /* Get worksheet */
+    
     var worksheet = workbook.Sheets[first_sheet_name];
-    console.log(XLSX.utils.sheet_to_json(worksheet,{raw:true}));
+    let index = 10;
+    let students:any = [];
+    while(worksheet[`A${index}`] && worksheet[`A${index}`].v) {
+      index++;
+      if(worksheet[`B${index}`] && worksheet[`B${index}`].v) {
+        students.push(worksheet[`B${index}`].v);
+        console.log(`${worksheet[`A${index}`].v}.- ${worksheet[`B${index}`].v}`);
+      }
+    }
+    
+    //console.log("cols->", worksheet["!cols"].length);
+    //console.log(XLSX.utils.sheet_to_json(worksheet,{raw:true}));
   }
 
   ngOnInit() {
