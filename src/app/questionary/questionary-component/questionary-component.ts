@@ -6,6 +6,8 @@ import { TestMakerService } from '../../services/test-maker.service';
 import { QuestionaryService } from '../../services/questionary.service';
 import { QuestionService } from '../../services/question.service';
 import * as XLSX from 'xlsx';
+import { Grade } from '../../models/grade';
+import { Student } from '../../models/student';
 
 @Component({
   selector: 'app-questionary-component',
@@ -127,7 +129,7 @@ export class QuestionaryComponent implements OnInit {
   receivingData($event) {
     let dataFound = $event.b64.replace(/.*;base64,/g,"");
     const byteCharacters = atob(dataFound);
-
+    $event.data = null;
     const byteNumbers = new Array(byteCharacters.length);
     for (let i = 0; i < byteCharacters.length; i++) {
         byteNumbers[i] = byteCharacters.charCodeAt(i);
@@ -146,12 +148,52 @@ export class QuestionaryComponent implements OnInit {
     
     var worksheet = workbook.Sheets[first_sheet_name];
     let index = 10;
-    let students:any = [];
+    const students:any = [];
+
+    const literalGrade:string = worksheet[`K4`].v;
+    const gradeAndParalel = literalGrade.split("\"");
+    const gradeString = gradeAndParalel[0].trim();
+    const paralelString = gradeAndParalel[1].trim();
+
+    const getNumericParalel = (paralString:string) => {
+      let num:number = 0;
+      switch (paralString.toLowerCase()) {
+        case "primero":
+          num=1;
+          break;
+        case "segundo":
+          num=2;
+          break;
+        case "tercero":
+          num=3;
+          break;
+        case "cuarto":
+          num=4;
+          break;
+        case "quinto":
+          num=5;
+          break;
+        case "sexto":
+          num=6;
+          break;
+        case "septimo":
+          num=7;
+          break;
+        case "octavo":
+          num=8;
+          break;
+      }
+      return num;
+    }
+
+    let grade:Grade = new Grade(null, gradeString, paralelString, getNumericParalel(gradeString));
     while(worksheet[`A${index}`] && worksheet[`A${index}`].v) {
       index++;
       if(worksheet[`B${index}`] && worksheet[`B${index}`].v) {
-        students.push(worksheet[`B${index}`].v);
-        console.log(`${worksheet[`A${index}`].v}.- ${worksheet[`B${index}`].v}`);
+        const fullname = worksheet[`B${index}`].v;
+        let student:Student = new Student(null, fullname, worksheet[`A${index}`].v, grade);
+        students.push(student);
+        //console.log(`${worksheet[`A${index}`].v}.- ${worksheet[`B${index}`].v}`);
       }
     }
     

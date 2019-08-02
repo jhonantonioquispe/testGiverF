@@ -10,7 +10,7 @@ const schema = {
 }
 */
 import { Grade } from './grade';
-export class Question {
+export class Student {
   _id: String;  
   
   constructor (_id:String, 
