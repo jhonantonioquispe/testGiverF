@@ -17,6 +17,6 @@ export class Student {
     private fullname:String, 
     private numberList: number, 
     private grade:Grade) {
-    this._id = _id || '_id' + counter.toString();    
+    this._id = _id;    
   }
 }

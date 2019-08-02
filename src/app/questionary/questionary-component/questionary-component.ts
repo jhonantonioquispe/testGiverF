@@ -3,8 +3,9 @@ import { Question } from '../../models/question';
 import { Test } from '../../models/test';
 import { Questionary } from '../../models/questionary';
 import { TestMakerService } from '../../services/test-maker.service';
-import { QuestionaryService } from '../../services/questionary.service';
 import { QuestionService } from '../../services/question.service';
+import { QuestionaryService } from '../../services/questionary.service';
+import { StudentService } from '../../services/student.service';
 import * as XLSX from 'xlsx';
 import { Grade } from '../../models/grade';
 import { Student } from '../../models/student';
@@ -50,7 +51,8 @@ export class QuestionaryComponent implements OnInit {
   constructor(
     private testService: TestMakerService,
     private questionService: QuestionService,
-    private questionaryService: QuestionaryService
+    private questionaryService: QuestionaryService,
+    private studentService: StudentService
   ) { }
 
   cancelEditMode() {
@@ -192,6 +194,11 @@ export class QuestionaryComponent implements OnInit {
       if(worksheet[`B${index}`] && worksheet[`B${index}`].v) {
         const fullname = worksheet[`B${index}`].v;
         let student:Student = new Student(null, fullname, worksheet[`A${index}`].v, grade);
+        this.studentService.addStudent(<any>student)
+        .subscribe((questionary) => {
+          
+          console.log( questionary);
+        });;
         students.push(student);
         //console.log(`${worksheet[`A${index}`].v}.- ${worksheet[`B${index}`].v}`);
       }
