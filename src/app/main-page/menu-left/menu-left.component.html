@@ -1,26 +1,10 @@
 <div class='menu-list'>
-  <div class='item-menu'>
-    <div class='text-menu'>
-        Cursos
-    </div>
-    <div class='icon-class icon-cursos'></div>
-  </div>
-  <div class='item-menu'>
-      <div class='text-menu'>
-          Examenes
+  
+  <div class='item-menu' *ngFor="let menuOption of menuOptions, let i = index">
+      <div class='text-menu' (click)="menuOption.action()">
+            {{menuOption.textOption}}
       </div>
-      <div class='icon-class icon-examenes'></div>
+      <div class='icon-class {{menuOption.icon}}'></div>
   </div>
-  <div class='item-menu'>
-      <div class='text-menu'>
-          Practicas
-      </div>
-      <div class='icon-class icon-practicas'></div>
-  </div>
-  <div class='item-menu'>
-      <div class='text-menu'>
-          Auto-Evaluacions
-      </div>
-      <div class='icon-class icon-autoeval'></div>
-    </div>
+  
 </div>

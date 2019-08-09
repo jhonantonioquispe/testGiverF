@@ -21,7 +21,7 @@ https://color.adobe.com/es/Paleta-examen-1-color-theme-9690911/edit/?copy=true&b
   background-color: #162740;
   color: #fff;
   border-bottom: solid 1px #fff;
-  border-top: solid 1px #fff;
+  border-top: solid 1px #fff;  
 }
 .item-menu:hover .icon-cursos  {
   background-image: url("./../../../assets/cursos_white.png");
@@ -37,6 +37,7 @@ https://color.adobe.com/es/Paleta-examen-1-color-theme-9690911/edit/?copy=true&b
 }
 .text-menu {
   float: left;
+  cursor: pointer;
 }
 
 .icon-class {

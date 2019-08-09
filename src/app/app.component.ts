@@ -84,4 +84,8 @@ export class AppComponent {
     this.doQuestionaryLoad = $event.q;
     this.doingTest = $event.doingTest;    
   }
+
+  selectMenuOptionReceiver($event) {
+    console.log("event ", $event)
+  }
 }
