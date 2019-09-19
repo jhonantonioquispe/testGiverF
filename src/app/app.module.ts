@@ -17,6 +17,8 @@ import { FontChangeDirective } from './directives/font-change-directive';
 import { ImgSpreadDirective } from './directives/img-spread-directive';
 import { TextEditorComponent } from './common-components/text-editor-component/text-editor-component';
 import { DoTestComponent } from './questionary/do-test/do-test.component';
+import { AppRoutingModule } from './app-routing.module';
+import { BlankPageComponent } from './blank-page/blank-page.component';
 
 @NgModule({
   declarations: [
@@ -31,11 +33,13 @@ import { DoTestComponent } from './questionary/do-test/do-test.component';
     FontChangeDirective,
     ImgSpreadDirective,
     TextEditorComponent,
-    DoTestComponent
+    DoTestComponent,
+    BlankPageComponent
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA ],
   exports: [TextEditorComponent],

@@ -7,12 +7,17 @@
   
 </div>
 <div class='main-container'>
+  
   <div class='contact-list' *ngIf='menuStates.showLeft'>
     <app-menu-left
       (selectMenuOption)='selectMenuOptionReceiver($event)'
     ></app-menu-left>
   </div>
   <div class='message-list' [ngClass]='{"width100": menuStates.showLeft===false}'>
+      <router-outlet></router-outlet>
+  </div>
+
+  <!-- <div class='message-list' [ngClass]='{"width100": menuStates.showLeft===false}'>
     <app-questionary-component
       *ngIf='!doingTest'
       [isNew]='isNew'
@@ -28,7 +33,7 @@
       (changeQuestionary)='quetionaryReceiver($event)'
       (doQuestionaryEmit)='doQuestionaryReceiver($event)'
       [questionaries]='questionaries'></app-list-component>
-  </div>
+  </div> -->
 
 </div>
 

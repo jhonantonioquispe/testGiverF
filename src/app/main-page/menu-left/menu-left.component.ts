@@ -8,19 +8,31 @@ import { Component, OnInit,Input, Output,EventEmitter } from '@angular/core';
 export class MenuLeftComponent implements OnInit {
   @Output() selectMenuOption = new EventEmitter<Object>();
   
-  onShowGrade = () => {
+  private onShowGrade = () => {
     console.log("queremos mostrar cursos");
     this.selectMenuOption.emit(this.menuOptions[0]);
   }
 
+  private onShowQuestionaries = () => {
+    this.selectMenuOption.emit(this.menuOptions[1]);
+  }
+  
+  private onShowPractices = () => {
+    this.selectMenuOption.emit(this.menuOptions[2]);
+  }
+  
+  private onShowAutoEvaluaciones = () => {
+    this.selectMenuOption.emit(this.menuOptions[3]);
+  }
+
   
   menuOptions: any[] = [
-    {textOption: "Cursos", icon: "icon-cursos", action: this.onShowGrade},
-    {textOption: "Examenes", icon: "icon-examenes", action: () => {}},
-    {textOption: "Practicas", icon: "icon-practicas", action: () => {}},
-    {textOption: "Auto-Evaluaciones", icon: "icon-autoeval", action: () => {}},
-    
+    {textOption: "Cursos", route:"blankpage", icon: "icon-cursos", action: this.onShowGrade},
+    {textOption: "Examenes", route:"questionaries", icon: "icon-examenes", action: this.onShowQuestionaries},
+    {textOption: "Practicas", route:"blankpage",icon: "icon-practicas", action: this.onShowPractices},
+    {textOption: "Auto-Evaluaciones", route:"blankpage",icon: "icon-autoeval", action: this.onShowAutoEvaluaciones},
   ];
+
   constructor() { }
 
   ngOnInit() {

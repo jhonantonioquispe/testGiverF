@@ -7,6 +7,8 @@ import { QuestionaryService } from './services/questionary.service';
 import { Student } from './student';
 import { Questionary } from './models/questionary';
 
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -36,9 +38,11 @@ export class AppComponent {
 
   constructor(
     private studentService: StudentService,
-    private questionaryService: QuestionaryService
+    private questionaryService: QuestionaryService,
+    private router:Router
   ) { 
     this.getTests();
+    this.router.navigate(['/blankpage']);
   }
 
   ngOnInit() {
@@ -52,14 +56,7 @@ export class AppComponent {
     this.menuStates.showLeft = !this.menuStates.showLeft;
   }
 
-  getStudents(): void {
-    this.studentService
-      .getStudents()
-      .subscribe((students) => {
-        this.students = students;
-   
-      });
-  }
+
 
   getTests(): void {
     this.questionaryService
@@ -87,5 +84,6 @@ export class AppComponent {
 
   selectMenuOptionReceiver($event) {
     console.log("event ", $event)
+    this.router.navigate([`/${$event.route}`]);
   }
 }
