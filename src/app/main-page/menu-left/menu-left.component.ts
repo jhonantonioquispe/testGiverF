@@ -27,7 +27,7 @@ export class MenuLeftComponent implements OnInit {
 
   
   menuOptions: any[] = [
-    {textOption: "Cursos", route:"blankpage", icon: "icon-cursos", action: this.onShowGrade},
+    {textOption: "Cursos", route:"students", icon: "icon-cursos", action: this.onShowGrade},
     {textOption: "Examenes", route:"questionaries", icon: "icon-examenes", action: this.onShowQuestionaries},
     {textOption: "Practicas", route:"blankpage",icon: "icon-practicas", action: this.onShowPractices},
     {textOption: "Auto-Evaluaciones", route:"blankpage",icon: "icon-autoeval", action: this.onShowAutoEvaluaciones},
