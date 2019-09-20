@@ -1,23 +1,8 @@
-<div style="text-align:center">
-  <div class='main-menu'>
-    <div class='menu' (click)="showMenu()"></div>
-    <div class='logo-class'></div>
-    <!-- <div class='profile-menu' (click)="showProfile()"></div> -->
-  </div>
-  
+<div>
+    <div class='profile-menu' (click)="showProfile()"></div>
 </div>
-<div class='main-container'>
-  
-  <div class='contact-list' *ngIf='menuStates.showLeft'>
-    <app-menu-left
-      (selectMenuOption)='selectMenuOptionReceiver($event)'
-    ></app-menu-left>
-  </div>
+<div>
   <div class='message-list' [ngClass]='{"width100": menuStates.showLeft===false}'>
-      <router-outlet></router-outlet>
-  </div>
-
-  <!-- <div class='message-list' [ngClass]='{"width100": menuStates.showLeft===false}'>
     <app-questionary-component
       *ngIf='!doingTest'
       [isNew]='isNew'
@@ -26,15 +11,12 @@
     <app-do-test
       *ngIf='doingTest'
       [questionaryLoad]='doQuestionaryLoad'></app-do-test>
-
   </div>
+  
   <div class='profile-options' [ngClass]='{"profile-show": menuStates.showRight === true}'>
     <app-list-component 
       (changeQuestionary)='quetionaryReceiver($event)'
       (doQuestionaryEmit)='doQuestionaryReceiver($event)'
       [questionaries]='questionaries'></app-list-component>
-  </div> -->
-
-</div>
-
-
+  </div>
+</div>  

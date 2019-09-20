@@ -19,6 +19,7 @@ import { TextEditorComponent } from './common-components/text-editor-component/t
 import { DoTestComponent } from './questionary/do-test/do-test.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BlankPageComponent } from './blank-page/blank-page.component';
+import { QuestionariesComponent } from './questionary-page/questionaries/questionaries.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { BlankPageComponent } from './blank-page/blank-page.component';
     ImgSpreadDirective,
     TextEditorComponent,
     DoTestComponent,
-    BlankPageComponent
+    BlankPageComponent,
+    QuestionariesComponent
   ],
   imports: [
     BrowserModule,

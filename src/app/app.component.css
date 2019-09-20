@@ -29,7 +29,7 @@
   height: 100%;
   width:198px;
 }
-.profile-menu {
+/* .profile-menu {
   right: 0;
   position: absolute;
   top:0;
@@ -43,7 +43,7 @@
 
 .profile-menu:hover {
   background-image: url('./../assets/list_blue.png');
-}
+} */
 .main-container {
   /* background-color: #f0f0f0; */
   height: calc(100% - 33px);
@@ -62,7 +62,7 @@
   min-width: 450px;
   overflow-y: auto;
 }
-.profile-options {
+/* .profile-options {
   width: 0px;
   float: right;
   background-color: #fff;
@@ -73,7 +73,7 @@
   width: 300px;
   right: 0px;
   position: absolute;
-}
+} */
 
 @media only screen and (max-width: 680px) {
   .contact-list {
