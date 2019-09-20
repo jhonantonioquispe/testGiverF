@@ -1,14 +1,16 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Question } from '../../models/question';
-import { Test } from '../../models/test';
-import { Questionary } from '../../models/questionary';
-import { TestMakerService } from '../../services/test-maker.service';
-import { QuestionService } from '../../services/question.service';
-import { QuestionaryService } from '../../services/questionary.service';
-import { StudentService } from '../../services/student.service';
 import * as XLSX from 'xlsx';
+
+//models
+import { Questionary } from '../../models/questionary';
 import { Grade } from '../../models/grade';
 import { Student } from '../../models/student';
+import { Question } from '../../models/question';
+import { Test } from '../../models/test';
+
+//services
+import { QuestionaryService } from '../../services/questionary.service';
+import { StudentService } from '../../services/student.service';
 
 @Component({
   selector: 'app-questionary-component',
@@ -29,7 +31,6 @@ export class QuestionaryComponent implements OnInit {
   @Input() 
   set questionaryLoad(questionaryLoad:Questionary) {
     this.questionary = questionaryLoad;
-    //this.questionary.questions  = this.questionary? this.questionary.questions: [];
   }
 
   get questionaryLoad() {
@@ -49,8 +50,6 @@ export class QuestionaryComponent implements OnInit {
   }
 
   constructor(
-    private testService: TestMakerService,
-    private questionService: QuestionService,
     private questionaryService: QuestionaryService,
     private studentService: StudentService
   ) { }

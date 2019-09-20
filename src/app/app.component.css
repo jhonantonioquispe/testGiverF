@@ -29,21 +29,7 @@
   height: 100%;
   width:198px;
 }
-/* .profile-menu {
-  right: 0;
-  position: absolute;
-  top:0;
-  height: 32px;
-  width: 32px;
-  background-image: url('./../assets/list_white.png');
-  background-size: 28px 28px;
-  background-position: 2px 2px;
-  background-repeat: no-repeat;
-}
 
-.profile-menu:hover {
-  background-image: url('./../assets/list_blue.png');
-} */
 .main-container {
   /* background-color: #f0f0f0; */
   height: calc(100% - 33px);
@@ -62,18 +48,6 @@
   min-width: 450px;
   overflow-y: auto;
 }
-/* .profile-options {
-  width: 0px;
-  float: right;
-  background-color: #fff;
-  box-shadow: 0px 2px 6px 1px rgba(0,0,0,0.5);
-  height: calc(100% - 33px);
-}
-.profile-show {
-  width: 300px;
-  right: 0px;
-  position: absolute;
-} */
 
 @media only screen and (max-width: 680px) {
   .contact-list {
