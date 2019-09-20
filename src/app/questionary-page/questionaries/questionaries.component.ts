@@ -5,14 +5,12 @@ import { Questionary } from './../../models/questionary' ;
 
 //importing services
 import { QuestionaryService } from './../../services/questionary.service';
-import { TestMakerService } from './../../services/test-maker.service';
-import { QuestionService } from './../../services/question.service';
 
 @Component({
   selector: 'app-questionaries',
   templateUrl: './questionaries.component.html',
   styleUrls: ['./questionaries.component.css'],
-  providers: [TestMakerService, QuestionService, QuestionaryService]
+  providers: [QuestionaryService]
 })
 export class QuestionariesComponent implements OnInit {
   private isNew:boolean = false;
