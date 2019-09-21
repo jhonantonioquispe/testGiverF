@@ -21,6 +21,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { BlankPageComponent } from './blank-page/blank-page.component';
 import { QuestionariesComponent } from './questionary-page/questionaries/questionaries.component';
 import { StudentsComponent } from './student-page/students/students.component';
+import { RightListSelectableComponent } from './common-components/right-list-selectable/right-list-selectable.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { StudentsComponent } from './student-page/students/students.component';
     DoTestComponent,
     BlankPageComponent,
     QuestionariesComponent,
-    StudentsComponent
+    StudentsComponent,
+    RightListSelectableComponent
   ],
   imports: [
     BrowserModule,

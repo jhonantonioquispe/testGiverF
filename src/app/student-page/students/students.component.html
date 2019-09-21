@@ -1,3 +1,11 @@
-<p>
+<div>
+  <div class='profile-menu' (click)="showProfile()"></div>
+</div>
+<div>
   students works!
-</p>
+  <div class='profile-options' [ngClass]='{"profile-show": menuStates.showRight === true}'>
+    <app-right-list-selectable 
+      (emitOnSelect)='catchSelect($event)'
+      [items]='students'></app-right-list-selectable>
+  </div>
+</div>

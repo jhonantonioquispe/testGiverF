@@ -7,7 +7,6 @@ import { Question } from '../../models/question';
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
-  //@Input() questionaries: Questionary[] = [];
   _questionaries: Questionary[] = [];
   selectedQi:number = -1;
   hideItemList:boolean = true;

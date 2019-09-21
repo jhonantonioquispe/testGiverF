@@ -1,0 +1,14 @@
+<div class="list-cdor">
+  <div class="action-container">
+      <div class="action-container-items" *ngIf='!hideItemList'>
+          <button class="action-test-btn" (click)="addItem()">Add Item</button>
+      </div>
+      <div class="icon-show-hide" title="Ver Mas Acciones" (click)="toogleActionlist()">
+          <div class="icon-triangle" [ngClass]="{'rotate90':hideItemList == false}" ></div>            
+      </div>
+  </div>
+  <div class='item-list' *ngFor="let item of items, let i = index"
+      (click)="selectItemClick(i)"
+      [ngClass]="{'selected-item':i==selectedQi}" 
+  >{{item.title}}</div>
+</div>
