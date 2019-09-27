@@ -7,7 +7,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { FullServiceMaker } from './fullServiceMaker.service';
 
 //importing modelo student
-import { Student } from '../student';
+import { Student } from '../models/student';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -22,14 +22,14 @@ export class StudentService extends FullServiceMaker<Student> {
     super(http, 'student');
   }
 
-  /** GET heroes from the server */
+  /** GET students from the server */
   getStudents ()//: Observable<Student[]> 
   {
-    // return this.http.get<Student[]>(this.studentsUrl)
-    //   .pipe(
-    //     tap(students => console.log('students', students)),
-    //     catchError(this.handleError('getStudents', []))
-    //   );
+    return this.getAll()
+    .pipe(
+      tap(students => students),
+      catchError(this.handleError('getStudents', []))
+    );
   }
 
   /** POST heroes from the server */

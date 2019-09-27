@@ -10,6 +10,14 @@ const schema = {
 }
 */
 import { Grade } from './grade';
+
+export interface IStudent {
+  _id?: String;  
+  fullname?:String, 
+  numberList?: number, 
+  grade?:Grade
+}
+
 export class Student {
   _id: String;  
   

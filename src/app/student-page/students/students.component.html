@@ -3,9 +3,18 @@
 </div>
 <div>
   students works!
+  <app-attacher
+      [srcImage]='""'                
+      [id]='"uploader-file"' 
+      (sendFileOut)='receivingData($event)'
+      [isloadFileMode]='true'
+      [editionMode]='true'>
+  </app-attacher>
+
   <div class='profile-options' [ngClass]='{"profile-show": menuStates.showRight === true}'>
     <app-right-list-selectable 
       (emitOnSelect)='catchSelect($event)'
+      [onSetNewItem]='setNewStudent'
       [items]='students'></app-right-list-selectable>
   </div>
 </div>
