@@ -15,6 +15,7 @@
     <app-right-list-selectable 
       (emitOnSelect)='catchSelect($event)'
       [onSetNewItem]='setNewStudent'
+      [modelItem]="modelItemStudent"
       [items]='students'></app-right-list-selectable>
   </div>
 </div>

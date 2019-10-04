@@ -10,5 +10,5 @@
   <div class='item-list' *ngFor="let item of items, let i = index"
       (click)="selectItemClick(i)"
       [ngClass]="{'selected-item':i==selectedQi}" 
-  >{{item.title}}</div>
+  >{{item.textToShow}}</div>
 </div>

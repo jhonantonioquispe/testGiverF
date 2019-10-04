@@ -5,7 +5,7 @@ import * as XLSX from 'xlsx';
 import { StudentService } from './../../services/student.service';
 
 //models
-import { IStudent, Student } from '../../models/student';
+import { IStudent, Student, IModelShow } from '../../models/student';
 import { Grade } from '../../models/grade';
 
 @Component({
@@ -21,6 +21,18 @@ export class StudentsComponent implements OnInit {
     showRight: false,
   };
 
+  public mapStudent = (student: IStudent):IModelShow => {
+    const modelStudent:IModelShow = {
+      textToShow: student.fullname
+    };
+    return modelStudent;
+  }
+
+  private modelItemStudent:IModelShow = {
+    textToShow:"",
+    onMapModel: this.mapStudent,
+    onSelectItem: () => {}
+  };
   constructor(private studentsService: StudentService) { }
 
   ngOnInit() {
@@ -33,6 +45,7 @@ export class StudentsComponent implements OnInit {
         }
       });
   }
+
 
   private showProfile = () => {
     this.menuStates.showRight = !this.menuStates.showRight;

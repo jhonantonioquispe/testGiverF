@@ -32,7 +32,9 @@ export class RightListSelectableComponent implements OnInit {
   }
 
   get items() {
-    return this._itemCollection;
+    return this._itemCollection.map((item)=> {
+      return this.modelItem.onMapModel(item);
+    });
   }
 
   constructor() { }
