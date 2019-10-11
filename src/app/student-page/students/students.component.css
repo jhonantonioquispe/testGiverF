@@ -1,0 +1,25 @@
+.loader-students-container {
+    background-color: beige;
+    width: auto;
+    display: inline-block;
+    float: left;
+}
+
+.font-bold-label {
+    font-weight: bold;
+}
+
+.student-card {
+    margin: 20px 20px;
+    padding: 8px 8px;
+    box-shadow: 2px 2px 2px 2px #e4d2cc;
+}
+
+.icon-show-hide{
+    box-sizing: border-box;
+    width: fit-content;
+    height: 32px;
+    /* border: solid; */
+    float: left;
+
+}

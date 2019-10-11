@@ -15,7 +15,7 @@ import { Grade } from '../../models/grade';
   providers: [StudentService]
 })
 export class StudentsComponent implements OnInit {
-  private selectedStudent: any;
+  private selectedStudent: IStudent = {};
   private students: any[] = [];
   private menuStates = {
     showRight: false,
@@ -27,6 +27,8 @@ export class StudentsComponent implements OnInit {
     };
     return modelStudent;
   }
+
+  private isVisibleLoaderStudents:boolean = true;
 
   private modelItemStudent:IModelShow = {
     textToShow:"",
@@ -136,6 +138,10 @@ export class StudentsComponent implements OnInit {
     
     //console.log("cols->", worksheet["!cols"].length);
     //console.log(XLSX.utils.sheet_to_json(worksheet,{raw:true}));
+  }
+
+  toogleLoadStudents = () => {
+    this.isVisibleLoaderStudents = !this.isVisibleLoaderStudents;
   }
 
 }

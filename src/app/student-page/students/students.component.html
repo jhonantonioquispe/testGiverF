@@ -2,14 +2,35 @@
   <div class='profile-menu' (click)="showProfile()"></div>
 </div>
 <div>
-  students works!
-  <app-attacher
-      [srcImage]='""'                
-      [id]='"uploader-file"' 
-      (sendFileOut)='receivingData($event)'
-      [isloadFileMode]='true'
-      [editionMode]='true'>
-  </app-attacher>
+  <div class="icon-show-hide" title="Ver Mas Acciones">
+      <div 
+        class="icon-triangle marging-fifty icon-triangle-brown-color rotate270" 
+        [ngClass]="{'rotate90': isVisibleLoaderStudents == false}"
+        (click)="toogleLoadStudents()" ></div>
+  </div>
+  <div style="display: block; height: 38px;">
+    <div class="loader-students-container">
+      <app-attacher
+          [srcImage]='""'                
+          [id]='"uploader-file"' 
+          (sendFileOut)='receivingData($event)'
+          [isloadFileMode]='true'
+          [isVisible]='isVisibleLoaderStudents'
+          [editionMode]='true'>
+      </app-attacher>
+    </div>
+  </div>
+  <div style="display: block;" class="student-card">
+    <div >
+      <label class="font-bold-label">Number List : </label>
+      <label>{{selectedStudent.numberList}}</label>
+    </div>
+    <div>
+      <label class="font-bold-label">Fullname : </label>
+      <label>{{selectedStudent.fullname}}</label>
+    </div>
+    <!-- {{selectedStudent | json}} -->
+  </div>
 
   <div class='profile-options' [ngClass]='{"profile-show": menuStates.showRight === true}'>
     <app-right-list-selectable 

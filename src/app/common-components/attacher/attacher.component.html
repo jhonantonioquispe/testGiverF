@@ -1,4 +1,4 @@
-<div>
+<div *ngIf='isVisible'>
   <input id='{{"loaderUnique"+id}}' [hidden]="true" accept=".xls,.xlsx,image/png, image/jpeg" type="file" name="imgUploader" ngModel value="Upload" (change)="uploadImage($event)">
   <div *ngIf='!isloadFileMode'>
     

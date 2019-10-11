@@ -19,6 +19,7 @@ export class AttacherComponent implements OnInit {
   @Input() srcImage: string;
   @Input() editionMode: Boolean = true;
   @Input() isloadFileMode: Boolean = false;
+  @Input() isVisible: Boolean = true;
   constructor(private attacherService: AttacherService) { }
 
   ngOnInit() {
