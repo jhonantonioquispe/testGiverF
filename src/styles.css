@@ -107,7 +107,7 @@ html, body {
 }
 
 .rotate90 {
-  transform: rotate(90deg);
+  transform: rotate(90deg) !important;
 }
 
 .rotate180 {
