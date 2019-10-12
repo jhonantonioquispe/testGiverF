@@ -3,145 +3,157 @@ import * as XLSX from 'xlsx';
 
 //services
 import { StudentService } from './../../services/student.service';
+import { GradeService } from './../../services/grade.service';
 
 //models
 import { IStudent, Student, IModelShow } from '../../models/student';
-import { Grade } from '../../models/grade';
+import { Grade, IGrade } from '../../models/grade';
 
 @Component({
-  selector: 'app-students',
-  templateUrl: './students.component.html',
-  styleUrls: ['./students.component.css'],
-  providers: [StudentService]
+    selector: 'app-students',
+    templateUrl: './students.component.html',
+    styleUrls: ['./students.component.css'],
+    providers: [StudentService, GradeService]
 })
 export class StudentsComponent implements OnInit {
-  private selectedStudent: IStudent = {};
-  private students: any[] = [];
-  private menuStates = {
-    showRight: false,
-  };
-
-  public mapStudent = (student: IStudent):IModelShow => {
-    const modelStudent:IModelShow = {
-      textToShow: student.fullname
+    private selectedStudent: IStudent = {};
+    private students: IStudent[] = [];
+    private grades: any[] = [];
+    private menuStates = {
+        showRight: false,
     };
-    return modelStudent;
-  }
 
-  private isVisibleLoaderStudents:boolean = true;
+    public mapStudent = (student: IGrade): IModelShow => {
+        const modelStudent: IModelShow = {
+            textToShow: student.grade
+        };
+        return modelStudent;
+    }
 
-  private modelItemStudent:IModelShow = {
-    textToShow:"",
-    onMapModel: this.mapStudent,
-    onSelectItem: () => {}
-  };
-  constructor(private studentsService: StudentService) { }
+    private isVisibleLoaderStudents: boolean = true;
 
-  ngOnInit() {
-    this.studentsService
-      .getStudents()
-      .subscribe((students: any) => {
-        if (students.data.length > 0){
-          this.students = students.data;
-          this.selectedStudent = students.data[0];
+    private modelItemStudent: IModelShow = {
+        textToShow: "",
+        onMapModel: this.mapStudent,
+        onSelectItem: () => { }
+    };
+    constructor(private studentsService: StudentService,
+        private gradesService: GradeService
+        ) { }
+
+    ngOnInit() {
+        this.studentsService
+            .getStudents()
+            .subscribe((students: any) => {
+                if (students.data.length > 0) {
+                    this.students = students.data;
+                    this.selectedStudent = students.data[0];
+                }
+            });
+        this.gradesService
+            .getGrades()
+            .subscribe((grades: any) => {
+                if (grades.data.length > 0) {
+                    this.grades = grades.data;
+                    this.selectedStudent = grades.data[0];
+                }
+            });
+    }
+
+
+    private showProfile = () => {
+        this.menuStates.showRight = !this.menuStates.showRight;
+    }
+
+    private catchSelect = ($event) => {
+        this.selectedStudent = $event.q;
+    }
+
+    setNewStudent = (newItem: IStudent) => {
+        (<any>newItem).title = "title that has no sence"
+        newItem.fullname = "fname01";
+    }
+
+    private receivingData = ($event) => {
+        let dataFound = $event.b64.replace(/.*;base64,/g, "");
+        const byteCharacters = atob(dataFound);
+        $event.data = null;
+        const byteNumbers = new Array(byteCharacters.length);
+        for (let i = 0; i < byteCharacters.length; i++) {
+            byteNumbers[i] = byteCharacters.charCodeAt(i);
         }
-      });
-  }
 
+        var data = new Uint8Array(byteNumbers);
+        var arr = new Array();
+        for (var i = 0; i != data.length; ++i) arr[i] = String.fromCharCode(data[i]);
+        var bstr = arr.join("");
 
-  private showProfile = () => {
-    this.menuStates.showRight = !this.menuStates.showRight;
-  }
+        let workbook = XLSX.read(bstr, { type: 'binary' });
 
-  private catchSelect = ($event) => {
-    this.selectedStudent = $event.q;    
-  }
+        var first_sheet_name = workbook.SheetNames[0];
 
-  setNewStudent = (newItem: IStudent) => {
-    (<any>newItem).title = "title that has no sence"
-    newItem.fullname = "fname01";
-  }
+        var worksheet = workbook.Sheets[first_sheet_name];
+        let index = 10;
+        const students: any = [];
 
-  private receivingData = ($event) => {
-    let dataFound = $event.b64.replace(/.*;base64,/g,"");
-    const byteCharacters = atob(dataFound);
-    $event.data = null;
-    const byteNumbers = new Array(byteCharacters.length);
-    for (let i = 0; i < byteCharacters.length; i++) {
-        byteNumbers[i] = byteCharacters.charCodeAt(i);
-    }
-    
-    var data = new Uint8Array(byteNumbers);
-    var arr = new Array();
-    for(var i = 0; i != data.length; ++i) arr[i] = String.fromCharCode(data[i]);
-    var bstr = arr.join("");
-  
-    let workbook = XLSX.read(bstr, {type:'binary'});
+        const literalGrade: string = worksheet[`K4`].v;
+        const gradeAndParalel = literalGrade.split("\"");
+        const gradeString = gradeAndParalel[0].trim();
+        const paralelString = gradeAndParalel[1].trim();
 
-    var first_sheet_name = workbook.SheetNames[0];
-    
-    var worksheet = workbook.Sheets[first_sheet_name];
-    let index = 10;
-    const students:any = [];
+        const getNumericParalel = (paralString: string) => {
+            let num: number = 0;
+            switch (paralString.toLowerCase()) {
+                case "primero":
+                    num = 1;
+                    break;
+                case "segundo":
+                    num = 2;
+                    break;
+                case "tercero":
+                    num = 3;
+                    break;
+                case "cuarto":
+                    num = 4;
+                    break;
+                case "quinto":
+                    num = 5;
+                    break;
+                case "sexto":
+                    num = 6;
+                    break;
+                case "septimo":
+                    num = 7;
+                    break;
+                case "octavo":
+                    num = 8;
+                    break;
+            }
+            return num;
+        }
 
-    const literalGrade:string = worksheet[`K4`].v;
-    const gradeAndParalel = literalGrade.split("\"");
-    const gradeString = gradeAndParalel[0].trim();
-    const paralelString = gradeAndParalel[1].trim();
+        let grade: Grade = new Grade(null, gradeString, paralelString, getNumericParalel(gradeString));
+        while (worksheet[`A${index}`] && worksheet[`A${index}`].v) {
+            index++;
+            if (worksheet[`B${index}`] && worksheet[`B${index}`].v) {
+                const fullname = worksheet[`B${index}`].v;
+                let student: Student = new Student(null, fullname, worksheet[`A${index}`].v, grade);
+                this.studentsService.addStudent(<any>student)
+                    .subscribe((questionary) => {
 
-    const getNumericParalel = (paralString:string) => {
-      let num:number = 0;
-      switch (paralString.toLowerCase()) {
-        case "primero":
-          num=1;
-          break;
-        case "segundo":
-          num=2;
-          break;
-        case "tercero":
-          num=3;
-          break;
-        case "cuarto":
-          num=4;
-          break;
-        case "quinto":
-          num=5;
-          break;
-        case "sexto":
-          num=6;
-          break;
-        case "septimo":
-          num=7;
-          break;
-        case "octavo":
-          num=8;
-          break;
-      }
-      return num;
+                        console.log(questionary);
+                    });;
+                students.push(student);
+                //console.log(`${worksheet[`A${index}`].v}.- ${worksheet[`B${index}`].v}`);
+            }
+        }
+
+        //console.log("cols->", worksheet["!cols"].length);
+        //console.log(XLSX.utils.sheet_to_json(worksheet,{raw:true}));
     }
 
-    let grade:Grade = new Grade(null, gradeString, paralelString, getNumericParalel(gradeString));
-    while(worksheet[`A${index}`] && worksheet[`A${index}`].v) {
-      index++;
-      if(worksheet[`B${index}`] && worksheet[`B${index}`].v) {
-        const fullname = worksheet[`B${index}`].v;
-        let student:Student = new Student(null, fullname, worksheet[`A${index}`].v, grade);
-        this.studentsService.addStudent(<any>student)
-          .subscribe((questionary) => {
-            
-            console.log( questionary);
-          });;
-        students.push(student);
-        //console.log(`${worksheet[`A${index}`].v}.- ${worksheet[`B${index}`].v}`);
-      }
+    toogleLoadStudents = () => {
+        this.isVisibleLoaderStudents = !this.isVisibleLoaderStudents;
     }
-    
-    //console.log("cols->", worksheet["!cols"].length);
-    //console.log(XLSX.utils.sheet_to_json(worksheet,{raw:true}));
-  }
-
-  toogleLoadStudents = () => {
-    this.isVisibleLoaderStudents = !this.isVisibleLoaderStudents;
-  }
 
 }

@@ -7,6 +7,13 @@ let counter = 0;
   "gradeNumeral": 3
 }
 */
+export interface IGrade {
+  _id?:  string,
+  grade: string, 
+  paralel: string, 
+  gradeNumeral:number
+}
+
 export class Grade {
   _id: String;
   
