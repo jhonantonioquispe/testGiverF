@@ -9,9 +9,9 @@ let counter = 0;
 */
 export interface IGrade {
   _id?:  string,
-  grade: string, 
-  paralel: string, 
-  gradeNumeral:number
+  grade?: string, 
+  paralel?: string, 
+  gradeNumeral?:number
 }
 
 export class Grade {

@@ -2,39 +2,39 @@ import { Component, OnInit } from '@angular/core';
 import * as XLSX from 'xlsx';
 
 //services
-import { StudentService } from './../../services/student.service';
-import { GradeService } from './../../services/grade.service';
+import { StudentService } from '../../services/student.service';
+import { GradeService } from '../../services/grade.service';
 
 //models
 import { IStudent, Student, IModelShow } from '../../models/student';
 import { Grade, IGrade } from '../../models/grade';
 
 @Component({
-    selector: 'app-students',
-    templateUrl: './students.component.html',
-    styleUrls: ['./students.component.css'],
+    selector: 'app-grades',
+    templateUrl: './grades.component.html',
+    styleUrls: ['./grades.component.css'],
     providers: [StudentService, GradeService]
 })
-export class StudentsComponent implements OnInit {
-    private selectedStudent: IStudent = {};
+export class GradesComponent implements OnInit {
+    private selectedGrade: IGrade = {};
     private students: IStudent[] = [];
     private grades: any[] = [];
     private menuStates = {
         showRight: false,
     };
 
-    public mapStudent = (student: IGrade): IModelShow => {
-        const modelStudent: IModelShow = {
-            textToShow: student.grade
+    public mapGrade = (grade: IGrade): IModelShow => {
+        const modelGrade: IModelShow = {
+            textToShow: grade.grade
         };
-        return modelStudent;
+        return modelGrade;
     }
 
     private isVisibleLoaderStudents: boolean = true;
 
-    private modelItemStudent: IModelShow = {
+    private modelItemGrade: IModelShow = {
         textToShow: "",
-        onMapModel: this.mapStudent,
+        onMapModel: this.mapGrade,
         onSelectItem: () => { }
     };
     constructor(private studentsService: StudentService,
@@ -47,7 +47,7 @@ export class StudentsComponent implements OnInit {
             .subscribe((students: any) => {
                 if (students.data.length > 0) {
                     this.students = students.data;
-                    this.selectedStudent = students.data[0];
+                    this.selectedGrade = students.data[0];
                 }
             });
         this.gradesService
@@ -55,7 +55,7 @@ export class StudentsComponent implements OnInit {
             .subscribe((grades: any) => {
                 if (grades.data.length > 0) {
                     this.grades = grades.data;
-                    this.selectedStudent = grades.data[0];
+                    this.selectedGrade = grades.data[0];
                 }
             });
     }
@@ -66,12 +66,12 @@ export class StudentsComponent implements OnInit {
     }
 
     private catchSelect = ($event) => {
-        this.selectedStudent = $event.q;
+        this.selectedGrade = $event.q;
     }
 
-    setNewStudent = (newItem: IStudent) => {
+    setNewGrade = (newItem: IGrade) => {
         (<any>newItem).title = "title that has no sence"
-        newItem.fullname = "fname01";
+        newItem.grade = "new grade ...";
     }
 
     private receivingData = ($event) => {

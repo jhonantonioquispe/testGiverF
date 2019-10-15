@@ -20,26 +20,26 @@
       </app-attacher>
     </div>
   </div>
-  <div *ngFor="let selectedStudent of students, let i = index">
+  <div *ngFor="let currentStudent of students, let i = index">
 
     <div style="display: block;" class="student-card">
       <div >
         <label class="font-bold-label">Number List : </label>
-        <label>{{selectedStudent.numberList}}</label>
+        <label>{{currentStudent.numberList}}</label>
       </div>
       <div>
         <label class="font-bold-label">Fullname : </label>
-        <label>{{selectedStudent.fullname}}</label>
+        <label>{{currentStudent.fullname}}</label>
       </div>
-      <!-- {{selectedStudent | json}} -->
+      <!-- {{currentStudent | json}} -->
     </div>
   </div>
 
   <div class='profile-options' [ngClass]='{"profile-show": menuStates.showRight === true}'>
     <app-right-list-selectable 
       (emitOnSelect)='catchSelect($event)'
-      [onSetNewItem]='setNewStudent'
-      [modelItem]="modelItemStudent"
+      [onSetNewItem]='setNewGrade'
+      [modelItem]="modelItemGrade"
       [items]='grades'></app-right-list-selectable>
   </div>
 </div>

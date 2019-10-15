@@ -20,7 +20,7 @@ import { DoTestComponent } from './questionary/do-test/do-test.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BlankPageComponent } from './blank-page/blank-page.component';
 import { QuestionariesComponent } from './questionary-page/questionaries/questionaries.component';
-import { StudentsComponent } from './student-page/students/students.component';
+import { GradesComponent } from './grade-page/grades/grades.component';
 import { RightListSelectableComponent } from './common-components/right-list-selectable/right-list-selectable.component';
 
 @NgModule({
@@ -39,7 +39,7 @@ import { RightListSelectableComponent } from './common-components/right-list-sel
     DoTestComponent,
     BlankPageComponent,
     QuestionariesComponent,
-    StudentsComponent,
+    GradesComponent,
     RightListSelectableComponent
   ],
   imports: [

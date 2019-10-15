@@ -14,7 +14,7 @@ export class AppComponent {
   };
 
   constructor(private router:Router) {
-    this.router.navigate(['/students']);
+    this.router.navigate(['/grades']);
   }
 
   ngOnInit() {
