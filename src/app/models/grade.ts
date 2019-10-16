@@ -10,18 +10,20 @@ let counter = 0;
 export interface IGrade {
   _id?:  string,
   grade?: string, 
+  gradeLiteral?:string,
   paralel?: string, 
   gradeNumeral?:number
 }
 
 export class Grade {
-  _id: String;
+  //_id: String;
   
   constructor (
-    _id: String, 
-    private grade, 
-    private paralel, 
-    private gradeNumeral) {    
-    this._id = _id || '_id' + counter.toString();
+    private _id: string, 
+    private gradeLiteral:string,
+    //private grade: Grade, 
+    private paralel: string, 
+    private gradeNumeral:number) {    
+    //this._id = _id || '_id' + counter.toString();
   }
 }

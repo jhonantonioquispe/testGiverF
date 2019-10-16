@@ -25,7 +25,7 @@ export class GradesComponent implements OnInit {
 
     public mapGrade = (grade: IGrade): IModelShow => {
         const modelGrade: IModelShow = {
-            textToShow: grade.grade
+            textToShow: grade.gradeLiteral
         };
         return modelGrade;
     }
@@ -42,14 +42,6 @@ export class GradesComponent implements OnInit {
         ) { }
 
     ngOnInit() {
-        this.studentsService
-            .getStudents()
-            .subscribe((students: any) => {
-                if (students.data.length > 0) {
-                    this.students = students.data;
-                    this.selectedGrade = students.data[0];
-                }
-            });
         this.gradesService
             .getGrades()
             .subscribe((grades: any) => {
@@ -67,6 +59,14 @@ export class GradesComponent implements OnInit {
 
     private catchSelect = ($event) => {
         this.selectedGrade = $event.q;
+        this.studentsService
+            .getStudents()
+            .subscribe((students: any) => {
+                if (students.data.length > 0) {
+                    this.students = students.data;
+                    this.selectedGrade = students.data[0];
+                }
+            });
     }
 
     setNewGrade = (newItem: IGrade) => {
@@ -132,21 +132,26 @@ export class GradesComponent implements OnInit {
             return num;
         }
 
-        let grade: Grade = new Grade(null, gradeString, paralelString, getNumericParalel(gradeString));
-        while (worksheet[`A${index}`] && worksheet[`A${index}`].v) {
-            index++;
-            if (worksheet[`B${index}`] && worksheet[`B${index}`].v) {
-                const fullname = worksheet[`B${index}`].v;
-                let student: Student = new Student(null, fullname, worksheet[`A${index}`].v, grade);
-                this.studentsService.addStudent(<any>student)
-                    .subscribe((questionary) => {
-
-                        console.log(questionary);
-                    });;
-                students.push(student);
-                //console.log(`${worksheet[`A${index}`].v}.- ${worksheet[`B${index}`].v}`);
+        let grade: Grade = new Grade(undefined, gradeString, paralelString, getNumericParalel(gradeString));
+        this.gradesService.addGrade(grade)
+        .subscribe((gradeResult)=> {
+            const newGrade = gradeResult.data;
+            while (worksheet[`A${index}`] && worksheet[`A${index}`].v) {
+                index++;
+                if (worksheet[`B${index}`] && worksheet[`B${index}`].v) {
+                    const fullname = worksheet[`B${index}`].v;
+                    let student: Student = new Student(null, fullname, worksheet[`A${index}`].v, newGrade);
+                    this.studentsService.addStudent(<any>student)
+                        .subscribe((questionary) => {
+    
+                            console.log(questionary);
+                        });;
+                    students.push(student);
+                    //console.log(`${worksheet[`A${index}`].v}.- ${worksheet[`B${index}`].v}`);
+                }
             }
-        }
+
+        })
 
         //console.log("cols->", worksheet["!cols"].length);
         //console.log(XLSX.utils.sheet_to_json(worksheet,{raw:true}));

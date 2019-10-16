@@ -9,7 +9,7 @@ const schema = {
   }
 }
 */
-import { Grade } from './grade';
+import { Grade, IGrade } from './grade';
 
 export interface IStudent {
   _id?: String;  
@@ -26,12 +26,19 @@ export interface IModelShow {
 }
 
 export class Student {
-  _id: String;  
-  
-  constructor (_id:String, 
+  _id: string;  
+  private grade:any;
+  constructor (
+    _id:string, 
     private fullname:String, 
     private numberList: number, 
-    private grade:Grade) {
-    this._id = _id;    
+    grade:IGrade) {
+    this._id = _id;
+    if(grade) {
+      this.grade = {
+        literal: grade.gradeLiteral,
+        gradeId: grade._id
+      };
+    }   
   }
 }
