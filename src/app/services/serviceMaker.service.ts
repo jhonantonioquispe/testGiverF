@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
+import { IFilterParams } from './../models/models';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -11,8 +12,9 @@ export abstract class ServiceMaker<T> {
   constructor(
     protected _http: HttpClient, protected parent:string){ }
 
-  protected getAll(): Observable<T>{
-    return this._http.get<T>(`${this.baseUrl}/${this.parent}`, httpOptions)    
+  protected getAll(filterObject?:IFilterParams): Observable<T>{
+    const filterQueryParams = filterObject ? `?${filterObject.getFilterParams()}`:""
+    return this._http.get<T>(`${this.baseUrl}/${this.parent}${filterQueryParams}`, httpOptions)    
   }
 
   protected saveOne(itemToSave): Observable<T> {

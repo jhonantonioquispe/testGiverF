@@ -9,3 +9,9 @@ export class Models {
   Option=Option;
   Attachment=Attachment;  
 }
+
+export interface IFilterParams {
+  filterObject:any,
+  model:any,
+  getFilterParams: () => string
+};

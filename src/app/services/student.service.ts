@@ -8,6 +8,7 @@ import { FullServiceMaker } from './fullServiceMaker.service';
 
 //importing modelo student
 import { Student } from '../models/student';
+import { IFilterParams } from '../models/models';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -23,17 +24,24 @@ export class StudentService extends FullServiceMaker<Student> {
   }
 
   /** GET students from the server */
-  getStudents ()//: Observable<Student[]> 
+  getStudents (filterObj?:any)//: Observable<Student[]> 
   {
-    return this.getAll()
-    .pipe(
-      tap(students => students),
-      catchError(this.handleError('getStudents', []))
-    );
+    const filterStudent:IFilterParams = {
+      filterObject: filterObj,
+      getFilterParams: ( ) => {
+        return `grade.gradeId=${filterObj}`;
+      },
+      model:Student
+    }
+    return this.getAll(filterStudent)
+      .pipe(
+        tap(students => students),
+        catchError(this.handleError('getStudents', []))
+      );
   }
 
   /** POST heroes from the server */
-  addStudent (student:Student): Observable<Student|any> {
+  addStudent (student: Student): Observable<Student|any> {
     return this.saveOne(student)
       .pipe(
         tap(student => console.log('students', student)),
