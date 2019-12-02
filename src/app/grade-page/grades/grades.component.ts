@@ -18,7 +18,7 @@ import { Grade, IGrade } from '../../models/grade';
 export class GradesComponent implements OnInit {
     private selectedGrade: IGrade = {};
     private students: IStudent[] = [];
-    private grades: any[] = [];
+    private studentsBygrade: any[] = [];
     private menuStates = {
         showRight: false,
     };
@@ -46,8 +46,7 @@ export class GradesComponent implements OnInit {
             .getGrades()
             .subscribe((grades: any) => {
                 if (grades.data.length > 0) {
-                    this.grades = grades.data;
-                    this.selectedGrade = grades.data[0];
+                    this.studentsBygrade = grades.data;
                 }
             });
     }
@@ -59,7 +58,6 @@ export class GradesComponent implements OnInit {
 
     private catchSelect = ($event) => {
         this.selectedGrade = $event.q;
-        console.log(this.selectedGrade)
         this.studentsService
             .getStudents(this.selectedGrade._id)
             .subscribe((students: any) => {

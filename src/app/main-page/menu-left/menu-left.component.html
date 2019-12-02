@@ -1,10 +1,10 @@
 <div class='menu-list'>
   
-  <div class='item-menu' *ngFor="let menuOption of menuOptions, let i = index">
-      <div class='text-menu' (click)="menuOption.action()">
-            {{menuOption.textOption}}
-      </div>
-      <div class='icon-class {{menuOption.icon}}'></div>
+  <div class='item-menu' *ngFor="let menuOption of menuOptions, let i = index" (click)="menuOption.action()">
+    <div class='text-menu'>
+          {{menuOption.textOption}}
+    </div>
+    <div class='icon-class {{menuOption.icon}}'></div>
   </div>
   
 </div>
